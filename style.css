@@ -17,7 +17,7 @@ body {
   margin: 2px 2px;
   border-radius: 6px;
   cursor: pointer;
-  transition: transform 0.12s ease, background-color 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.12s ease, background-color 0.15s ease, border-color 0.15s ease, filter 0.2s ease;
   user-select: none;
   line-height: 1.55;
 }
@@ -51,10 +51,51 @@ body {
   box-shadow: 0 0 10px rgba(201, 162, 39, 0.4);
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+.tok-speaking {
+  background-color: rgba(201, 162, 39, 0.42) !important;
+  border-color: #C9A227 !important;
+  color: #FFFFFF !important;
+  transform: scale(1.04);
 }
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+
+.legal-focus-mode .word-token:not(.tok-chunk) {
+  opacity: 0.45;
+}
+
+.legal-focus-mode .word-token.tok-chunk {
+  background-color: rgba(201, 162, 39, 0.24) !important;
+  border-color: rgba(201, 162, 39, 0.75) !important;
+  color: #FDE68A !important;
+  font-weight: 700;
+}
+
+.listening-blur .word-token {
+  filter: blur(5px);
+}
+
+.listening-blur .word-token:hover,
+.listening-blur .word-token.tok-active,
+.listening-blur .word-token.tok-speaking {
+  filter: blur(0);
+}
+
+/* Visible styled horizontal scrollbar for desktop mouse users */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #C9A227 #111D35;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #111D35;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #2B4370;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #C9A227;
 }

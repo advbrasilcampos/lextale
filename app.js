@@ -1,36 +1,60 @@
-// JurisLingQ / LexTale — Motor Modular PWA v2
+// LexTale — Motor Modular PWA v4
 let DICTIONARY_DB = {};
 let BASE_LESSONS = [];
 let lessons = [];
 let wordStates = {};
 let srsData = {};
 let completedLessons = {};
+let lessonBookmarks = {};
 let activeLessonId = "act-1";
+let activeDomainFilter = "all";
 let activeSlideIdx = 0;
 let selectedTerm = null;
 let vocabFilter = "learning";
+let vocabSearchQuery = "";
 let flashcardIndex = 0;
 let selectedMcqAnswers = {};
 let isPlayingScene = false;
 let playbackSpeed = 0.25;
 let currentPartIndex = 0;
+let lastBoundaryCharIdx = 0;
 let showLineTranslations = false;
+let listeningMode = false;
+let legalFocusMode = false;
+let carouselCollapsed = false;
+let readerFontSize = 16;
 let playbackWatchdog = null;
+let activeAudioEl = null;
 
 const STORAGE_WORDS = "jurislingq_words_v4";
 const STORAGE_CUSTOM = "jurislingq_custom_v4";
 const STORAGE_DONE = "jurislingq_done_v4";
 const STORAGE_SRS = "jurislingq_srs_v4";
+const STORAGE_DAILY = "jurislingq_daily_v4";
+const STORAGE_BOOKMARKS = "jurislingq_bookmarks_v4";
+
+function getTodayKey() { return new Date().toISOString().slice(0, 10); }
+
+function getDailyReviews() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(STORAGE_DAILY) || "{}");
+    return raw.date === getTodayKey() ? (raw.count || 0) : 0;
+  } catch (e) { return 0; }
+}
+
+function incrementDailyReviews() {
+  try {
+    const count = getDailyReviews() + 1;
+    localStorage.setItem(STORAGE_DAILY, JSON.stringify({ date: getTodayKey(), count }));
+    const el = document.getElementById("daily-reviews-count");
+    if (el) el.textContent = count;
+  } catch (e) {}
+}
 
 function loadState() {
-  try {
-    const sw = localStorage.getItem(STORAGE_WORDS);
-    if (sw) wordStates = JSON.parse(sw);
-  } catch (e) {}
-  try {
-    const ss = localStorage.getItem(STORAGE_SRS);
-    if (ss) srsData = JSON.parse(ss);
-  } catch (e) {}
+  try { const sw = localStorage.getItem(STORAGE_WORDS); if (sw) wordStates = JSON.parse(sw); } catch (e) {}
+  try { const ss = localStorage.getItem(STORAGE_SRS); if (ss) srsData = JSON.parse(ss); } catch (e) {}
+  try { const sb = localStorage.getItem(STORAGE_BOOKMARKS); if (sb) lessonBookmarks = JSON.parse(sb); } catch (e) {}
   lessons = BASE_LESSONS.map(l => ({ ...l }));
   try {
     const sc = localStorage.getItem(STORAGE_CUSTOM);
@@ -39,18 +63,14 @@ function loadState() {
       if (Array.isArray(parsed)) lessons = [...lessons, ...parsed];
     }
   } catch (e) {}
-  try {
-    const sd = localStorage.getItem(STORAGE_DONE);
-    if (sd) completedLessons = JSON.parse(sd);
-  } catch (e) {}
-  if (lessons.length > 0 && !lessons.some(l => l.id === activeLessonId)) {
-    activeLessonId = lessons[0].id;
-  }
+  try { const sd = localStorage.getItem(STORAGE_DONE); if (sd) completedLessons = JSON.parse(sd); } catch (e) {}
+  if (lessons.length > 0 && !lessons.some(l => l.id === activeLessonId)) activeLessonId = lessons[0].id;
 }
 
 function saveWords() { try { localStorage.setItem(STORAGE_WORDS, JSON.stringify(wordStates)); } catch (e) {} }
 function saveSrs() { try { localStorage.setItem(STORAGE_SRS, JSON.stringify(srsData)); } catch (e) {} }
 function saveDone() { try { localStorage.setItem(STORAGE_DONE, JSON.stringify(completedLessons)); } catch (e) {} }
+function saveBookmarks() { try { localStorage.setItem(STORAGE_BOOKMARKS, JSON.stringify(lessonBookmarks)); } catch (e) {} }
 function saveCustomLessons() {
   try {
     const custom = lessons.filter(l => !BASE_LESSONS.some(d => d.id === l.id));
@@ -78,15 +98,7 @@ function lookupInfo(rawTerm) {
   const k = (rawTerm || "").toLowerCase().trim();
   const clean = k.replace(/[.,!?;:"()]+/g, "").replace(/[’']/g, "'");
   const base = clean.replace(/'s$/, "");
-  const candidates = [
-    k,
-    clean,
-    base,
-    base.replace(/s$/, ""),
-    base.replace(/ed$/, ""),
-    base.replace(/ing$/, ""),
-    base.replace(/ly$/, "")
-  ];
+  const candidates = [k, clean, base, base.replace(/s$/, ""), base.replace(/ed$/, ""), base.replace(/ing$/, ""), base.replace(/ly$/, "")];
 
   for (const c of candidates) {
     if (c && DICTIONARY_DB[c]) {
@@ -115,7 +127,7 @@ function tokenizeLine(text, chunks) {
       const clean = part.replace(/^[^a-zA-Z0-9'-]+|[^a-zA-Z0-9'-]+$/g, "");
       if (!clean) return { type: "punct", text: part };
       const idx = part.indexOf(clean);
-      return { type: "word", text: clean, key: clean.toLowerCase(), prefix: part.slice(0, idx), suffix: part.slice(idx + clean.length) };
+      return { type: "word", text: clean, key: clean.toLowerCase(), prefix: part.slice(0, idx), suffix: part.slice(idx + clean.length), isChunk: false };
     });
   }
   const escaped = sorted.map(c => c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
@@ -125,7 +137,7 @@ function tokenizeLine(text, chunks) {
     if (!seg) return;
     const isChunk = sorted.some(c => c.toLowerCase() === seg.toLowerCase());
     if (isChunk) {
-      tokens.push({ type: "word", text: seg, key: seg.toLowerCase(), prefix: "", suffix: "" });
+      tokens.push({ type: "word", text: seg, key: seg.toLowerCase(), prefix: "", suffix: "", isChunk: true });
     } else {
       seg.split(/(\s+)/).forEach(part => {
         if (/^\s+$/.test(part) || part === "") {
@@ -136,7 +148,7 @@ function tokenizeLine(text, chunks) {
             tokens.push({ type: "punct", text: part });
           } else {
             const idx = part.indexOf(clean);
-            tokens.push({ type: "word", text: clean, key: clean.toLowerCase(), prefix: part.slice(0, idx), suffix: part.slice(idx + clean.length) });
+            tokens.push({ type: "word", text: clean, key: clean.toLowerCase(), prefix: part.slice(0, idx), suffix: part.slice(idx + clean.length), isChunk: false });
           }
         }
       });
@@ -147,13 +159,28 @@ function tokenizeLine(text, chunks) {
 
 function getActiveLesson() { return lessons.find(l => l.id === activeLessonId) || lessons[0]; }
 
+function getFilteredLessons() {
+  if (activeDomainFilter === "all") return lessons;
+  return lessons.filter(l => (l.domain || "cotidiano") === activeDomainFilter);
+}
+
 function renderTabs() {
   const container = document.getElementById("lesson-tabs");
+  const jumpSelect = document.getElementById("lesson-jump-select");
   container.innerHTML = "";
+  jumpSelect.innerHTML = "";
   let doneCount = 0;
   lessons.forEach(l => {
+    if (completedLessons[l.id]) doneCount++;
+    const opt = document.createElement("option");
+    opt.value = l.id;
+    opt.textContent = (completedLessons[l.id] ? "✓ " : "") + l.title;
+    if (l.id === activeLessonId) opt.selected = true;
+    jumpSelect.appendChild(opt);
+  });
+
+  getFilteredLessons().forEach(l => {
     const isDone = !!completedLessons[l.id];
-    if (isDone) doneCount++;
     const active = l.id === activeLessonId;
     const btn = document.createElement("button");
     btn.className = `shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold border transition flex items-center gap-1.5 ${
@@ -164,6 +191,7 @@ function renderTabs() {
     btn.innerHTML = `<span>${l.title}</span>` + (isDone ? `<span class="${active ? "text-[#0B1324]" : "text-emerald-400"}">&#10003;</span>` : "");
     btn.onclick = () => switchLesson(l.id);
     container.appendChild(btn);
+    if (active) setTimeout(() => btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" }), 30);
   });
   document.getElementById("progress-pill").textContent = `${doneCount}/${lessons.length} concluídas`;
 }
@@ -175,6 +203,7 @@ function switchLesson(id) {
   activeSlideIdx = 0;
   selectedTerm = null;
   currentPartIndex = 0;
+  lastBoundaryCharIdx = 0;
   renderTabs();
   renderCarousel();
   renderPlaybackSegments();
@@ -183,6 +212,35 @@ function switchLesson(id) {
   const l = getActiveLesson();
   document.getElementById("lesson-badge").textContent = l.badge || "ATIVIDADE";
   document.getElementById("lesson-title").textContent = l.title;
+  const iracText = document.getElementById("lesson-irac-text");
+  if (iracText) iracText.textContent = l.iracNote || "Prática integrada de leitura, escuta e vocabulário jurídico.";
+  updateBookmarkBanner();
+}
+
+function updateBookmarkBanner() {
+  const lesson = getActiveLesson();
+  const btn = document.getElementById("btn-resume-bookmark");
+  const progEl = document.getElementById("lesson-read-progress");
+  if (!lesson || !btn) return;
+  const savedIdx = lessonBookmarks[lesson.id];
+  const total = lesson.lines.length;
+  if (typeof savedIdx === "number" && savedIdx > 0 && savedIdx < total) {
+    btn.classList.remove("hidden");
+    btn.textContent = `Continuar da fala ${savedIdx + 1}/${total}`;
+  } else {
+    btn.classList.add("hidden");
+  }
+  const currentPos = typeof savedIdx === "number" ? savedIdx + 1 : 0;
+  const pct = total > 0 ? Math.round((currentPos / total) * 100) : 0;
+  if (progEl) progEl.textContent = currentPos > 0 ? `• Progresso: ${currentPos}/${total} (${pct}%)` : "";
+}
+
+function recordBookmark(idx) {
+  const lesson = getActiveLesson();
+  if (!lesson) return;
+  lessonBookmarks[lesson.id] = idx;
+  saveBookmarks();
+  updateBookmarkBanner();
 }
 
 function renderCarousel() {
@@ -193,7 +251,13 @@ function renderCarousel() {
   if (activeSlideIdx < 0) activeSlideIdx = slides.length - 1;
 
   const slide = slides[activeSlideIdx];
-  document.getElementById("carousel-img").src = slide.img;
+  const imgEl = document.getElementById("carousel-img");
+  imgEl.src = slide.img;
+  // Native 16:9 panels (a21_p*) fill widescreen cleanly; 1:1 panels stay uncropped inside 16:9 frame
+  imgEl.className = slide.img.includes("a21_p")
+    ? "w-full h-full object-cover block bg-[#070D1A]"
+    : "w-full h-full object-contain block bg-[#070D1A]";
+
   document.getElementById("carousel-counter").textContent = `Quadro ${activeSlideIdx + 1} de ${slides.length}`;
   document.getElementById("carousel-caption").textContent = slide.caption;
 
@@ -259,25 +323,22 @@ function refreshTokenColorsInPlace() {
     const key = span.dataset.key;
     const st = getStatus(key);
     const isActive = selectedTerm && selectedTerm.toLowerCase() === key;
-    span.className = `word-token tok-${st}` + (isActive ? " tok-active" : "");
+    const isChunk = span.dataset.chunk === "1";
+    span.className = `word-token tok-${st}` + (isChunk ? " tok-chunk" : "") + (isActive ? " tok-active" : "");
   });
 }
 
-function buildLineQuickTranslation(text, chunks) {
-  const tokens = tokenizeLine(text, chunks || []);
-  const parts = tokens.map(t => {
-    if (t.type !== "word") return t.text;
-    const info = lookupInfo(t.text);
-    const tr = (info.translation || "").split("/")[0].replace(/^Termo em inglês:\s*"[^"]+"/, t.text).trim();
-    return tr || t.text;
-  });
-  return parts.join("");
+function clearSpeakingHighlights() {
+  document.querySelectorAll("#reader-container .tok-speaking").forEach(el => el.classList.remove("tok-speaking"));
 }
 
 function renderReaderOnly() {
   const lesson = getActiveLesson();
   if (!lesson) return;
   const reader = document.getElementById("reader-container");
+  reader.style.fontSize = `${readerFontSize}px`;
+  reader.classList.toggle("listening-blur", listeningMode);
+  reader.classList.toggle("legal-focus-mode", legalFocusMode);
   reader.innerHTML = "";
   lesson.lines.forEach((line, lineIdx) => {
     const row = document.createElement("div");
@@ -289,7 +350,7 @@ function renderReaderOnly() {
 
     const sp = document.createElement("div");
     sp.className = "text-[11px] font-extrabold uppercase tracking-wider text-[#C9A227]";
-    sp.textContent = line.speaker || "Narrator";
+    sp.textContent = `${lineIdx + 1}. ${line.speaker || "Narrator"}`;
     sp.title = "Clique para ouvir a partir desta parte";
     sp.onclick = (e) => { e.stopPropagation(); startGuidedPlaybackFrom(lineIdx); };
     headerRow.appendChild(sp);
@@ -302,28 +363,41 @@ function renderReaderOnly() {
       e.stopPropagation();
       stopGuidedPlayback();
       currentPartIndex = lineIdx;
+      lastBoundaryCharIdx = 0;
+      recordBookmark(lineIdx);
       updatePlaybackBarUI(lineIdx);
-      speakText(line.text, false, line.speaker, line.gender);
+      speakLineObj(line, lineIdx, null, 0);
     };
     headerRow.appendChild(playOne);
     row.appendChild(headerRow);
 
     const p = document.createElement("div");
+    p.className = "line-text-wrap";
     const tokens = tokenizeLine(line.text, lesson.chunks || []);
+    let charCursor = 0;
     tokens.forEach(tok => {
       if (tok.type !== "word") {
         p.appendChild(document.createTextNode(tok.text));
+        charCursor += tok.text.length;
       } else {
-        if (tok.prefix) p.appendChild(document.createTextNode(tok.prefix));
+        if (tok.prefix) {
+          p.appendChild(document.createTextNode(tok.prefix));
+          charCursor += tok.prefix.length;
+        }
         const span = document.createElement("span");
         const st = getStatus(tok.key);
         const isActive = selectedTerm && selectedTerm.toLowerCase() === tok.key;
-        span.className = `word-token tok-${st}` + (isActive ? " tok-active" : "");
+        span.className = `word-token tok-${st}` + (tok.isChunk ? " tok-chunk" : "") + (isActive ? " tok-active" : "");
         span.textContent = tok.text;
         span.dataset.key = tok.key;
+        span.dataset.chunk = tok.isChunk ? "1" : "0";
+        span.dataset.start = charCursor;
+        span.dataset.end = charCursor + tok.text.length;
+        charCursor += tok.text.length;
         span.onclick = (ev) => {
           ev.stopPropagation();
           selectedTerm = tok.text;
+          recordBookmark(lineIdx);
           const targetRect = ev.currentTarget.getBoundingClientRect();
           refreshTokenColorsInPlace();
           syncWordInfo(tok.text);
@@ -331,15 +405,18 @@ function renderReaderOnly() {
           speakText(tok.text, true, line.speaker, line.gender);
         };
         p.appendChild(span);
-        if (tok.suffix) p.appendChild(document.createTextNode(tok.suffix));
+        if (tok.suffix) {
+          p.appendChild(document.createTextNode(tok.suffix));
+          charCursor += tok.suffix.length;
+        }
       }
     });
     row.appendChild(p);
 
     if (showLineTranslations) {
       const trBox = document.createElement("p");
-      trBox.className = "mt-2 pt-2 border-t border-[#1E3156] text-xs text-sky-200/90 leading-relaxed";
-      trBox.textContent = line.pt || buildLineQuickTranslation(line.text, lesson.chunks || []);
+      trBox.className = "mt-2 pt-2 border-t border-[#1E3156] text-xs sm:text-sm text-sky-200/95 leading-relaxed";
+      trBox.textContent = line.pt || "Tradução contextual disponível para histórias do acervo oficial.";
       row.appendChild(trBox);
     }
 
@@ -384,9 +461,7 @@ function showTooltipAtRect(rawTerm, rect) {
   left = Math.max(12, Math.min(left, window.innerWidth - tipW - 12));
 
   let top = rect.bottom + 8;
-  if (top + tipH > window.innerHeight - 10) {
-    top = Math.max(10, rect.top - tipH - 8);
-  }
+  if (top + tipH > window.innerHeight - 10) top = Math.max(10, rect.top - tipH - 8);
   tip.style.left = Math.round(left) + "px";
   tip.style.top = Math.round(top) + "px";
 }
@@ -409,11 +484,22 @@ function updateStats() {
   document.getElementById("stat-learning").textContent = lr;
   document.getElementById("stat-known").textContent = kn;
   document.getElementById("vocab-badge").textContent = Object.values(wordStates).filter(v => v === "learning").length;
+
+  const totalDict = Math.max(1, Object.keys(DICTIONARY_DB).length);
+  const totalKnown = Object.values(wordStates).filter(v => v === "known").length;
+  const masteryPct = Math.min(100, Math.round((totalKnown / totalDict) * 100));
+  const masteryEl = document.getElementById("global-mastery-pill");
+  if (masteryEl) masteryEl.textContent = `Domínio: ${masteryPct}% (${totalKnown})`;
+
+  const dailyEl = document.getElementById("daily-reviews-count");
+  if (dailyEl) dailyEl.textContent = getDailyReviews();
 }
 
 function stopGuidedPlayback() {
   isPlayingScene = false;
   clearTimeout(playbackWatchdog);
+  clearSpeakingHighlights();
+  if (activeAudioEl) { try { activeAudioEl.pause(); activeAudioEl = null; } catch (e) {} }
   try { if ("speechSynthesis" in window) window.speechSynthesis.cancel(); } catch (e) {}
   document.querySelectorAll("#reader-container > div").forEach(el => {
     el.classList.remove("ring-2", "ring-amber-400", "bg-[#162749]");
@@ -423,16 +509,19 @@ function stopGuidedPlayback() {
   if (btn) btn.textContent = `▶ Leitura Guiada (${playbackSpeed}x)`;
 }
 
-function startGuidedPlaybackFrom(startIdx) {
+function startGuidedPlaybackFrom(startIdx, charOffset) {
   clearTimeout(playbackWatchdog);
+  clearSpeakingHighlights();
+  if (activeAudioEl) { try { activeAudioEl.pause(); activeAudioEl = null; } catch (e) {} }
   try { if ("speechSynthesis" in window) window.speechSynthesis.cancel(); } catch (e) {}
   isPlayingScene = true;
   currentPartIndex = startIdx;
+  lastBoundaryCharIdx = charOffset || 0;
   document.getElementById("btn-guided-read").textContent = "■ Parar Leitura";
-  runPlaybackStep();
+  runPlaybackStep(charOffset || 0);
 }
 
-function runPlaybackStep() {
+function runPlaybackStep(charOffset) {
   const lesson = getActiveLesson();
   const rows = document.querySelectorAll("#reader-container > div");
   if (!isPlayingScene || !lesson || currentPartIndex >= lesson.lines.length) {
@@ -440,6 +529,8 @@ function runPlaybackStep() {
     return;
   }
   const activeIdx = currentPartIndex;
+  recordBookmark(activeIdx);
+  clearSpeakingHighlights();
   rows.forEach(el => el.classList.remove("ring-2", "ring-amber-400", "bg-[#162749]"));
   if (rows[activeIdx]) {
     rows[activeIdx].classList.add("ring-2", "ring-amber-400", "bg-[#162749]");
@@ -459,38 +550,110 @@ function runPlaybackStep() {
   const line = lesson.lines[activeIdx];
   const advanceNext = () => {
     clearTimeout(playbackWatchdog);
+    clearSpeakingHighlights();
     if (!isPlayingScene || currentPartIndex !== activeIdx) return;
     currentPartIndex++;
-    runPlaybackStep();
+    lastBoundaryCharIdx = 0;
+    runPlaybackStep(0);
   };
 
-  // Fallback watchdog in case browser TTS does not fire onend
-  const fallbackMs = Math.max(4000, Math.round((line.text.length * 95) / Math.max(0.25, playbackSpeed))) + 3000;
+  const fallbackMs = Math.max(4000, Math.round((line.text.length * 105) / Math.max(0.25, playbackSpeed))) + 4000;
   clearTimeout(playbackWatchdog);
   playbackWatchdog = setTimeout(advanceNext, fallbackMs);
 
-  speakText(line.text, true, line.speaker, line.gender, advanceNext);
+  speakLineObj(line, activeIdx, advanceNext, charOffset || 0);
+}
+
+function rewindFiveWords() {
+  const lesson = getActiveLesson();
+  if (!lesson || !lesson.lines.length) return;
+  const idx = Math.min(currentPartIndex, lesson.lines.length - 1);
+  const fullText = lesson.lines[idx].text;
+  const curPos = Math.max(0, Math.min(lastBoundaryCharIdx, fullText.length));
+  const before = fullText.slice(0, curPos);
+  const wordMatches = [...before.matchAll(/\S+/g)];
+  let newOffset = 0;
+  if (wordMatches.length > 5) {
+    newOffset = wordMatches[wordMatches.length - 5].index;
+  }
+  lastBoundaryCharIdx = newOffset;
+  if (isPlayingScene) {
+    startGuidedPlaybackFrom(idx, newOffset);
+  } else {
+    speakLineObj(lesson.lines[idx], idx, null, newOffset);
+  }
+  showToast("Voltando 5 palavras...");
+}
+
+function speakLineObj(line, lineIdx, onEndCallback, charOffset) {
+  const offset = charOffset || 0;
+  const sliceText = offset > 0 ? line.text.slice(offset) : line.text;
+  const dictationPauses = document.getElementById("chk-dictation-pauses")?.checked;
+
+  if (line.audio && offset === 0) {
+    try {
+      const audio = new Audio(line.audio);
+      activeAudioEl = audio;
+      audio.playbackRate = Math.max(0.5, playbackSpeed);
+      audio.onended = () => { activeAudioEl = null; if (onEndCallback) onEndCallback(); };
+      audio.onerror = () => { activeAudioEl = null; speakText(sliceText, true, line.speaker, line.gender, onEndCallback, lineIdx, offset); };
+      audio.play().catch(() => { activeAudioEl = null; speakText(sliceText, true, line.speaker, line.gender, onEndCallback, lineIdx, offset); });
+      return;
+    } catch (e) {}
+  }
+
+  if (dictationPauses && sliceText.split(/\s+/).length > 7) {
+    speakInPausedChunks(sliceText, line.speaker, line.gender, onEndCallback, lineIdx, offset);
+  } else {
+    speakText(sliceText, true, line.speaker, line.gender, onEndCallback, lineIdx, offset);
+  }
+}
+
+function speakInPausedChunks(text, speakerName, gender, onEndCallback, lineIdx, baseOffset) {
+  const words = text.split(/(\s+)/);
+  const chunks = [];
+  let cur = "";
+  let wordCount = 0;
+  for (const w of words) {
+    cur += w;
+    if (!/^\s+$/.test(w) && w) wordCount++;
+    if (wordCount >= 6 || /[.!?;,]$/.test(w)) {
+      if (cur.trim()) chunks.push(cur);
+      cur = "";
+      wordCount = 0;
+    }
+  }
+  if (cur.trim()) chunks.push(cur);
+
+  let ci = 0;
+  let runningOffset = baseOffset || 0;
+  const nextChunk = () => {
+    if (ci >= chunks.length || (isPlayingScene && currentPartIndex !== lineIdx)) {
+      if (onEndCallback) onEndCallback();
+      return;
+    }
+    const ch = chunks[ci];
+    const thisOffset = runningOffset;
+    runningOffset += ch.length;
+    ci++;
+    speakText(ch, true, speakerName, gender, () => {
+      setTimeout(nextChunk, 420);
+    }, lineIdx, thisOffset);
+  };
+  nextChunk();
 }
 
 function toggleGuidedPlayback() {
   if (isPlayingScene) { stopGuidedPlayback(); return; }
-  startGuidedPlaybackFrom(0);
+  startGuidedPlaybackFrom(0, 0);
 }
 
 let cachedVoices = [];
 function refreshVoices() {
-  try {
-    if ("speechSynthesis" in window) {
-      cachedVoices = window.speechSynthesis.getVoices() || [];
-    }
-  } catch (e) {}
+  try { if ("speechSynthesis" in window) cachedVoices = window.speechSynthesis.getVoices() || []; } catch (e) {}
 }
 refreshVoices();
-try {
-  if ("speechSynthesis" in window && "onvoiceschanged" in window.speechSynthesis) {
-    window.speechSynthesis.onvoiceschanged = refreshVoices;
-  }
-} catch (e) {}
+try { if ("speechSynthesis" in window && "onvoiceschanged" in window.speechSynthesis) window.speechSynthesis.onvoiceschanged = refreshVoices; } catch (e) {}
 
 function hashName(str) {
   let h = 0;
@@ -508,11 +671,9 @@ function getVoiceProfile(speakerName, explicitGender) {
   const femaleVoices = enVoices.filter(v => femaleRe.test(v.name));
 
   const isNarrator = explicitGender === "narrator" || (!explicitGender && (!sp || sp.includes("narrator")));
-  const isFemaleChar = explicitGender === "female" || (!explicitGender && /(elena|maya|judge carter|judge alvarez|clara|sofia|carla|claire|applicant|wife|woman)/i.test(sp));
+  const isFemaleChar = explicitGender === "female" || (!explicitGender && /(elena|maya|judge carter|judge alvarez|clara|sofia|carla|claire|applicant|wife|woman|whistleblower|clerk|prosecutor)/i.test(sp));
 
-  if (isNarrator) {
-    return { voice: maleVoices[0] || enVoices[0] || null, pitch: 0.78 };
-  }
+  if (isNarrator) return { voice: maleVoices[0] || enVoices[0] || null, pitch: 0.78 };
   const h = hashName(sp);
   if (isFemaleChar) {
     const femalePitches = [1.18, 1.26, 1.34];
@@ -525,7 +686,22 @@ function getVoiceProfile(speakerName, explicitGender) {
   return { voice: mv, pitch: malePitches[h % malePitches.length] };
 }
 
-function speakText(text, silent, speakerName, explicitGender, onEndCallback) {
+function highlightWordByCharIndex(lineIdx, charIndex) {
+  const row = document.querySelector(`#reader-container > div[data-line-idx="${lineIdx}"]`);
+  if (!row) return;
+  clearSpeakingHighlights();
+  const spans = row.querySelectorAll(".word-token");
+  for (const sp of spans) {
+    const st = parseInt(sp.dataset.start, 10);
+    const en = parseInt(sp.dataset.end, 10);
+    if (charIndex >= st && charIndex < en) {
+      sp.classList.add("tok-speaking");
+      break;
+    }
+  }
+}
+
+function speakText(text, silent, speakerName, explicitGender, onEndCallback, lineIdxForBoundary, baseCharOffset) {
   try {
     if (!("speechSynthesis" in window)) {
       if (!silent) showToast("Áudio TTS não disponível neste navegador.");
@@ -535,7 +711,6 @@ function speakText(text, silent, speakerName, explicitGender, onEndCallback) {
     if (cachedVoices.length === 0) refreshVoices();
     window.speechSynthesis.cancel();
 
-    // Small 40ms pause prevents Chrome/Android from swallowing the first syllable after cancel()
     setTimeout(() => {
       const u = new SpeechSynthesisUtterance(text);
       u.lang = "en-US";
@@ -543,9 +718,20 @@ function speakText(text, silent, speakerName, explicitGender, onEndCallback) {
       const prof = getVoiceProfile(speakerName, explicitGender);
       if (prof.voice) u.voice = prof.voice;
       u.pitch = prof.pitch;
+      if (typeof lineIdxForBoundary === "number") {
+        u.onboundary = (ev) => {
+          if (ev.name === "word" || typeof ev.charIndex === "number") {
+            const absIdx = (baseCharOffset || 0) + ev.charIndex;
+            lastBoundaryCharIdx = absIdx;
+            highlightWordByCharIndex(lineIdxForBoundary, absIdx);
+          }
+        };
+      }
       if (onEndCallback) {
-        u.onend = () => onEndCallback();
-        u.onerror = () => onEndCallback();
+        u.onend = () => { clearSpeakingHighlights(); onEndCallback(); };
+        u.onerror = () => { clearSpeakingHighlights(); onEndCallback(); };
+      } else {
+        u.onend = () => clearSpeakingHighlights();
       }
       window.speechSynthesis.speak(u);
     }, 40);
@@ -664,9 +850,17 @@ function gradeAllExercises() {
 function renderVocabModal() {
   const list = document.getElementById("vocab-list");
   list.innerHTML = "";
-  const entries = Object.entries(wordStates).filter(([, st]) => vocabFilter === "all" ? true : st === vocabFilter);
+  const q = vocabSearchQuery.trim().toLowerCase();
+  const entries = Object.entries(wordStates).filter(([key, st]) => {
+    const matchFilter = vocabFilter === "all" ? true : st === vocabFilter;
+    if (!matchFilter) return false;
+    if (!q) return true;
+    const info = lookupInfo(key);
+    return key.toLowerCase().includes(q) || (info.translation || "").toLowerCase().includes(q);
+  });
+
   if (entries.length === 0) {
-    list.innerHTML = `<p class="text-xs text-[#94A3B8] text-center py-6">Nenhuma palavra nesta categoria ainda. Clique em palavras no texto e marque como Aprendendo!</p>`;
+    list.innerHTML = `<p class="text-xs text-[#94A3B8] text-center py-6">Nenhuma palavra encontrada nesta categoria.</p>`;
     return;
   }
   entries.forEach(([key, st]) => {
@@ -712,6 +906,7 @@ function renderFlashcard() {
     document.getElementById("fc-srs-meta").textContent = "Revisões: 0";
     document.getElementById("fc-term").textContent = "Sem palavras em Aprendendo";
     document.getElementById("fc-answer").classList.add("hidden");
+    area.dataset.currentKey = "";
     return;
   }
   if (flashcardIndex >= learningKeys.length) flashcardIndex = 0;
@@ -725,6 +920,9 @@ function renderFlashcard() {
   document.getElementById("fc-note").textContent = info.note;
   document.getElementById("fc-answer").classList.add("hidden");
   area.dataset.currentKey = key;
+
+  const autoAudio = document.getElementById("chk-fc-autoaudio");
+  if (autoAudio && autoAudio.checked && !area.classList.contains("hidden")) speakText(key, true);
 }
 
 function bindEvents() {
@@ -733,6 +931,55 @@ function bindEvents() {
     if (!tip.classList.contains("hidden") && !tip.contains(e.target) && !e.target.classList.contains("word-token")) {
       hideTooltip();
     }
+  });
+
+  // Navigation arrows & quick jump select
+  document.getElementById("btn-tabs-left").onclick = () => {
+    document.getElementById("lesson-tabs").scrollBy({ left: -280, behavior: "smooth" });
+  };
+  document.getElementById("btn-tabs-right").onclick = () => {
+    document.getElementById("lesson-tabs").scrollBy({ left: 280, behavior: "smooth" });
+  };
+  document.getElementById("lesson-jump-select").onchange = (e) => {
+    switchLesson(e.target.value);
+  };
+
+  document.getElementById("btn-toggle-carousel").onclick = (e) => {
+    carouselCollapsed = !carouselCollapsed;
+    document.getElementById("carousel-body").classList.toggle("hidden", carouselCollapsed);
+    e.target.textContent = carouselCollapsed ? "Expandir Quadro" : "Recolher Quadro";
+  };
+
+  document.getElementById("btn-scroll-top").onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  document.getElementById("btn-font-dec").onclick = () => {
+    readerFontSize = Math.max(13, readerFontSize - 1);
+    document.getElementById("reader-container").style.fontSize = `${readerFontSize}px`;
+  };
+  document.getElementById("btn-font-inc").onclick = () => {
+    readerFontSize = Math.min(22, readerFontSize + 1);
+    document.getElementById("reader-container").style.fontSize = `${readerFontSize}px`;
+  };
+
+  document.getElementById("btn-resume-bookmark").onclick = () => {
+    const lesson = getActiveLesson();
+    const idx = lessonBookmarks[lesson.id];
+    if (typeof idx === "number") startGuidedPlaybackFrom(idx, 0);
+  };
+
+  document.querySelectorAll(".domain-btn").forEach(btn => {
+    btn.onclick = () => {
+      activeDomainFilter = btn.getAttribute("data-domain");
+      document.querySelectorAll(".domain-btn").forEach(x => {
+        const isAct = x.getAttribute("data-domain") === activeDomainFilter;
+        x.className = isAct
+          ? "domain-btn shrink-0 px-2.5 py-1 rounded-md text-[11px] font-bold bg-[#C9A227] text-[#0B1324]"
+          : "domain-btn shrink-0 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-[#111D35] text-[#CBD5E1] border border-[#24385E] hover:border-[#C9A227]";
+      });
+      const list = getFilteredLessons();
+      if (list.length > 0 && !list.some(l => l.id === activeLessonId)) switchLesson(list[0].id);
+      else renderTabs();
+    };
   });
 
   document.getElementById("ft-close").onclick = hideTooltip;
@@ -751,14 +998,24 @@ function bindEvents() {
   };
 
   document.getElementById("btn-guided-read").onclick = toggleGuidedPlayback;
+  document.getElementById("btn-rewind-5").onclick = rewindFiveWords;
   document.getElementById("btn-repeat-line").onclick = () => {
     const lesson = getActiveLesson();
     if (!lesson || !lesson.lines.length) return;
     const idx = Math.min(currentPartIndex, lesson.lines.length - 1);
     const line = lesson.lines[idx];
     stopGuidedPlayback();
+    lastBoundaryCharIdx = 0;
     updatePlaybackBarUI(idx);
-    speakText(line.text, false, line.speaker, line.gender);
+    speakLineObj(line, idx, null, 0);
+  };
+
+  document.getElementById("btn-listening-mode").onclick = (e) => {
+    listeningMode = !listeningMode;
+    e.target.classList.toggle("bg-purple-500", listeningMode);
+    e.target.classList.toggle("text-[#0B1324]", listeningMode);
+    document.getElementById("reader-container").classList.toggle("listening-blur", listeningMode);
+    showToast(listeningMode ? "Modo Escuta ativado: passe o mouse ou toque na palavra para revelar." : "Modo Escuta desativado.");
   };
 
   document.getElementById("btn-toggle-line-tr").onclick = (e) => {
@@ -766,6 +1023,14 @@ function bindEvents() {
     e.target.classList.toggle("bg-[#C9A227]", showLineTranslations);
     e.target.classList.toggle("text-[#0B1324]", showLineTranslations);
     renderReaderOnly();
+  };
+
+  document.getElementById("btn-legal-focus").onclick = (e) => {
+    legalFocusMode = !legalFocusMode;
+    e.target.classList.toggle("bg-[#C9A227]", legalFocusMode);
+    e.target.classList.toggle("text-[#0B1324]", legalFocusMode);
+    document.getElementById("reader-container").classList.toggle("legal-focus-mode", legalFocusMode);
+    showToast(legalFocusMode ? "Destaque de Termos Jurídicos ativado." : "Destaque normal restaurado.");
   };
 
   document.querySelectorAll(".speed-btn").forEach(b => {
@@ -777,11 +1042,8 @@ function bindEvents() {
           ? "speed-btn px-2 py-0.5 rounded text-xs font-bold bg-[#C9A227] text-[#0B1324]"
           : "speed-btn px-2 py-0.5 rounded text-xs font-bold bg-[#162749] text-[#CBD5E1] hover:bg-[#1F3666]";
       });
-      if (!isPlayingScene) {
-        document.getElementById("btn-guided-read").textContent = `▶ Leitura Guiada (${playbackSpeed}x)`;
-      } else {
-        startGuidedPlaybackFrom(currentPartIndex);
-      }
+      if (!isPlayingScene) document.getElementById("btn-guided-read").textContent = `▶ Leitura Guiada (${playbackSpeed}x)`;
+      else startGuidedPlaybackFrom(currentPartIndex, lastBoundaryCharIdx);
     };
   });
 
@@ -821,10 +1083,7 @@ function bindEvents() {
   document.getElementById("btn-finish-lesson").onclick = openExerciseModal;
   document.getElementById("btn-close-finish").onclick = () => document.getElementById("modal-finish").classList.add("hidden");
   document.getElementById("btn-grade-all").onclick = gradeAllExercises;
-  document.getElementById("btn-speak-model").onclick = () => {
-    const lesson = getActiveLesson();
-    speakText(lesson.modelAnswer || "");
-  };
+  document.getElementById("btn-speak-model").onclick = () => speakText(getActiveLesson().modelAnswer || "");
 
   document.getElementById("btn-advance-next").onclick = () => {
     document.getElementById("modal-finish").classList.add("hidden");
@@ -837,6 +1096,10 @@ function bindEvents() {
     document.getElementById("modal-vocab").classList.remove("hidden");
   };
   document.getElementById("btn-close-vocab").onclick = () => document.getElementById("modal-vocab").classList.add("hidden");
+  document.getElementById("vocab-search-input").oninput = (e) => {
+    vocabSearchQuery = e.target.value;
+    renderVocabModal();
+  };
 
   document.querySelectorAll(".vfilter-btn").forEach(btn => {
     btn.onclick = () => {
@@ -862,6 +1125,7 @@ function bindEvents() {
     const prev = srsData[k] || { reps: 0 };
     srsData[k] = { reps: prev.reps + 1, nextReview: Date.now() + 60 * 1000 };
     saveSrs();
+    incrementDailyReviews();
     flashcardIndex++;
     renderFlashcard();
   };
@@ -871,6 +1135,7 @@ function bindEvents() {
     const prev = srsData[k] || { reps: 0 };
     srsData[k] = { reps: prev.reps + 1, nextReview: Date.now() + 24 * 60 * 60 * 1000 };
     saveSrs();
+    incrementDailyReviews();
     if (prev.reps >= 2) {
       setStatus(k, "known");
       showToast(`"${k}" movida para Conhecidas!`);
@@ -894,6 +1159,8 @@ function bindEvents() {
     const newLesson = {
       id: "custom-" + Date.now(),
       badge: "IMPORTADA",
+      domain: "cotidiano",
+      iracNote: "História personalizada importada para prática de leitura e vocabulário.",
       title,
       slides: [{ img: "assets/office.webp", caption: title }],
       chunks: [],
@@ -912,16 +1179,16 @@ function bindEvents() {
     showToast("História importada com sucesso!");
   };
 
-  // Backup Export / Import
   document.getElementById("btn-open-backup").onclick = () => document.getElementById("modal-backup").classList.remove("hidden");
   document.getElementById("btn-close-backup").onclick = () => document.getElementById("modal-backup").classList.add("hidden");
   document.getElementById("btn-export-backup").onclick = () => {
     const payload = {
-      version: 2,
+      version: 4,
       exportedAt: new Date().toISOString(),
       wordStates,
       srsData,
       completedLessons,
+      lessonBookmarks,
       customLessons: lessons.filter(l => !BASE_LESSONS.some(d => d.id === l.id))
     };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
@@ -943,12 +1210,9 @@ function bindEvents() {
         if (parsed.wordStates) wordStates = parsed.wordStates;
         if (parsed.srsData) srsData = parsed.srsData;
         if (parsed.completedLessons) completedLessons = parsed.completedLessons;
-        saveWords();
-        saveSrs();
-        saveDone();
-        if (Array.isArray(parsed.customLessons)) {
-          localStorage.setItem(STORAGE_CUSTOM, JSON.stringify(parsed.customLessons));
-        }
+        if (parsed.lessonBookmarks) lessonBookmarks = parsed.lessonBookmarks;
+        saveWords(); saveSrs(); saveDone(); saveBookmarks();
+        if (Array.isArray(parsed.customLessons)) localStorage.setItem(STORAGE_CUSTOM, JSON.stringify(parsed.customLessons));
         loadState();
         switchLesson(activeLessonId);
         document.getElementById("modal-backup").classList.add("hidden");
@@ -959,16 +1223,35 @@ function bindEvents() {
     };
     reader.readAsText(file);
   };
+  document.getElementById("btn-reset-lesson").onclick = () => {
+    const lesson = getActiveLesson();
+    if (!lesson) return;
+    lesson.lines.forEach(l => tokenizeLine(l.text, lesson.chunks || []).forEach(t => {
+      if (t.type === "word") delete wordStates[t.key];
+    }));
+    delete completedLessons[lesson.id];
+    delete lessonBookmarks[lesson.id];
+    saveWords(); saveDone(); saveBookmarks();
+    renderTabs(); refreshTokenColorsInPlace(); updateStats(); updateBookmarkBanner();
+    document.getElementById("modal-backup").classList.add("hidden");
+    showToast("Progresso da lição atual resetado!");
+  };
 
-  // Keyboard shortcuts
   document.addEventListener("keydown", (e) => {
     const tag = (e.target.tagName || "").toLowerCase();
-    if (tag === "input" || tag === "textarea") return;
+    if (tag === "input" || tag === "textarea" || tag === "select") return;
+
+    const fcArea = document.getElementById("flashcard-area");
+    const vocabOpen = !document.getElementById("modal-vocab").classList.contains("hidden");
+    if (vocabOpen && fcArea && !fcArea.classList.contains("hidden")) {
+      if (e.key === " ") { e.preventDefault(); document.getElementById("btn-fc-reveal").click(); return; }
+      if (e.key === "1") { document.getElementById("btn-fc-again").click(); return; }
+      if (e.key === "2") { document.getElementById("btn-fc-easy").click(); return; }
+    }
+
     if (e.key === "Escape") {
       hideTooltip();
-      ["modal-finish", "modal-vocab", "modal-import", "modal-backup"].forEach(id => {
-        document.getElementById(id).classList.add("hidden");
-      });
+      ["modal-finish", "modal-vocab", "modal-import", "modal-backup"].forEach(id => document.getElementById(id).classList.add("hidden"));
     } else if (e.key === "ArrowLeft") {
       document.getElementById("btn-slide-prev").click();
     } else if (e.key === "ArrowRight") {

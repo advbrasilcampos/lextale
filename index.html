@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JurisLingQ — 20 Histórias em Quadrinhos</title>
+  <title>LexTale — 21 Histórias em Quadrinhos</title>
   <meta name="theme-color" content="#0B1324" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/svg+xml" href="icon.svg" />
@@ -20,18 +20,19 @@
     <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C9A227] to-[#9E7B16] flex items-center justify-center text-[#0B1324] font-extrabold text-sm shadow">
-          JL
+          LT
         </div>
         <div>
-          <div class="flex items-center gap-2">
-            <h1 class="font-bold text-base sm:text-lg tracking-tight text-white">JurisLingQ</h1>
-            <span id="progress-pill" class="px-2 py-0.5 rounded-full bg-[#162749] border border-[#2B4370] text-[11px] font-semibold text-[#C9A227]">0/20 concluídas</span>
+          <div class="flex items-center gap-2 flex-wrap">
+            <h1 class="font-bold text-base sm:text-lg tracking-tight text-white">LexTale</h1>
+            <span id="progress-pill" class="px-2 py-0.5 rounded-full bg-[#162749] border border-[#2B4370] text-[11px] font-semibold text-[#C9A227]">0/21 concluídas</span>
+            <span id="global-mastery-pill" class="px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-[11px] font-semibold text-emerald-300">Domínio: 0%</span>
           </div>
-          <p class="text-[11px] text-[#94A3B8]">HQs em Carrossel • Direito, Imigração &amp; Histórias</p>
+          <p class="text-[11px] text-[#94A3B8]">Inglês Jurídico &amp; Histórias em 16:9 • Revisões hoje: <strong id="daily-reviews-count" class="text-white">0</strong></p>
         </div>
       </div>
 
-      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+      <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
         <div class="flex items-center gap-2 bg-[#111D35] border border-[#24385E] rounded-lg px-2.5 py-1.5 text-xs">
           <span class="text-sky-300 font-semibold">Novas: <strong id="stat-new">0</strong></span>
           <span class="text-[#334155]">|</span>
@@ -49,15 +50,37 @@
           + Importar História
         </button>
 
-        <button id="btn-open-backup" title="Exportar ou Restaurar Progresso" class="px-2.5 py-1.5 rounded-lg bg-[#111D35] hover:bg-[#162749] border border-[#24385E] text-xs font-semibold text-[#CBD5E1] transition">
+        <button id="btn-open-backup" title="Exportar, Restaurar ou Resetar" class="px-2.5 py-1.5 rounded-lg bg-[#111D35] hover:bg-[#162749] border border-[#24385E] text-xs font-semibold text-[#CBD5E1] transition">
           Backup
         </button>
       </div>
     </div>
 
-    <!-- 20-Activity Switcher -->
-    <div class="max-w-7xl mx-auto px-4 pb-2.5">
-      <div id="lesson-tabs" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5"></div>
+    <!-- Domain Filters + Quick Jump Select + 21-Activity Switcher with Arrows & Scrollbar -->
+    <div class="max-w-7xl mx-auto px-4 pb-2.5 space-y-2">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar pb-1">
+          <span class="text-[10px] uppercase tracking-wider font-bold text-[#94A3B8] mr-1 shrink-0">Trilha:</span>
+          <button data-domain="all" class="domain-btn shrink-0 px-2.5 py-1 rounded-md text-[11px] font-bold bg-[#C9A227] text-[#0B1324]">Todas (21)</button>
+          <button data-domain="imigracao" class="domain-btn shrink-0 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-[#111D35] text-[#CBD5E1] border border-[#24385E] hover:border-[#C9A227]">Imigração</button>
+          <button data-domain="penal" class="domain-btn shrink-0 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-[#111D35] text-[#CBD5E1] border border-[#24385E] hover:border-[#C9A227]">Penal &amp; Júri</button>
+          <button data-domain="civel" class="domain-btn shrink-0 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-[#111D35] text-[#CBD5E1] border border-[#24385E] hover:border-[#C9A227]">Cível &amp; Corporativo</button>
+          <button data-domain="cotidiano" class="domain-btn shrink-0 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-[#111D35] text-[#CBD5E1] border border-[#24385E] hover:border-[#C9A227]">Cotidiano</button>
+        </div>
+
+        <select id="lesson-jump-select" title="Ir direto para qualquer história" class="rounded-lg bg-[#111D35] border border-[#2B4370] px-2.5 py-1 text-xs font-semibold text-amber-300 focus:outline-none focus:border-[#C9A227]">
+        </select>
+      </div>
+
+      <div class="flex items-center gap-1.5">
+        <button id="btn-tabs-left" type="button" title="Rolar histórias para a esquerda" class="shrink-0 w-7 h-7 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-bold text-[#C9A227] flex items-center justify-center">
+          &#9664;
+        </button>
+        <div id="lesson-tabs" class="flex-1 flex items-center gap-2 overflow-x-auto custom-scrollbar pb-1.5"></div>
+        <button id="btn-tabs-right" type="button" title="Rolar histórias para a direita" class="shrink-0 w-7 h-7 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-bold text-[#C9A227] flex items-center justify-center">
+          &#9654;
+        </button>
+      </div>
     </div>
   </header>
 
@@ -87,29 +110,35 @@
   <!-- Main Workspace -->
   <main class="max-w-7xl mx-auto px-4 py-5 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
 
-    <!-- Left Column: Comic Carousel + Synced Word Inspector -->
-    <section class="lg:col-span-5 lg:sticky lg:top-28 space-y-4">
+    <!-- Left Column: 16:9 Comic Carousel + Synced Word Inspector -->
+    <section class="lg:col-span-5 lg:sticky lg:top-40 space-y-4">
       <div class="rounded-2xl bg-[#111D35] border border-[#24385E] overflow-hidden shadow-xl">
-        <div class="relative bg-[#070D1A]">
-          <img id="carousel-img" src="" alt="Quadro da História" class="w-full max-h-[420px] object-contain mx-auto block bg-[#070D1A]" />
-          <div id="carousel-counter" class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#0B1324]/85 border border-[#C9A227]/50 text-xs font-bold text-[#C9A227]">
-            Quadro 1 de 3
-          </div>
+        <div class="flex items-center justify-between px-3.5 py-2 bg-[#0F1A30] border-b border-[#24385E]">
+          <span id="carousel-counter" class="text-xs font-bold text-[#C9A227]">Quadro 1 de 3</span>
+          <button id="btn-toggle-carousel" type="button" class="text-[11px] font-semibold text-[#94A3B8] hover:text-white">
+            Recolher Quadro
+          </button>
         </div>
 
-        <div class="p-3.5 border-t border-[#24385E] bg-[#0F1A30] space-y-3">
-          <p id="carousel-caption" class="text-xs sm:text-sm text-[#E2E8F0] font-medium text-center"></p>
+        <div id="carousel-body">
+          <div class="relative bg-[#070D1A] aspect-video w-full flex items-center justify-center overflow-hidden">
+            <img id="carousel-img" src="" alt="Quadro da História" class="w-full h-full object-contain block bg-[#070D1A]" />
+          </div>
 
-          <div class="flex items-center justify-between gap-2">
-            <button id="btn-slide-prev" class="px-3 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-white transition">
-              &larr; Quadro Anterior
-            </button>
+          <div class="p-3.5 border-t border-[#24385E] bg-[#0F1A30] space-y-3">
+            <p id="carousel-caption" class="text-xs sm:text-sm text-[#E2E8F0] font-medium text-center"></p>
 
-            <div id="carousel-dots" class="flex items-center gap-1.5"></div>
+            <div class="flex items-center justify-between gap-2">
+              <button id="btn-slide-prev" class="px-3 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-white transition">
+                &larr; Quadro Anterior
+              </button>
 
-            <button id="btn-slide-next" class="px-3 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-white transition">
-              Próximo Quadro &rarr;
-            </button>
+              <div id="carousel-dots" class="flex items-center gap-1.5 flex-wrap justify-center"></div>
+
+              <button id="btn-slide-next" class="px-3 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-white transition">
+                Próximo Quadro &rarr;
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -133,7 +162,6 @@
         <p id="insp-note" class="text-xs text-[#CBD5E1] leading-relaxed">
           Palavras azuis são novas; ao marcar como Aprendendo (amarelo), vão automaticamente para a sua Caixa de Vocabulário e Flashcards.
         </p>
-        <p id="insp-example" class="hidden text-xs italic text-[#94A3B8] border-l-2 border-[#C9A227] pl-2.5"></p>
       </div>
     </section>
 
@@ -142,27 +170,53 @@
       <div class="rounded-2xl bg-[#111D35] border border-[#24385E] p-4 sm:p-5 shadow-xl space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[#24385E]">
           <div>
-            <span id="lesson-badge" class="text-[11px] uppercase tracking-wider font-bold text-[#C9A227]"></span>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span id="lesson-badge" class="text-[11px] uppercase tracking-wider font-bold text-[#C9A227]"></span>
+              <span id="lesson-read-progress" class="text-[11px] font-semibold text-emerald-300"></span>
+            </div>
             <h2 id="lesson-title" class="text-lg sm:text-xl font-extrabold text-white"></h2>
           </div>
 
-          <div class="flex flex-wrap items-center gap-2">
-            <button id="btn-guided-read" class="px-3 py-1.5 rounded-lg bg-[#1A2D54] hover:bg-[#233B6E] border border-[#314E8A] text-xs font-bold text-white transition">
-              &#9654; Leitura Guiada (0.25x)
+          <div class="flex items-center gap-1.5">
+            <button id="btn-resume-bookmark" class="hidden px-2.5 py-1 rounded-lg bg-amber-500/20 border border-amber-500/50 text-[11px] font-bold text-amber-300 hover:bg-amber-500/30 transition">
+              Continuar de onde parei
             </button>
-            <button id="btn-repeat-line" title="Repetir apenas a fala atual (Atalho: R)" class="px-2.5 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-[#C9A227] transition">
-              &#8635; Repetir Fala
-            </button>
-            <button id="btn-toggle-line-tr" title="Mostrar ou ocultar tradução contextual abaixo de cada fala" class="px-2.5 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-sky-300 transition">
-              Traduzir Falas
-            </button>
-            <button id="btn-mark-rest-known" class="px-3 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-xs font-semibold text-emerald-300 transition">
-              Marcar azuis como conhecidas
-            </button>
+            <button id="btn-font-dec" title="Diminuir fonte" class="px-2 py-1 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-bold text-white">A-</button>
+            <button id="btn-font-inc" title="Aumentar fonte" class="px-2 py-1 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-bold text-white">A+</button>
           </div>
         </div>
 
-        <!-- Speed Controls + Interactive Segmented Progress Bar -->
+        <!-- Toolbar Row -->
+        <div class="flex flex-wrap items-center gap-1.5">
+          <button id="btn-guided-read" class="px-3 py-1.5 rounded-lg bg-[#1A2D54] hover:bg-[#233B6E] border border-[#314E8A] text-xs font-bold text-white transition">
+            &#9654; Leitura Guiada (0.25x)
+          </button>
+          <button id="btn-rewind-5" title="Voltar 5 palavras na fala atual" class="px-2.5 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-[#C9A227] transition">
+            &#9194; -5 palavras
+          </button>
+          <button id="btn-repeat-line" title="Repetir fala atual (Atalho: R)" class="px-2.5 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-[#C9A227] transition">
+            &#8635; Repetir
+          </button>
+          <button id="btn-listening-mode" title="Desfocar palavras para treinar compreensão auditiva" class="px-2.5 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-purple-300 transition">
+            Modo Escuta
+          </button>
+          <button id="btn-toggle-line-tr" title="Mostrar tradução humana contextual abaixo de cada fala" class="px-2.5 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-sky-300 transition">
+            Traduzir Falas
+          </button>
+          <button id="btn-legal-focus" title="Destacar apenas termos e expressões jurídicas" class="px-2.5 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-amber-300 transition">
+            Termos Jurídicos
+          </button>
+          <button id="btn-mark-rest-known" class="px-2.5 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-xs font-semibold text-emerald-300 transition">
+            Marcar azuis
+          </button>
+        </div>
+
+        <!-- IRAC / Legal Rule Quick Card -->
+        <div id="lesson-irac-card" class="rounded-xl bg-[#0D172B] border border-[#C9A227]/35 px-3.5 py-2.5 text-xs text-[#E2E8F0]">
+          <p id="lesson-irac-text" class="leading-relaxed"></p>
+        </div>
+
+        <!-- Speed Controls + Paused Dictation + Interactive Segmented Progress Bar -->
         <div class="rounded-xl bg-[#0D172B] border border-[#24385E] p-3 space-y-2.5">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-1.5 flex-wrap">
@@ -172,6 +226,10 @@
               <button data-speed="0.75" class="speed-btn px-2 py-0.5 rounded text-xs font-bold bg-[#162749] text-[#CBD5E1] hover:bg-[#1F3666]">0.75x</button>
               <button data-speed="1" class="speed-btn px-2 py-0.5 rounded text-xs font-bold bg-[#162749] text-[#CBD5E1] hover:bg-[#1F3666]">1x</button>
               <button data-speed="1.25" class="speed-btn px-2 py-0.5 rounded text-xs font-bold bg-[#162749] text-[#CBD5E1] hover:bg-[#1F3666]">1.25x</button>
+              <label class="ml-2 flex items-center gap-1 text-[11px] text-sky-300 cursor-pointer" title="Divide falas em blocos curtos com pausa entre eles no celular">
+                <input id="chk-dictation-pauses" type="checkbox" class="accent-[#C9A227]" />
+                <span>Ditado Pausado</span>
+              </label>
             </div>
             <span id="playback-part-label" class="text-[11px] font-semibold text-[#C9A227]">Parte 0 de 0</span>
           </div>
@@ -180,7 +238,7 @@
             <div id="playback-progress-fill" class="h-full bg-[#C9A227] transition-all duration-300" style="width: 0%;"></div>
           </div>
 
-          <div id="playback-segments" class="flex flex-wrap gap-1.5 max-h-28 overflow-y-auto pr-1"></div>
+          <div id="playback-segments" class="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto custom-scrollbar pr-1"></div>
         </div>
 
         <!-- Story Lines -->
@@ -204,6 +262,11 @@
     </section>
   </main>
 
+  <!-- Quick Top Button for long stories -->
+  <button id="btn-scroll-top" title="Voltar ao topo" class="fixed bottom-5 left-5 z-30 px-3 py-2 rounded-full bg-[#162749]/90 hover:bg-[#1F3666] border border-[#C9A227]/60 text-xs font-bold text-[#C9A227] shadow-xl">
+    &uarr; Topo
+  </button>
+
   <!-- Modal: Lesson Comprehension & Writing Exercise -->
   <div id="modal-finish" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-[#111D35] border border-[#2B4370] shadow-2xl p-5 sm:p-6 space-y-5">
@@ -215,10 +278,8 @@
         <button id="btn-close-finish" class="text-[#94A3B8] hover:text-white text-xl leading-none">&times;</button>
       </div>
 
-      <!-- Multiple Choice Questions -->
       <div id="mcq-container" class="space-y-4"></div>
 
-      <!-- Active Writing Practice -->
       <div class="rounded-xl bg-[#0D172B] border border-[#24385E] p-4 space-y-2.5">
         <div class="flex items-center justify-between gap-2">
           <span class="text-xs font-bold text-[#C9A227]">Questão Dissertativa (Prática Ativa)</span>
@@ -252,7 +313,7 @@
       <div class="flex items-center justify-between border-b border-[#24385E] pb-3">
         <div>
           <h3 class="text-lg font-extrabold text-white">Caixa de Vocabulário &amp; Revisão SRS</h3>
-          <p class="text-xs text-[#94A3B8]">Prioridade automática para termos que precisam de revisão</p>
+          <p class="text-xs text-[#94A3B8]">Atalhos no Flashcard: Espaço (Revelar) • 1 (Rever Logo) • 2 (Dominei)</p>
         </div>
         <div class="flex items-center gap-2">
           <button id="btn-toggle-flashcard" class="px-3 py-1.5 rounded-lg bg-[#C9A227] text-[#0B1324] text-xs font-bold">Modo Flashcard</button>
@@ -260,13 +321,20 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-2">
-        <button data-vfilter="learning" class="vfilter-btn px-3 py-1 rounded-lg text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">Aprendendo (Amarelas)</button>
-        <button data-vfilter="known" class="vfilter-btn px-3 py-1 rounded-lg text-xs font-bold bg-[#162749] text-[#CBD5E1]">Conhecidas</button>
-        <button data-vfilter="all" class="vfilter-btn px-3 py-1 rounded-lg text-xs font-bold bg-[#162749] text-[#CBD5E1]">Todas</button>
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <button data-vfilter="learning" class="vfilter-btn px-3 py-1 rounded-lg text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">Aprendendo (Amarelas)</button>
+          <button data-vfilter="known" class="vfilter-btn px-3 py-1 rounded-lg text-xs font-bold bg-[#162749] text-[#CBD5E1]">Conhecidas</button>
+          <button data-vfilter="all" class="vfilter-btn px-3 py-1 rounded-lg text-xs font-bold bg-[#162749] text-[#CBD5E1]">Todas</button>
+        </div>
+        <label class="flex items-center gap-1.5 text-xs text-[#CBD5E1] cursor-pointer">
+          <input id="chk-fc-autoaudio" type="checkbox" checked class="accent-[#C9A227]" />
+          <span>Auto-ouvir cartão</span>
+        </label>
       </div>
 
-      <!-- Flashcard Mode Area with SRS -->
+      <input id="vocab-search-input" type="search" placeholder="Buscar palavra em inglês ou tradução..." class="w-full rounded-lg bg-[#0B1324] border border-[#2B4370] px-3 py-2 text-xs text-white focus:outline-none focus:border-[#C9A227]" />
+
       <div id="flashcard-area" class="hidden rounded-xl bg-[#0D172B] border border-[#2B4370] p-6 text-center space-y-4">
         <div class="flex items-center justify-between text-[11px] text-[#94A3B8]">
           <span id="fc-counter">0 / 0</span>
@@ -280,13 +348,12 @@
         <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
           <button id="btn-fc-speak" class="px-3 py-1.5 rounded-lg bg-[#162749] text-[#C9A227] text-xs font-bold">Ouvir</button>
           <button id="btn-fc-reveal" class="px-3 py-1.5 rounded-lg bg-[#C9A227] text-[#0B1324] text-xs font-bold">Mostrar Tradução</button>
-          <button id="btn-fc-again" class="px-3 py-1.5 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold">Rever Logo</button>
-          <button id="btn-fc-easy" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold">Dominei</button>
+          <button id="btn-fc-again" class="px-3 py-1.5 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold">1 • Rever Logo</button>
+          <button id="btn-fc-easy" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold">2 • Dominei</button>
           <button id="btn-fc-next" class="px-3 py-1.5 rounded-lg bg-[#162749] text-white text-xs font-bold">Próximo &rarr;</button>
         </div>
       </div>
 
-      <!-- Word List -->
       <div id="vocab-list" class="space-y-2 max-h-80 overflow-y-auto pr-1"></div>
     </div>
   </div>
@@ -301,7 +368,7 @@
       <div class="space-y-3">
         <div>
           <label class="block text-xs font-semibold text-[#94A3B8] mb-1">Título da Atividade</label>
-          <input id="imp-title" type="text" placeholder="Ex: 21. Motion for Continuance" class="w-full rounded-lg bg-[#0B1324] border border-[#2B4370] px-3 py-2 text-sm text-white focus:outline-none focus:border-[#C9A227]" />
+          <input id="imp-title" type="text" placeholder="Ex: 22. Motion for Continuance" class="w-full rounded-lg bg-[#0B1324] border border-[#2B4370] px-3 py-2 text-sm text-white focus:outline-none focus:border-[#C9A227]" />
         </div>
         <div>
           <label class="block text-xs font-semibold text-[#94A3B8] mb-1">Texto ou Diálogo em Inglês (use "Nome: fala" para separar personagens)</label>
@@ -314,15 +381,15 @@
     </div>
   </div>
 
-  <!-- Modal: Backup & Restore Progress -->
+  <!-- Modal: Backup, Restore & Reset -->
   <div id="modal-backup" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="w-full max-w-md rounded-2xl bg-[#111D35] border border-[#2B4370] shadow-2xl p-5 space-y-4">
       <div class="flex items-center justify-between border-b border-[#24385E] pb-3">
-        <h3 class="text-lg font-extrabold text-white">Backup do Seu Progresso</h3>
+        <h3 class="text-lg font-extrabold text-white">Backup &amp; Gestão de Progresso</h3>
         <button id="btn-close-backup" class="text-[#94A3B8] hover:text-white text-xl leading-none">&times;</button>
       </div>
       <p class="text-xs text-[#CBD5E1] leading-relaxed">
-        Salve um arquivo JSON com seu vocabulário, revisões SRS, atividades concluídas e histórias importadas para nunca perder seus dados ao trocar de celular ou limpar o navegador.
+        Salve um arquivo JSON com seu vocabulário, revisões SRS, marcadores de leitura e histórias importadas.
       </p>
       <div class="flex flex-col gap-2.5">
         <button id="btn-export-backup" class="w-full py-2.5 rounded-xl bg-[#C9A227] hover:bg-[#D9B43A] text-[#0B1324] text-xs font-extrabold transition">
@@ -332,6 +399,9 @@
           Restaurar Backup (.json)
           <input id="input-import-backup" type="file" accept=".json,application/json" class="hidden" />
         </label>
+        <button id="btn-reset-lesson" class="w-full py-2 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/40 text-rose-300 text-xs font-bold transition">
+          Resetar Palavras da Lição Atual
+        </button>
       </div>
     </div>
   </div>
