@@ -1,14 +1,14 @@
-# LexTale — PWA Modular
+# LexTale / JurisLingQ — PWA Modular v2
 
-Estrutura limpa do projeto para rodar no navegador e instalar no celular sem limite de tamanho:
+Estrutura modular pronta para publicação no **GitHub Pages** (`advbrasilcampos/lextale`) e instalação como aplicativo no celular (Android / iOS / Desktop).
 
-- `index.html`: tela principal responsiva para celular.
-- `style.css`: tema escuro com destaque dourado e balão de tradução posicionado abaixo da palavra.
-- `app.js`: motor de leitura clicável, barra segmentada de áudio com vozes distintas e importador de lições.
-- `manifest.json` e `sw.js`: configuração de PWA para instalar na tela inicial do celular.
-- `lessons/starter-lessons.json`: lições iniciais em formato separado (basta adicionar novas lições via botão **+ Importar** ou editar este arquivo).
+## O que foi incluído nesta versão
+- **20 atividades completas** em `lessons/starter-lessons.json` (com os 4 quadrinhos `COMIC4` fatiados em painéis individuais e gênero explícito de voz por personagem).
+- **Dicionário com 100% de cobertura** das 1.198 palavras únicas das histórias (`lessons/dictionary.json`, 1.245 entradas).
+- **Áudio sincronizado via `onend`** + pausa de 40 ms após `cancel()`, botão **Repetir Fala**, toggle **Traduzir Falas**, **SRS nos Flashcards**, **Backup JSON** e interface 100% em português.
 
-## Como colocar no ar de graça
-1. Crie um repositório no GitHub chamado `lextale` e envie todos os arquivos desta pasta.
-2. Ative o **GitHub Pages** em *Settings → Pages* (branch `main`, pasta `/root`).
-3. Abra o link gerado no Chrome do celular e toque em **Adicionar à tela inicial**.
+## Como atualizar no seu GitHub (`advbrasilcampos/lextale`)
+1. Descompacte o arquivo `.zip` em uma pasta no seu computador.
+2. No GitHub, abra o repositório `advbrasilcampos/lextale`, clique em **Add file -> Upload files**.
+3. Arraste **todos os arquivos e pastas** (`index.html`, `style.css`, `app.js`, `manifest.json`, `sw.js`, `icon.svg`, `README.md`, `lessons/` e `assets/`) para substituir os antigos e clique em **Commit changes**.
+4. Aguarde ~1 minuto e acesse `https://advbrasilcampos.github.io/lextale/`.

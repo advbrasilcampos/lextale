@@ -2,147 +2,348 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#0b1220" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>LexTale — Inglês Jurídico em Histórias</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JurisLingQ — 20 Histórias em Quadrinhos</title>
+  <meta name="theme-color" content="#0B1324" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header class="topbar">
-    <div class="brand">
-      <span class="brand-badge">⚖️</span>
-      <div>
-        <h1>LexTale</h1>
-        <p class="subtitle">Legal English Stories</p>
+<body class="min-h-screen text-[#E6E8EC] antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-30 border-b border-[#24385E] bg-[#0B1324]/95 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C9A227] to-[#9E7B16] flex items-center justify-center text-[#0B1324] font-extrabold text-sm shadow">
+          JL
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-bold text-base sm:text-lg tracking-tight text-white">JurisLingQ</h1>
+            <span id="progress-pill" class="px-2 py-0.5 rounded-full bg-[#162749] border border-[#2B4370] text-[11px] font-semibold text-[#C9A227]">0/20 concluídas</span>
+          </div>
+          <p class="text-[11px] text-[#94A3B8]">HQs em Carrossel • Direito, Imigração &amp; Histórias</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-2 bg-[#111D35] border border-[#24385E] rounded-lg px-2.5 py-1.5 text-xs">
+          <span class="text-sky-300 font-semibold">Novas: <strong id="stat-new">0</strong></span>
+          <span class="text-[#334155]">|</span>
+          <span class="text-amber-300 font-semibold">Aprendendo: <strong id="stat-learning">0</strong></span>
+          <span class="text-[#334155]">|</span>
+          <span class="text-emerald-300 font-semibold">Conhecidas: <strong id="stat-known">0</strong></span>
+        </div>
+
+        <button id="btn-open-vocab" class="px-3 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1E3563] border border-[#2B4370] text-xs font-semibold text-amber-300 transition flex items-center gap-1.5">
+          <span>Caixa de Vocabulário</span>
+          <span id="vocab-badge" class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-200 text-[10px]">0</span>
+        </button>
+
+        <button id="btn-open-import" class="px-3 py-1.5 rounded-lg bg-[#C9A227] hover:bg-[#D9B43A] text-[#0B1324] text-xs font-bold transition shadow">
+          + Importar História
+        </button>
+
+        <button id="btn-open-backup" title="Exportar ou Restaurar Progresso" class="px-2.5 py-1.5 rounded-lg bg-[#111D35] hover:bg-[#162749] border border-[#24385E] text-xs font-semibold text-[#CBD5E1] transition">
+          Backup
+        </button>
       </div>
     </div>
-    <div class="topbar-actions">
-      <button id="btn-vocab" class="btn-secondary" type="button">📚 Vocabulário (<span id="vocab-count">0</span>)</button>
-      <button id="btn-import" class="btn-primary" type="button">+ Importar</button>
+
+    <!-- 20-Activity Switcher -->
+    <div class="max-w-7xl mx-auto px-4 pb-2.5">
+      <div id="lesson-tabs" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5"></div>
     </div>
   </header>
 
-  <nav class="lesson-strip" id="lesson-strip" aria-label="Lista de lições"></nav>
-
-  <main class="container">
-    <section class="lesson-header">
-      <span id="lesson-category" class="tag">Imigração</span>
-      <h2 id="lesson-title">Carregando...</h2>
-    </section>
-
-    <!-- Área Visual: Carrossel de Quadrinhos ou Vídeo -->
-    <section class="media-card" id="media-section">
-      <div id="carousel-wrapper" class="carousel-wrapper hidden">
-        <div class="panel-stage">
-          <div id="panel-visual" class="panel-visual"></div>
-          <p id="panel-caption" class="panel-caption"></p>
+  <!-- Floating Instant Translation Balloon (anchored right below clicked word) -->
+  <div id="floating-tooltip" class="hidden fixed z-50 w-72 sm:w-80 rounded-xl bg-[#0F1C36] border border-[#C9A227]/70 shadow-2xl p-3.5 text-left">
+    <div class="flex items-start justify-between gap-2 mb-1.5">
+      <div>
+        <div class="flex items-center gap-2">
+          <span id="ft-term" class="text-base font-extrabold text-white"></span>
+          <button id="ft-speak" class="px-2 py-0.5 rounded bg-[#1A2D54] hover:bg-[#243E73] text-[11px] font-semibold text-[#C9A227] border border-[#2E4A80]">Ouvir</button>
         </div>
-        <div class="carousel-controls">
-          <button id="btn-prev-panel" class="btn-secondary" type="button">← Previous Panel</button>
-          <span id="panel-indicator" class="panel-indicator">Panel 1 of 1</span>
-          <button id="btn-next-panel" class="btn-secondary" type="button">Next Panel →</button>
-        </div>
+        <span id="ft-category" class="text-[10px] uppercase tracking-wider font-semibold text-[#94A3B8]"></span>
       </div>
-      <div id="video-wrapper" class="video-wrapper hidden">
-        <iframe id="youtube-frame" src="" title="Video scene" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </section>
-
-    <!-- Barra de Reprodução Segmentada -->
-    <section class="audio-card">
-      <div class="audio-top">
-        <button id="btn-play" class="btn-play" type="button">▶ Ouvir</button>
-        <div class="speed-group" role="group" aria-label="Velocidade da leitura">
-          <button class="speed-btn active" data-speed="0.25" type="button">0.25x</button>
-          <button class="speed-btn" data-speed="0.5" type="button">0.5x</button>
-          <button class="speed-btn" data-speed="0.75" type="button">0.75x</button>
-          <button class="speed-btn" data-speed="1" type="button">1x</button>
-          <button class="speed-btn" data-speed="1.25" type="button">1.25x</button>
-        </div>
-      </div>
-      <div class="segments-bar" id="segments-bar" aria-label="Momentos da história"></div>
-    </section>
-
-    <!-- Card Sincronizado da Palavra Selecionada -->
-    <section id="quick-card" class="quick-card hidden">
-      <div class="quick-card-main">
-        <strong id="qc-word">word</strong>
-        <span id="qc-translation">tradução</span>
-      </div>
-      <div class="quick-card-actions">
-        <button id="qc-speak" class="btn-mini" type="button">🔊</button>
-        <button id="qc-status-blue" class="status-dot blue" title="Nova" type="button"></button>
-        <button id="qc-status-yellow" class="status-dot yellow" title="Aprendendo" type="button"></button>
-        <button id="qc-status-white" class="status-dot white" title="Conhecida" type="button"></button>
-      </div>
-    </section>
-
-    <!-- Texto Interativo -->
-    <section class="reader-card" id="reader-card"></section>
-
-    <div class="footer-cta">
-      <button id="btn-open-quiz" class="btn-primary btn-large" type="button">📝 Fazer Exercícios & Concluir</button>
+      <button id="ft-close" class="text-[#94A3B8] hover:text-white text-sm leading-none px-1">&times;</button>
     </div>
+
+    <p id="ft-translation" class="text-sm font-bold text-amber-300 mb-1"></p>
+    <p id="ft-note" class="text-xs text-[#CBD5E1] leading-relaxed mb-2.5"></p>
+
+    <div class="grid grid-cols-3 gap-1.5">
+      <button data-ft-status="new" class="ft-status-btn py-1 rounded-md text-[11px] font-semibold border border-[#2A406B] bg-[#142342] text-sky-300 hover:bg-[#1C315C]">Nova</button>
+      <button data-ft-status="learning" class="ft-status-btn py-1 rounded-md text-[11px] font-semibold border border-[#2A406B] bg-[#142342] text-amber-300 hover:bg-[#1C315C]">Aprendendo</button>
+      <button data-ft-status="known" class="ft-status-btn py-1 rounded-md text-[11px] font-semibold border border-[#2A406B] bg-[#142342] text-emerald-300 hover:bg-[#1C315C]">Conhecida</button>
+    </div>
+  </div>
+
+  <!-- Main Workspace -->
+  <main class="max-w-7xl mx-auto px-4 py-5 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+
+    <!-- Left Column: Comic Carousel + Synced Word Inspector -->
+    <section class="lg:col-span-5 lg:sticky lg:top-28 space-y-4">
+      <div class="rounded-2xl bg-[#111D35] border border-[#24385E] overflow-hidden shadow-xl">
+        <div class="relative bg-[#070D1A]">
+          <img id="carousel-img" src="" alt="Quadro da História" class="w-full max-h-[420px] object-contain mx-auto block bg-[#070D1A]" />
+          <div id="carousel-counter" class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#0B1324]/85 border border-[#C9A227]/50 text-xs font-bold text-[#C9A227]">
+            Quadro 1 de 3
+          </div>
+        </div>
+
+        <div class="p-3.5 border-t border-[#24385E] bg-[#0F1A30] space-y-3">
+          <p id="carousel-caption" class="text-xs sm:text-sm text-[#E2E8F0] font-medium text-center"></p>
+
+          <div class="flex items-center justify-between gap-2">
+            <button id="btn-slide-prev" class="px-3 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-white transition">
+              &larr; Quadro Anterior
+            </button>
+
+            <div id="carousel-dots" class="flex items-center gap-1.5"></div>
+
+            <button id="btn-slide-next" class="px-3 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-white transition">
+              Próximo Quadro &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Synced Word Inspector Card -->
+      <div id="word-inspector" class="rounded-2xl bg-[#111D35] border border-[#24385E] p-4 shadow-lg space-y-2.5">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 id="insp-term" class="text-lg font-extrabold text-white">Clique em uma palavra</h2>
+              <button id="btn-tts-word" class="hidden px-2 py-0.5 rounded bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-[#C9A227]">Ouvir</button>
+            </div>
+            <span id="insp-category" class="text-[11px] uppercase tracking-wider font-semibold text-[#94A3B8]">Dicionário Instantâneo</span>
+          </div>
+          <span id="insp-status-pill" class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#162749] text-sky-300 border border-[#2B4370]">Dica</span>
+        </div>
+
+        <p id="insp-translation" class="text-sm font-bold text-amber-300">
+          O balão de tradução aparece logo abaixo da palavra clicada no texto.
+        </p>
+        <p id="insp-note" class="text-xs text-[#CBD5E1] leading-relaxed">
+          Palavras azuis são novas; ao marcar como Aprendendo (amarelo), vão automaticamente para a sua Caixa de Vocabulário e Flashcards.
+        </p>
+        <p id="insp-example" class="hidden text-xs italic text-[#94A3B8] border-l-2 border-[#C9A227] pl-2.5"></p>
+      </div>
+    </section>
+
+    <!-- Right Column: Interactive Story Reader + Audio Progress Bar -->
+    <section class="lg:col-span-7 space-y-4">
+      <div class="rounded-2xl bg-[#111D35] border border-[#24385E] p-4 sm:p-5 shadow-xl space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[#24385E]">
+          <div>
+            <span id="lesson-badge" class="text-[11px] uppercase tracking-wider font-bold text-[#C9A227]"></span>
+            <h2 id="lesson-title" class="text-lg sm:text-xl font-extrabold text-white"></h2>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <button id="btn-guided-read" class="px-3 py-1.5 rounded-lg bg-[#1A2D54] hover:bg-[#233B6E] border border-[#314E8A] text-xs font-bold text-white transition">
+              &#9654; Leitura Guiada (0.25x)
+            </button>
+            <button id="btn-repeat-line" title="Repetir apenas a fala atual (Atalho: R)" class="px-2.5 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-[#C9A227] transition">
+              &#8635; Repetir Fala
+            </button>
+            <button id="btn-toggle-line-tr" title="Mostrar ou ocultar tradução contextual abaixo de cada fala" class="px-2.5 py-1.5 rounded-lg bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-semibold text-sky-300 transition">
+              Traduzir Falas
+            </button>
+            <button id="btn-mark-rest-known" class="px-3 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-xs font-semibold text-emerald-300 transition">
+              Marcar azuis como conhecidas
+            </button>
+          </div>
+        </div>
+
+        <!-- Speed Controls + Interactive Segmented Progress Bar -->
+        <div class="rounded-xl bg-[#0D172B] border border-[#24385E] p-3 space-y-2.5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="text-[11px] font-semibold text-[#94A3B8] mr-1">Velocidade:</span>
+              <button data-speed="0.25" class="speed-btn px-2 py-0.5 rounded text-xs font-bold bg-[#C9A227] text-[#0B1324]">0.25x</button>
+              <button data-speed="0.5" class="speed-btn px-2 py-0.5 rounded text-xs font-bold bg-[#162749] text-[#CBD5E1] hover:bg-[#1F3666]">0.5x</button>
+              <button data-speed="0.75" class="speed-btn px-2 py-0.5 rounded text-xs font-bold bg-[#162749] text-[#CBD5E1] hover:bg-[#1F3666]">0.75x</button>
+              <button data-speed="1" class="speed-btn px-2 py-0.5 rounded text-xs font-bold bg-[#162749] text-[#CBD5E1] hover:bg-[#1F3666]">1x</button>
+              <button data-speed="1.25" class="speed-btn px-2 py-0.5 rounded text-xs font-bold bg-[#162749] text-[#CBD5E1] hover:bg-[#1F3666]">1.25x</button>
+            </div>
+            <span id="playback-part-label" class="text-[11px] font-semibold text-[#C9A227]">Parte 0 de 0</span>
+          </div>
+
+          <div class="w-full h-1.5 rounded-full bg-[#162749] overflow-hidden">
+            <div id="playback-progress-fill" class="h-full bg-[#C9A227] transition-all duration-300" style="width: 0%;"></div>
+          </div>
+
+          <div id="playback-segments" class="flex flex-wrap gap-1.5 max-h-28 overflow-y-auto pr-1"></div>
+        </div>
+
+        <!-- Story Lines -->
+        <div id="reader-container" class="space-y-3.5 text-base sm:text-[17px] leading-relaxed"></div>
+
+        <!-- Bottom Action Bar -->
+        <div class="pt-4 border-t border-[#24385E] flex flex-wrap items-center justify-between gap-3">
+          <button id="btn-prev-lesson" class="px-3.5 py-2 rounded-xl bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-bold text-white transition">
+            &larr; Anterior
+          </button>
+
+          <button id="btn-finish-lesson" class="px-4 py-2 rounded-xl bg-gradient-to-r from-[#C9A227] to-[#E2B83B] hover:brightness-105 text-[#0B1324] text-xs sm:text-sm font-extrabold shadow-lg transition">
+            Fazer Exercícios &amp; Concluir Atividade
+          </button>
+
+          <button id="btn-next-lesson" class="px-3.5 py-2 rounded-xl bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-xs font-bold text-white transition">
+            Próxima &rarr;
+          </button>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Balão Flutuante Instantâneo (abre logo abaixo da palavra clicada) -->
-  <div id="word-tooltip" class="word-tooltip hidden" role="dialog" aria-live="polite">
-    <div class="tt-header">
-      <strong id="tt-word"></strong>
-      <button id="tt-speak" class="btn-mini" type="button">🔊</button>
-    </div>
-    <p id="tt-translation" class="tt-translation"></p>
-    <p id="tt-note" class="tt-note"></p>
-    <div class="tt-status-row">
-      <button class="tt-status-btn" data-status="blue" type="button">Nova</button>
-      <button class="tt-status-btn" data-status="yellow" type="button">Aprendendo</button>
-      <button class="tt-status-btn" data-status="white" type="button">Conhecida</button>
+  <!-- Modal: Lesson Comprehension & Writing Exercise -->
+  <div id="modal-finish" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-[#111D35] border border-[#2B4370] shadow-2xl p-5 sm:p-6 space-y-5">
+      <div class="flex items-start justify-between gap-3 border-b border-[#24385E] pb-3">
+        <div>
+          <span class="text-[11px] uppercase tracking-wider font-bold text-[#C9A227]">Verificação de Aprendizado</span>
+          <h3 id="finish-modal-title" class="text-lg font-extrabold text-white"></h3>
+        </div>
+        <button id="btn-close-finish" class="text-[#94A3B8] hover:text-white text-xl leading-none">&times;</button>
+      </div>
+
+      <!-- Multiple Choice Questions -->
+      <div id="mcq-container" class="space-y-4"></div>
+
+      <!-- Active Writing Practice -->
+      <div class="rounded-xl bg-[#0D172B] border border-[#24385E] p-4 space-y-2.5">
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-xs font-bold text-[#C9A227]">Questão Dissertativa (Prática Ativa)</span>
+          <span class="text-[11px] text-[#94A3B8]">Use os termos-alvo em inglês</span>
+        </div>
+        <p id="writing-prompt" class="text-xs sm:text-sm text-[#E2E8F0]"></p>
+        <div id="writing-target-chips" class="flex flex-wrap gap-1.5"></div>
+        <textarea id="writing-input" rows="3" placeholder="Escreva sua resposta em inglês aqui..." class="w-full rounded-lg bg-[#0B1324] border border-[#2B4370] p-2.5 text-sm text-white focus:outline-none focus:border-[#C9A227]"></textarea>
+
+        <div id="writing-correction-box" class="hidden rounded-lg bg-[#142342] border border-[#2E4A80] p-3 space-y-1.5 text-xs">
+          <p id="writing-feedback" class="font-semibold text-amber-300"></p>
+          <p class="text-[#CBD5E1]"><strong>Modelo sugerido:</strong> <span id="writing-model-answer" class="italic text-white"></span></p>
+          <button id="btn-speak-model" class="px-2 py-0.5 rounded bg-[#1D325E] hover:bg-[#27437D] text-[#C9A227] font-semibold">Ouvir modelo</button>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+        <button id="btn-grade-all" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-[#0B1324] text-xs sm:text-sm font-extrabold transition">
+          Corrigir &amp; Concluir Atividade
+        </button>
+        <button id="btn-advance-next" class="px-4 py-2 rounded-xl bg-[#C9A227] hover:bg-[#D9B43A] text-[#0B1324] text-xs sm:text-sm font-extrabold transition">
+          Ir para Próxima Atividade &rarr;
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Modal de Exercícios -->
-  <div id="modal-quiz" class="modal hidden">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>Exercícios da Lição</h3>
-        <button class="btn-close" data-close="modal-quiz" type="button">✕</button>
+  <!-- Modal: Vocabulary Box & SRS Flashcards -->
+  <div id="modal-vocab" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-2xl max-h-[88vh] overflow-y-auto rounded-2xl bg-[#111D35] border border-[#2B4370] shadow-2xl p-5 space-y-4">
+      <div class="flex items-center justify-between border-b border-[#24385E] pb-3">
+        <div>
+          <h3 class="text-lg font-extrabold text-white">Caixa de Vocabulário &amp; Revisão SRS</h3>
+          <p class="text-xs text-[#94A3B8]">Prioridade automática para termos que precisam de revisão</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="btn-toggle-flashcard" class="px-3 py-1.5 rounded-lg bg-[#C9A227] text-[#0B1324] text-xs font-bold">Modo Flashcard</button>
+          <button id="btn-close-vocab" class="text-[#94A3B8] hover:text-white text-xl leading-none px-1">&times;</button>
+        </div>
       </div>
-      <div id="quiz-body" class="modal-body"></div>
+
+      <div class="flex items-center gap-2">
+        <button data-vfilter="learning" class="vfilter-btn px-3 py-1 rounded-lg text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">Aprendendo (Amarelas)</button>
+        <button data-vfilter="known" class="vfilter-btn px-3 py-1 rounded-lg text-xs font-bold bg-[#162749] text-[#CBD5E1]">Conhecidas</button>
+        <button data-vfilter="all" class="vfilter-btn px-3 py-1 rounded-lg text-xs font-bold bg-[#162749] text-[#CBD5E1]">Todas</button>
+      </div>
+
+      <!-- Flashcard Mode Area with SRS -->
+      <div id="flashcard-area" class="hidden rounded-xl bg-[#0D172B] border border-[#2B4370] p-6 text-center space-y-4">
+        <div class="flex items-center justify-between text-[11px] text-[#94A3B8]">
+          <span id="fc-counter">0 / 0</span>
+          <span id="fc-srs-meta">Revisões: 0</span>
+        </div>
+        <h4 id="fc-term" class="text-2xl font-extrabold text-white"></h4>
+        <div id="fc-answer" class="hidden space-y-1.5">
+          <p id="fc-translation" class="text-base font-bold text-amber-300"></p>
+          <p id="fc-note" class="text-xs text-[#CBD5E1]"></p>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
+          <button id="btn-fc-speak" class="px-3 py-1.5 rounded-lg bg-[#162749] text-[#C9A227] text-xs font-bold">Ouvir</button>
+          <button id="btn-fc-reveal" class="px-3 py-1.5 rounded-lg bg-[#C9A227] text-[#0B1324] text-xs font-bold">Mostrar Tradução</button>
+          <button id="btn-fc-again" class="px-3 py-1.5 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold">Rever Logo</button>
+          <button id="btn-fc-easy" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold">Dominei</button>
+          <button id="btn-fc-next" class="px-3 py-1.5 rounded-lg bg-[#162749] text-white text-xs font-bold">Próximo &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Word List -->
+      <div id="vocab-list" class="space-y-2 max-h-80 overflow-y-auto pr-1"></div>
     </div>
   </div>
 
-  <!-- Modal de Vocabulário -->
-  <div id="modal-vocab" class="modal hidden">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>Minha Caixa de Vocabulário</h3>
-        <button class="btn-close" data-close="modal-vocab" type="button">✕</button>
+  <!-- Modal: Import Custom Story -->
+  <div id="modal-import" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-lg rounded-2xl bg-[#111D35] border border-[#2B4370] shadow-2xl p-5 space-y-4">
+      <div class="flex items-center justify-between border-b border-[#24385E] pb-3">
+        <h3 class="text-lg font-extrabold text-white">Importar Nova História / Caso</h3>
+        <button id="btn-close-import" class="text-[#94A3B8] hover:text-white text-xl leading-none">&times;</button>
       </div>
-      <div id="vocab-body" class="modal-body"></div>
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-[#94A3B8] mb-1">Título da Atividade</label>
+          <input id="imp-title" type="text" placeholder="Ex: 21. Motion for Continuance" class="w-full rounded-lg bg-[#0B1324] border border-[#2B4370] px-3 py-2 text-sm text-white focus:outline-none focus:border-[#C9A227]" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-[#94A3B8] mb-1">Texto ou Diálogo em Inglês (use "Nome: fala" para separar personagens)</label>
+          <textarea id="imp-text" rows="6" placeholder="Narrator: Counsel approached the bench...&#10;Judge: Are both sides ready to proceed?" class="w-full rounded-lg bg-[#0B1324] border border-[#2B4370] p-3 text-sm text-white focus:outline-none focus:border-[#C9A227]"></textarea>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2">
+        <button id="btn-save-import" class="px-4 py-2 rounded-xl bg-[#C9A227] hover:bg-[#D9B43A] text-[#0B1324] text-xs font-extrabold">Adicionar ao Leitor</button>
+      </div>
     </div>
   </div>
 
-  <!-- Modal de Importação de Lição (JSON) -->
-  <div id="modal-import" class="modal hidden">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>+ Importar Nova Lição (JSON)</h3>
-        <button class="btn-close" data-close="modal-import" type="button">✕</button>
+  <!-- Modal: Backup & Restore Progress -->
+  <div id="modal-backup" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-md rounded-2xl bg-[#111D35] border border-[#2B4370] shadow-2xl p-5 space-y-4">
+      <div class="flex items-center justify-between border-b border-[#24385E] pb-3">
+        <h3 class="text-lg font-extrabold text-white">Backup do Seu Progresso</h3>
+        <button id="btn-close-backup" class="text-[#94A3B8] hover:text-white text-xl leading-none">&times;</button>
       </div>
-      <div class="modal-body">
-        <p class="hint">Cole abaixo o JSON de uma nova lição gerada no chat ou selecione um arquivo <code>.json</code>.</p>
-        <input type="file" id="import-file" accept=".json,application/json" class="file-input" />
-        <textarea id="import-json" rows="8" placeholder='{"id": "custom-1", "title": "...", ...}'></textarea>
-        <p id="import-error" class="error-text hidden"></p>
-        <button id="btn-confirm-import" class="btn-primary btn-large" type="button">Salvar Lição no App</button>
+      <p class="text-xs text-[#CBD5E1] leading-relaxed">
+        Salve um arquivo JSON com seu vocabulário, revisões SRS, atividades concluídas e histórias importadas para nunca perder seus dados ao trocar de celular ou limpar o navegador.
+      </p>
+      <div class="flex flex-col gap-2.5">
+        <button id="btn-export-backup" class="w-full py-2.5 rounded-xl bg-[#C9A227] hover:bg-[#D9B43A] text-[#0B1324] text-xs font-extrabold transition">
+          Baixar Backup (.json)
+        </button>
+        <label class="w-full py-2.5 rounded-xl bg-[#162749] hover:bg-[#1F3666] border border-[#2B4370] text-center text-xs font-bold text-white cursor-pointer transition">
+          Restaurar Backup (.json)
+          <input id="input-import-backup" type="file" accept=".json,application/json" class="hidden" />
+        </label>
       </div>
     </div>
   </div>
+
+  <!-- Toast -->
+  <div id="toast" class="hidden fixed bottom-5 right-5 z-50 px-4 py-2.5 rounded-xl bg-[#0F1C36] border border-[#C9A227] text-xs font-bold text-white shadow-2xl"></div>
 
   <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js").catch(() => {});
+    }
+  </script>
 </body>
 </html>

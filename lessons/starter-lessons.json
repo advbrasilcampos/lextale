@@ -1,177 +1,1684 @@
 [
   {
-    "id": "lesson-1",
-    "category": "Imigração",
-    "title": "1. The Notice to Appear",
-    "panels": [
+    "id": "act-1",
+    "badge": "Atividade 1 • Caso Completo (Imigração)",
+    "title": "1. O Caso da Reabertura",
+    "lengthLabel": "História Longa • 4 Quadros",
+    "slides": [
       {
-        "caption": "Panel 1 — Beginning: The Client Arrives",
-        "sceneDescription": "Escritório de advocacia. Lucas entra apressado segurando uma carta oficial do DHS."
+        "img": "assets/office.webp",
+        "caption": "Panel 1 (Beginning): Lucas arrives at the law office holding his urgent Notice to Appear."
       },
       {
-        "caption": "Panel 2 — Middle: Reviewing the Deadline",
-        "sceneDescription": "A advogada analisa o documento e encontra a data da audiência na corte de imigração."
+        "img": "assets/court.webp",
+        "caption": "Panel 2 (Middle): At the hearing, his attorney argues extreme hardship before the immigration judge."
       },
       {
-        "caption": "Panel 3 — End: Strategy for the Waiver",
-        "sceneDescription": "Eles definem a linha de defesa reunindo provas médicas e vínculos familiares."
+        "img": "assets/ruling.webp",
+        "caption": "Panel 3 (End): The judge grants relief and closes the removal case as Lucas shakes his lawyer's hand."
       }
     ],
-    "segments": [
+    "lines": [
       {
         "speaker": "Narrator",
-        "voiceRole": "narrator",
-        "text": "Lucas walked into the law office holding an official envelope. His hands were shaking because he had overstayed his visa last year."
+        "text": "Late on a rainy Tuesday, Lucas walked into the law office holding a folder of urgent immigration papers. He looked worried and exhausted because he had overstayed his visa three years earlier while caring for his sick mother.",
+        "gender": "narrator"
       },
       {
         "speaker": "Lucas",
-        "voiceRole": "male",
-        "text": "Counsel, I received this Notice to Appear yesterday. Does this mean I will be deported immediately?"
+        "text": "Yesterday, an officer served me with a Notice to Appear, and I am afraid of deportation. My wife is a U.S. citizen, and she depends on me every day.",
+        "gender": "male"
       },
       {
-        "speaker": "Attorney Elena",
-        "voiceRole": "female",
-        "text": "Take a deep breath. A hearing is only the beginning of the process, and you may qualify for a waiver if we build a strong case."
-      }
-    ],
-    "dictionary": {
-      "overstayed": {
-        "pt": "excedeu o prazo",
-        "note": "Passar da data autorizada no visto."
+        "speaker": "Attorney",
+        "text": "Don't panic, Lucas. We will file a motion to reopen and check if you qualify for a waiver based on extreme hardship to your spouse.",
+        "gender": "male"
       },
-      "visa": {
-        "pt": "visto",
-        "note": "Autorização de entrada ou permanência."
-      },
-      "counsel": {
-        "pt": "advogada / patrona",
-        "note": "Forma respeitosa de chamar o advogado."
-      },
-      "notice": {
-        "pt": "notificação / intimação",
-        "note": "Em 'Notice to Appear', é a citação para comparecer à corte."
-      },
-      "deported": {
-        "pt": "deportado",
-        "note": "Removido formalmente do país."
-      },
-      "hearing": {
-        "pt": "audiência",
-        "note": "Sessão perante o juiz de imigração."
-      },
-      "qualify": {
-        "pt": "preencher os requisitos",
-        "note": "Ter direito legal a um benefício."
-      },
-      "waiver": {
-        "pt": "perdão / dispensa legal",
-        "note": "Pedido para afastar uma causa de inadmissibilidade."
-      },
-      "strong": {
-        "pt": "sólida / forte",
-        "note": "Em 'strong case', tese bem embasada em provas."
-      }
-    },
-    "quiz": [
-      {
-        "question": "What does 'Notice to Appear' mean in this story?",
-        "options": [
-          "A fine for parking",
-          "An official summons to immigration court",
-          "A tourist visa approval"
-        ],
-        "answerIndex": 1
-      },
-      {
-        "question": "Why does Attorney Elena mention a 'waiver'?",
-        "options": [
-          "To ask for legal forgiveness of an inadmissibility ground",
-          "To cancel the client's passport",
-          "To postpone payment of fees"
-        ],
-        "answerIndex": 0
-      }
-    ],
-    "writingPrompt": "Escreva 2 frases em inglês tranquilizando um cliente após receber uma Notice to Appear, usando 'hearing' e 'waiver'.",
-    "modelAnswer": "Do not panic about the hearing date. We will gather evidence to prove you qualify for a waiver."
-  },
-  {
-    "id": "lesson-2",
-    "category": "Direito Penal",
-    "title": "2. The Motion to Suppress",
-    "panels": [
-      {
-        "caption": "Panel 1 — The Traffic Stop",
-        "sceneDescription": "Rodovia à noite. A viatura policial aborda o veículo sem mandado nem causa provável."
-      },
-      {
-        "caption": "Panel 2 — Inside the Courtroom",
-        "sceneDescription": "A defesa apresenta o vídeo da câmera corporal apontando a busca ilegal."
-      }
-    ],
-    "segments": [
       {
         "speaker": "Narrator",
-        "voiceRole": "narrator",
-        "text": "During the night stop, the officer searched the trunk without a warrant or probable cause."
+        "text": "For two weeks, the defense team collected hospital records, tax returns, and family letters to build a strong case before the scheduled hearing.",
+        "gender": "narrator"
       },
       {
-        "speaker": "Defense Attorney",
-        "voiceRole": "male",
-        "text": "Your Honor, we filed a motion to suppress because the search violated our client's constitutional rights."
+        "speaker": "Attorney (In Court)",
+        "text": "Your Honor, removing Lucas would cause severe medical and financial harm to his U.S. citizen wife. The evidence clearly supports relief.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "After reviewing the documents, the judge nodded slowly, granted relief, and closed the removal case. Outside the courtroom, Lucas shook his lawyer's hand with tears of gratitude.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [
+      "notice to appear",
+      "overstayed his visa",
+      "motion to reopen",
+      "qualify for a waiver",
+      "extreme hardship",
+      "build a strong case",
+      "granted relief"
+    ],
+    "mcqs": [
+      {
+        "q": "Por que Lucas ultrapassou o prazo do visto ('overstayed his visa') segundo a história?",
+        "options": [
+          "Porque esqueceu a data do voo",
+          "Porque ficou cuidando de sua mãe doente",
+          "Porque perdeu o passaporte"
+        ],
+        "correct": 1,
+        "explanation": "O texto explica: 'while caring for his sick mother'."
+      },
+      {
+        "q": "Qual foi o desfecho final do caso perante o juiz?",
+        "options": [
+          "O juiz acolheu o pedido ('granted relief') e encerrou a remoção",
+          "O juiz adiou a audiência por dois anos",
+          "O pedido foi rejeitado"
+        ],
+        "correct": 0,
+        "explanation": "'The judge granted relief and closed the removal case.'"
+      }
+    ],
+    "writingPrompt": "Resuma em 2 frases em inglês como o advogado venceu o caso de Lucas (use: motion to reopen, extreme hardship e granted relief).",
+    "targetTerms": [
+      "motion to reopen",
+      "extreme hardship",
+      "granted relief"
+    ],
+    "modelAnswer": "The attorney filed a motion to reopen and gathered medical records to build a strong case. After proving extreme hardship to his U.S. citizen wife, the judge granted relief."
+  },
+  {
+    "id": "act-2",
+    "badge": "Atividade 2 • Mistério (Sherlock Holmes)",
+    "title": "2. Sherlock: O Selo de Cera",
+    "lengthLabel": "História Longa • 3 Quadros",
+    "slides": [
+      {
+        "img": "assets/sherlock.webp",
+        "caption": "Panel 1 (Beginning): In London, Holmes examines the broken red wax seal with his magnifying glass."
+      },
+      {
+        "img": "assets/sherlock_street.webp",
+        "caption": "Panel 2 (Middle): Holmes and Watson follow fresh footprints down the foggy street to a stationery shop."
+      },
+      {
+        "img": "assets/sherlock_confront.webp",
+        "caption": "Panel 3 (End): Confronted with the forged will and shop receipt, the cousin steps back in shock."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "On a cold London evening, a young man knocked on Sherlock Holmes's door carrying an old envelope with a red wax seal. His wealthy uncle had died suddenly, and a cousin claimed the entire house using a new will.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Watson",
+        "text": "Look at the signature, Holmes. It looks completely normal to me.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Sherlock",
+        "text": "Look closer through the magnifying glass, Watson. The wax seal was melted twice, and the ink on the last page is less than two days old, although the document is dated three years ago.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Holmes immediately realized it was a forged will. Stepping into the foggy street, they traced the special paper back to a small shop where the cousin had bought it the night before.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Confronted in the library with proof beyond a reasonable doubt, the cousin stepped back in shock and confessed, restoring the rightful inheritance.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [
+      "wax seal",
+      "forged will",
+      "beyond a reasonable doubt"
+    ],
+    "mcqs": [
+      {
+        "q": "Qual detalhe físico denunciou que o testamento era falso ('forged will')?",
+        "options": [
+          "O selo de cera derretido duas vezes e a tinta com menos de dois dias",
+          "O nome do tio escrito errado",
+          "A falta de testemunhas"
+        ],
+        "correct": 0,
+        "explanation": "Holmes notou que 'the wax seal was melted twice, and the ink is less than two days old'."
+      },
+      {
+        "q": "O que aconteceu quando Holmes confrontou o primo com a prova?",
+        "options": [
+          "O primo fugiu pela janela",
+          "O primo confessou diante da prova irrefutável",
+          "Nada mudou"
+        ],
+        "correct": 1,
+        "explanation": "'Confronted in the library with proof beyond a reasonable doubt, the cousin confessed.'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês explicando como Holmes descobriu a fraude (use: wax seal e forged will).",
+    "targetTerms": [
+      "wax seal",
+      "forged will",
+      "ink"
+    ],
+    "modelAnswer": "Sherlock Holmes examined the wax seal and the fresh ink and realized it was a forged will. His evidence proved the fraud beyond a reasonable doubt."
+  },
+  {
+    "id": "act-3",
+    "badge": "Atividade 3 • Viagem & Fronteira",
+    "title": "3. Chegada ao Aeroporto",
+    "lengthLabel": "História Média • 2 Quadros",
+    "slides": [
+      {
+        "img": "assets/airport.webp",
+        "caption": "Panel 1 (Beginning): At the airport border counter, the officer scans Rafael's passport."
+      },
+      {
+        "img": "assets/airport_sec.webp",
+        "caption": "Panel 2 (End): In secondary inspection, Rafael calmly presents his printed return ticket and conference badge."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "After a long flight, Rafael arrived at the international airport feeling tired but excited for his legal conference. When he reached the border counter, the officer scanned his passport and frowned at the screen.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Officer",
+        "text": "Sir, what is the purpose of your visit, and how long do you plan to stay?",
+        "gender": "male"
+      },
+      {
+        "speaker": "Rafael",
+        "text": "I am attending a three-day law conference, and here is my printed return ticket and hotel reservation.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Because Rafael had visited twice earlier that year, the officer sent him to secondary inspection to verify he was not working illegally. Rafael stayed calm, answered every question politely, and showed his conference badge. Twenty minutes later, the officer stamped his passport and welcomed him to the country.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [
+      "purpose of your visit",
+      "return ticket",
+      "secondary inspection"
+    ],
+    "mcqs": [
+      {
+        "q": "Por que o agente encaminhou Rafael para a 'secondary inspection'?",
+        "options": [
+          "Porque ele já havia visitado o país duas vezes no mesmo ano",
+          "Porque sua mala estava pesada",
+          "Porque o passaporte estava vencido"
+        ],
+        "correct": 0,
+        "explanation": "O texto informa: 'Because Rafael had visited twice earlier that year...'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês respondendo ao oficial de imigração sobre sua viagem (use: purpose of your visit e return ticket).",
+    "targetTerms": [
+      "purpose of your visit",
+      "return ticket"
+    ],
+    "modelAnswer": "The purpose of my visit is to attend a three-day legal conference. Here is my printed return ticket and hotel reservation."
+  },
+  {
+    "id": "act-4",
+    "badge": "Atividade 4 • Cotidiano & Negociação",
+    "title": "4. O Imprevisto no Restaurante",
+    "lengthLabel": "História Média • 2 Quadros",
+    "slides": [
+      {
+        "img": "assets/restaurant.webp",
+        "caption": "Panel 1 (Beginning): At a downtown restaurant, Clara informs the friendly waiter about her food allergy."
+      },
+      {
+        "img": "assets/restaurant_mgr.webp",
+        "caption": "Panel 2 (End): After noticing an overcharge, Daniel politely discusses the receipt with the manager."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "On Friday evening, Clara and Daniel met at a busy downtown restaurant to celebrate winning a tough case. Before ordering, Clara carefully informed the friendly waiter about her serious food allergy.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Daniel",
+        "text": "The dinner was wonderful, Clara. Excuse me, waiter, could we split the bill?",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "When the waiter brought the receipt, Daniel noticed they had been overcharged for two expensive bottles of wine they never ordered. Instead of getting angry, Daniel spoke politely with the manager, who checked the table number, apologized immediately, and corrected the bill.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [
+      "food allergy",
+      "split the bill",
+      "overcharged"
+    ],
+    "mcqs": [
+      {
+        "q": "Qual erro apareceu na conta ('receipt') ao final do jantar?",
+        "options": [
+          "O prato principal veio frio",
+          "Foram cobrados a mais ('overcharged') por vinhos que não pediram",
+          "Não aceitavam cartão"
+        ],
+        "correct": 1,
+        "explanation": "'Daniel noticed they had been overcharged for two expensive bottles of wine they never ordered.'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases educadas em inglês apontando um erro na conta do restaurante (use: overcharged e bill).",
+    "targetTerms": [
+      "overcharged",
+      "bill"
+    ],
+    "modelAnswer": "Excuse me, I believe there is a mistake on our bill. We were overcharged for two drinks we did not order."
+  },
+  {
+    "id": "act-5",
+    "badge": "Atividade 5 • HQ 4 Cenas (Imigração)",
+    "title": "5. A Primeira Consulta",
+    "lengthLabel": "Tirinha Completa • 1 Quadro",
+    "slides": [
+      {
+        "img": "assets/comic4_p1.webp",
+        "caption": "4-Panel Comic Strip (Beginning to End): From panic over the Notice to Appear to building a waiver defense. — Quadro 1 de 4"
+      },
+      {
+        "img": "assets/comic4_p2.webp",
+        "caption": "4-Panel Comic Strip (Beginning to End): From panic over the Notice to Appear to building a waiver defense. — Quadro 2 de 4"
+      },
+      {
+        "img": "assets/comic4_p3.webp",
+        "caption": "4-Panel Comic Strip (Beginning to End): From panic over the Notice to Appear to building a waiver defense. — Quadro 3 de 4"
+      },
+      {
+        "img": "assets/comic4_p4.webp",
+        "caption": "4-Panel Comic Strip (Beginning to End): From panic over the Notice to Appear to building a waiver defense. — Quadro 4 de 4"
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Client",
+        "text": "I overstayed my visa last year. Yesterday, I got this Notice to Appear.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Attorney",
+        "text": "Don't panic. Let's check if you qualify for a waiver. We'll build a strong case before your hearing.",
+        "gender": "male"
+      }
+    ],
+    "chunks": [
+      "overstayed my visa",
+      "notice to appear",
+      "qualify for a waiver",
+      "build a strong case"
+    ],
+    "mcqs": [
+      {
+        "q": "Qual é a primeira orientação do advogado ao ver a intimação?",
+        "options": [
+          "Não entrar em pânico e verificar se há direito a um waiver",
+          "Sair do país na mesma noite",
+          "Ignorar a audiência"
+        ],
+        "correct": 0,
+        "explanation": "'Don't panic. Let's check if you qualify for a waiver.'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês explicando ao cliente os próximos passos (use: waiver e hearing).",
+    "targetTerms": [
+      "waiver",
+      "hearing"
+    ],
+    "modelAnswer": "We will review your eligibility for a waiver this week. Our goal is to prepare all documents before your hearing."
+  },
+  {
+    "id": "act-6",
+    "badge": "Atividade 6 • Direito Penal (Caso Completo)",
+    "title": "6. A Busca Sem Mandado",
+    "lengthLabel": "História Longa • 4 Quadros",
+    "slides": [
+      {
+        "img": "assets/police_stop.webp",
+        "caption": "Panel 1 (Beginning): A police cruiser stops Marcus at midnight for a broken taillight."
+      },
+      {
+        "img": "assets/police_trunk.webp",
+        "caption": "Panel 2 (End): Even though Marcus denied consent, the officer opens the trunk without a warrant."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "A delivery driver named Marcus was stopped at midnight for a broken taillight. Although Marcus had his license and registration in order, the officer asked to search the trunk without a warrant or probable cause.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Marcus",
+        "text": "I politely refused, but he opened the trunk anyway and claimed he found suspicious boxes.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Attorney",
+        "text": "That search violated the Fourth Amendment. We will file a motion to suppress every item seized from that trunk.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "At the hearing, the video confirmed Marcus had clearly denied consent. Under the fruit of the poisonous tree doctrine, the judge excluded the evidence, and the prosecutor dismissed the case.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [
+      "probable cause",
+      "motion to suppress",
+      "fruit of the poisonous tree"
+    ],
+    "mcqs": [
+      {
+        "q": "Por que a busca no porta-malas foi considerada ilegal?",
+        "options": [
+          "Porque não havia mandado, consentimento nem causa provável (probable cause)",
+          "Porque era meia-noite",
+          "Porque o carro era novo"
+        ],
+        "correct": 0,
+        "explanation": "Sem mandado, consentimento ou probable cause, a busca viola a 4ª Emenda."
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês pedindo a exclusão da prova ilícita (use: probable cause e motion to suppress).",
+    "targetTerms": [
+      "probable cause",
+      "motion to suppress"
+    ],
+    "modelAnswer": "The officer searched the vehicle without a warrant or probable cause. Therefore, the defense files a motion to suppress the seized evidence."
+  },
+  {
+    "id": "act-7",
+    "badge": "Atividade 7 • Audiência de Fiança",
+    "title": "7. O Pedido de Liberdade",
+    "lengthLabel": "História Média • 3 Quadros",
+    "slides": [
+      {
+        "img": "assets/bail_comic4_p1.webp",
+        "caption": "4-Panel Comic Strip: Prosecutor demands high bail → Defense shows family letters → Judge grants pretrial release → Client walks free. — Quadro 1 de 4"
+      },
+      {
+        "img": "assets/bail_comic4_p2.webp",
+        "caption": "4-Panel Comic Strip: Prosecutor demands high bail → Defense shows family letters → Judge grants pretrial release → Client walks free. — Quadro 2 de 4"
+      },
+      {
+        "img": "assets/bail_comic4_p3.webp",
+        "caption": "4-Panel Comic Strip: Prosecutor demands high bail → Defense shows family letters → Judge grants pretrial release → Client walks free. — Quadro 3 de 4"
+      },
+      {
+        "img": "assets/bail_comic4_p4.webp",
+        "caption": "4-Panel Comic Strip: Prosecutor demands high bail → Defense shows family letters → Judge grants pretrial release → Client walks free. — Quadro 4 de 4"
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Prosecutor",
+        "text": "Your Honor, the prosecution requests high bail because the defendant could be a flight risk.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Defense",
+        "text": "My client has lived in this city for twelve years, supports two children, and works as a nurse. We request pretrial release.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Impressed by the employer letters and family ties, the judge denied the high bail request and granted pretrial release.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [
+      "flight risk",
+      "pretrial release"
+    ],
+    "mcqs": [
+      {
+        "q": "Quais provas convenceram o juiz a conceder a liberdade provisória?",
+        "options": [
+          "Cartas do empregador e fortes vínculos familiares",
+          "Passaporte estrangeiro",
+          "Depósito em dinheiro"
+        ],
+        "correct": 0,
+        "explanation": "'Impressed by the employer letters and family ties, the judge granted pretrial release.'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês afastando o risco de fuga (use: flight risk e pretrial release).",
+    "targetTerms": [
+      "flight risk",
+      "pretrial release"
+    ],
+    "modelAnswer": "My client is not a flight risk because he has strong family ties and a steady job. We respectfully request pretrial release."
+  },
+  {
+    "id": "act-8",
+    "badge": "Atividade 8 • Mistério (Sherlock Holmes)",
+    "title": "8. A Testemunha Silenciosa",
+    "lengthLabel": "História Longa • 3 Quadros",
+    "slides": [
+      {
+        "img": "assets/sherlock_comic4_p1.webp",
+        "caption": "4-Panel Comic Strip: Dark stormy office → Nervous night guard → Holmes inspects muddy boots → Hidden contract found in drawer. — Quadro 1 de 4"
+      },
+      {
+        "img": "assets/sherlock_comic4_p2.webp",
+        "caption": "4-Panel Comic Strip: Dark stormy office → Nervous night guard → Holmes inspects muddy boots → Hidden contract found in drawer. — Quadro 2 de 4"
+      },
+      {
+        "img": "assets/sherlock_comic4_p3.webp",
+        "caption": "4-Panel Comic Strip: Dark stormy office → Nervous night guard → Holmes inspects muddy boots → Hidden contract found in drawer. — Quadro 3 de 4"
+      },
+      {
+        "img": "assets/sherlock_comic4_p4.webp",
+        "caption": "4-Panel Comic Strip: Dark stormy office → Nervous night guard → Holmes inspects muddy boots → Hidden contract found in drawer. — Quadro 4 de 4"
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "A valuable contract vanished from a locked office at night. The guard claimed he saw a man in a blue suit running down the street at nine.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Sherlock",
+        "text": "Impossible, Watson. At nine, a heavy storm knocked out all the street lights, leaving the entire road completely dark.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Confronted with the weather report and his own muddy shoes matching the back garden, the guard admitted he had hidden the contract in a drawer to sell it to a rival company.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [],
+    "mcqs": [
+      {
+        "q": "Como Sherlock provou que o guarda noturno estava mentindo?",
+        "options": [
+          "A rua estava totalmente escura sem luzes por causa da tempestade",
+          "O guarda estava dormindo",
+          "O contrato estava no bolso"
+        ],
+        "correct": 0,
+        "explanation": "'A heavy storm knocked out all the street lights, leaving the entire road completely dark.'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês apontando a contradição de uma testemunha (use: dark e impossible).",
+    "targetTerms": [
+      "dark",
+      "impossible"
+    ],
+    "modelAnswer": "The street was completely dark during the storm. Therefore, it was impossible for the witness to see the color of the suit."
+  },
+  {
+    "id": "act-9",
+    "badge": "Atividade 9 • Imigração (Asilo)",
+    "title": "9. Proteção e Temor Fundado",
+    "lengthLabel": "História Média • 3 Quadros",
+    "slides": [
+      {
+        "img": "assets/asylum.webp",
+        "caption": "Panel 1 (Asylum Interview): The applicant and her attorney present news reports and witness statements to prove a well-founded fear."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Applicant",
+        "text": "I fled my home country because I faced political persecution and received written threats after publishing an article.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Attorney",
+        "text": "Your testimony shows a well-founded fear. We will organize the reports and witness statements before your interview.",
+        "gender": "male"
+      }
+    ],
+    "chunks": [
+      "well-founded fear"
+    ],
+    "mcqs": [
+      {
+        "q": "Qual padrão legal precisa ser demonstrado no pedido de asilo?",
+        "options": [
+          "Temor fundado de perseguição ('well-founded fear')",
+          "Visto de turista",
+          "Contrato de trabalho"
+        ],
+        "correct": 0,
+        "explanation": "O requisito central do asilo é o 'well-founded fear' de perseguição."
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês resumindo um pedido de asilo (use: well-founded fear e persecution).",
+    "targetTerms": [
+      "well-founded fear",
+      "persecution"
+    ],
+    "modelAnswer": "The applicant proved a well-founded fear of political persecution. Her witness statements strongly support the claim."
+  },
+  {
+    "id": "act-10",
+    "badge": "Atividade 10 • Negociação Penal",
+    "title": "10. Aceitar ou Ir a Júri?",
+    "lengthLabel": "História Média • 3 Quadros",
+    "slides": [
+      {
+        "img": "assets/plea.webp",
+        "caption": "Panel 1 (Conference Room): Defense counsel and the prosecutor review the thick police report before deciding on a plea bargain."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Attorney",
+        "text": "The prosecutor offered a plea bargain today, but they want you to plead guilty before we even see the full video evidence.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Client",
+        "text": "Should I accept it to avoid prison?",
+        "gender": "male"
+      },
+      {
+        "speaker": "Attorney",
+        "text": "No. Let's review the police report first. If their proof is weak, we will take this case to trial and fight for a not-guilty verdict.",
+        "gender": "male"
+      }
+    ],
+    "chunks": [
+      "plea bargain"
+    ],
+    "mcqs": [
+      {
+        "q": "Por que o advogado recusou aceitar o acordo imediatamente?",
+        "options": [
+          "Porque queria revisar primeiro o boletim policial e a força das provas",
+          "Porque o cliente queria pagar multa",
+          "Porque o juiz saiu"
+        ],
+        "correct": 0,
+        "explanation": "'Let's review the police report first.'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês orientando o cliente antes de um acordo (use: plea bargain e verdict).",
+    "targetTerms": [
+      "plea bargain",
+      "verdict"
+    ],
+    "modelAnswer": "Do not accept the plea bargain before we review all the evidence. We can fight for a not-guilty verdict at trial."
+  },
+  {
+    "id": "act-11",
+    "badge": "Atividade 11 • Tribunal / Júri",
+    "title": "11. A Virada no Plenário",
+    "lengthLabel": "História Longa • 4 Quadros",
+    "slides": [
+      {
+        "img": "assets/witness.webp",
+        "caption": "Panel 1 (Beginning): The main witness testifies under oath while defense counsel prepares for cross-examination."
+      },
+      {
+        "img": "assets/a11_verdict.webp",
+        "caption": "Panel 2 (End): The jury foreperson stands to deliver the unanimous not-guilty verdict."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "On the final day of the jury trial, the prosecution called their main witness to the stand. The courtroom fell silent as the prosecutor tried to force a quick answer.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Prosecutor",
+        "text": "You saw the defendant near the door, didn't you?",
+        "gender": "male"
+      },
+      {
+        "speaker": "Defense",
+        "text": "Objection, leading the witness, Your Honor! The witness is under oath and must testify from his own memory.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "The judge sustained the objection. During cross-examination, the defense calmly showed the witness's earlier statement saying he had left early. Two hours later, the jury returned a not-guilty verdict, and the client walked out free.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [
+      "objection, leading",
+      "under oath"
+    ],
+    "mcqs": [
+      {
+        "q": "O que significa a decisão do juiz de sustentar a objeção ('sustained the objection')?",
+        "options": [
+          "Acolheu o protesto da defesa contra a pergunta indutiva",
+          "Rejeitou o protesto",
+          "Suspendeu o júri"
+        ],
+        "correct": 0,
+        "explanation": "'Sustained' significa que o juiz acolheu a objeção da defesa."
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês narrando a vitória no júri (use: under oath e verdict).",
+    "targetTerms": [
+      "under oath",
+      "verdict"
+    ],
+    "modelAnswer": "During cross-examination, the witness admitted the contradiction under oath. Shortly after, the jury returned a not-guilty verdict."
+  },
+  {
+    "id": "act-12",
+    "badge": "Atividade 12 • Viagem & Mistério",
+    "title": "12. A Mala Trocada no Aeroporto",
+    "lengthLabel": "História Média • 2 Quadros",
+    "slides": [
+      {
+        "img": "assets/luggage_comic4_p1.webp",
+        "caption": "4-Panel Comic Strip: Wrong suit in hotel → Hurrying to Lost & Found → Agent checks tags → Travelers swap suitcases in relief. — Quadro 1 de 4"
+      },
+      {
+        "img": "assets/luggage_comic4_p2.webp",
+        "caption": "4-Panel Comic Strip: Wrong suit in hotel → Hurrying to Lost & Found → Agent checks tags → Travelers swap suitcases in relief. — Quadro 2 de 4"
+      },
+      {
+        "img": "assets/luggage_comic4_p3.webp",
+        "caption": "4-Panel Comic Strip: Wrong suit in hotel → Hurrying to Lost & Found → Agent checks tags → Travelers swap suitcases in relief. — Quadro 3 de 4"
+      },
+      {
+        "img": "assets/luggage_comic4_p4.webp",
+        "caption": "4-Panel Comic Strip: Wrong suit in hotel → Hurrying to Lost & Found → Agent checks tags → Travelers swap suitcases in relief. — Quadro 4 de 4"
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "When Elena opened her suitcase at the hotel, she was shocked to find a stranger's suit instead of her own clothes. She hurried back to the airport desk with her baggage receipt.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Officer",
+        "text": "Don't worry, ma'am. Another passenger just called reporting a missing bag with the exact same name tag color.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Within an hour, both travelers met at the counter, checked their luggage tags, and laughed in relief.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [],
+    "mcqs": [
+      {
+        "q": "Como Elena percebeu que havia pegado a mala errada?",
+        "options": [
+          "Ao abrir a mala no hotel e encontrar um terno desconhecido",
+          "No portão de embarque",
+          "Pelo peso da bolsa"
+        ],
+        "correct": 0,
+        "explanation": "'When Elena opened her suitcase at the hotel, she was shocked to find a stranger's suit.'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês relatando o extravio/troca de bagagem no balcão (use: suitcase e receipt).",
+    "targetTerms": [
+      "suitcase",
+      "receipt"
+    ],
+    "modelAnswer": "Excuse me, I accidentally took the wrong suitcase from the airport. Here is my baggage receipt so we can check the tag number."
+  },
+  {
+    "id": "act-13",
+    "badge": "Atividade 13 • Direito Penal (Álibi)",
+    "title": "13. O Álibi da Tempestade",
+    "lengthLabel": "História Longa • 3 Quadros",
+    "slides": [
+      {
+        "img": "assets/storm_alibi.webp",
+        "caption": "Panel 1 (Midnight Alibi): Daniel's sedan drives past the highway gas station clock thirty miles away during the storm."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "Daniel was accused of entering a warehouse at midnight. However, he had been driving through a storm thirty miles away when a police officer stopped him for a routine check.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Attorney",
+        "text": "Your Honor, the traffic stop report proves my client could not have been at the warehouse at midnight.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "After a witness confirmed Daniel's presence at a gas station nearby, the prosecutor dismissed all charges.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [],
+    "mcqs": [
+      {
+        "q": "O que provou que Daniel não poderia estar no depósito à meia-noite?",
+        "options": [
+          "O relatório da abordagem policial a 30 milhas de distância",
+          "Uma foto antiga",
+          "Um telefonema"
+        ],
+        "correct": 0,
+        "explanation": "'The traffic stop report proves my client could not have been at the warehouse at midnight.'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês sustentando um álibi em juízo (use: report e dismissed).",
+    "targetTerms": [
+      "report",
+      "dismissed"
+    ],
+    "modelAnswer": "The police report proves my client was thirty miles away at midnight. Therefore, all charges should be dismissed."
+  },
+  {
+    "id": "act-14",
+    "badge": "Atividade 14 • Negócios & Cotidiano",
+    "title": "14. O Jantar do Acordo",
+    "lengthLabel": "História Média • 3 Quadros",
+    "slides": [
+      {
+        "img": "assets/settlement.webp",
+        "caption": "Panel 1 (Settlement): Both business partners shake hands over the signed contract with their attorney present."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "After months of tense emails, two business partners met at a quiet restaurant to settle a contract dispute without going to court.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Partner",
+        "text": "If we agree on a clear payment date, both companies save money and time.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "They reviewed the revised terms over dinner, shook hands, and signed the final agreement at the law office the next morning.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [],
+    "mcqs": [
+      {
+        "q": "Qual foi o objetivo do encontro no restaurante?",
+        "options": [
+          "Resolver uma disputa contratual sem ir ao tribunal",
+          "Festejar um aniversário",
+          "Demitir um gerente"
+        ],
+        "correct": 0,
+        "explanation": "'To settle a contract dispute without going to court.'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês propondo um acordo amigável (use: contract e agree).",
+    "targetTerms": [
+      "contract",
+      "agree"
+    ],
+    "modelAnswer": "If we agree on a clear payment date, we can settle this contract dispute outside court. Let's sign the final terms tomorrow morning."
+  },
+  {
+    "id": "act-15",
+    "badge": "Atividade 15 • Caso Complexo (Crime & Júri)",
+    "title": "15. O Mistério do Cofre",
+    "lengthLabel": "Super História • 6 Quadros",
+    "slides": [
+      {
+        "img": "assets/vault_crime.webp",
+        "caption": "Panel 1 (Beginning): At 1:00 a.m. during a storm, police tape seals off a shattered corporate bank vault where three million dollars vanished."
+      },
+      {
+        "img": "assets/interrogation.webp",
+        "caption": "Panel 2 (Pressure): Arrested because his employee badge opened the lobby, Ethan refuses to sign a statement and invokes his right to counsel."
+      },
+      {
+        "img": "assets/forensic_log.webp",
+        "caption": "Panel 3 (Discovery): Late at night, the defense team and a digital forensics expert spot a twelve-minute gap in the digital metadata."
+      },
+      {
+        "img": "assets/hostile_witness.webp",
+        "caption": "Panel 4 (Confrontation): On the witness stand, the chief security officer sweats as defense counsel confronts him with the altered badge logs."
+      },
+      {
+        "img": "assets/closing_jury.webp",
+        "caption": "Panel 5 (Climax): Under the courtroom lights, the defense attorney delivers a passionate closing argument on reasonable doubt."
+      },
+      {
+        "img": "assets/acquittal_dawn.webp",
+        "caption": "Panel 6 (End): At dawn on the courthouse steps, Ethan embraces his family after a full acquittal."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "At one in the morning during a fierce winter storm, alarms echoed through the marble lobby of Vance Financial. Three million dollars in bearer bonds had vanished from a shattered steel vault, and investigators immediately focused on Ethan Cole, a quiet software engineer whose electronic badge had unlocked the main entrance twenty minutes before the alarm.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Detective",
+        "text": "Your badge opened the door at midnight, Ethan, and the lobby camera went dark two minutes later. Sign this statement now, and things will go much easier for you.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Ethan",
+        "text": "I was miles away at home with my family during the storm. I am not signing anything, and I invoke my right to counsel immediately.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Prosecutors charged Ethan with grand theft and conspiracy, building their entire case on circumstantial evidence. With only four weeks before the jury trial, Ethan's defense attorney hired a digital forensics specialist to examine the raw server logs.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Defense Counsel",
+        "text": "Wait a second—look closely at the digital metadata on this security file. The timestamp on Ethan's badge was manually edited twelve minutes after the robbery, and the chain of custody for the backup drive is completely missing!",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "On the third day of trial, the prosecution called the company's chief security officer, Victor Hale, to testify that the electronic logs were impossible to alter. The courtroom grew tense as the defense stood up for cross-examination.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Defense (Cross-Exam)",
+        "text": "Mr. Hale, you are under oath. Isn't it true that your own master password accessed the badge server at 12:14 a.m., right before the original log was overwritten?",
+        "gender": "male"
+      },
+      {
+        "speaker": "Security Chief",
+        "text": "I... I may have run a routine system update from home, but I never touched the vault!",
+        "gender": "male"
+      },
+      {
+        "speaker": "Defense (Closing)",
+        "text": "Ladies and gentlemen of the jury, a broken chain of custody and altered digital metadata cannot send an innocent man to prison. Because we proved a fatal contradiction to impeach the witness, you are left with undeniable reasonable doubt.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "After just ninety minutes of deliberation, the jury returned a unanimous not-guilty verdict. Outside at dawn, Ethan walked down the courthouse steps to an emotional acquittal, while federal investigators opened a new inquiry into the security chief.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [
+      "invoke my right to counsel",
+      "circumstantial evidence",
+      "digital metadata",
+      "chain of custody",
+      "under oath",
+      "impeach the witness",
+      "reasonable doubt",
+      "acquittal"
+    ],
+    "mcqs": [
+      {
+        "q": "Qual atitude de Ethan durante o interrogatório policial protegeu sua defesa?",
+        "options": [
+          "Assinar a confissão para sair mais rápido",
+          "Invocar imediatamente seu direito a um advogado ('invoke my right to counsel')",
+          "Apagar os arquivos do servidor"
+        ],
+        "correct": 1,
+        "explanation": "Ethan recusou assinar e disse: 'I invoke my right to counsel immediately.'"
+      },
+      {
+        "q": "Qual falha técnica desmontou a acusação durante a perícia da defesa?",
+        "options": [
+          "O horário do crachá foi editado manualmente nos metadados digitais e faltava cadeia de custódia do backup",
+          "A porta do cofre estava destrancada",
+          "O alarme estava desligado havia um mês"
+        ],
+        "correct": 0,
+        "explanation": "A defesa provou que 'the digital metadata... was manually edited' e que 'the chain of custody... is completely missing'."
+      },
+      {
+        "q": "Como a defesa abalou a credibilidade do chefe de segurança ('impeach the witness') no tribunal?",
+        "options": [
+          "Mostrando que a senha-mestre dele acessou o servidor às 00h14, logo antes da alteração do registro",
+          "Apresentando um vídeo dele no aeroporto",
+          "Pedindo o adiamento do júri"
+        ],
+        "correct": 0,
+        "explanation": "'Your own master password accessed the badge server at 12:14 a.m., right before the original log was overwritten.'"
+      }
+    ],
+    "writingPrompt": "Escreva 3 frases em inglês resumindo a estratégia da defesa no Caso do Cofre (use: chain of custody, digital metadata e reasonable doubt).",
+    "targetTerms": [
+      "chain of custody",
+      "digital metadata",
+      "reasonable doubt"
+    ],
+    "modelAnswer": "The defense uncovered a break in the chain of custody and proved that the digital metadata had been manually altered. During cross-examination, counsel impeached the security chief and created reasonable doubt, leading to a full acquittal."
+  },
+  {
+    "id": "act-16",
+    "badge": "Atividade 16 • Épico Jurídico (50 Partes)",
+    "title": "16. O Julgamento da Sombra",
+    "lengthLabel": "Super Caso • 8 Quadros",
+    "slides": [
+      {
+        "img": "assets/a16_harbor.webp",
+        "caption": "Panel 1 (Midnight Crime Scene): Police cruisers and an ambulance surround the rainy harbor pier after a fatal gunshot."
+      },
+      {
+        "img": "assets/a16_arrest.webp",
+        "caption": "Panel 2 (The Arrest): Detective Maya arrests architect Arthur Hayes in his hallway and reads his Miranda rights."
+      },
+      {
+        "img": "assets/a16_jail.webp",
+        "caption": "Panel 3 (Prison Consultation): Across the glass, defense attorney Elena Vance listens to Arthur's timeline."
+      },
+      {
+        "img": "assets/a16_dashcam.webp",
+        "caption": "Panel 4 (Hidden Dashcam): Late at night, Elena discovers suppressed police dashcam footage of a dark SUV fleeing."
+      },
+      {
+        "img": "assets/a16_brady.webp",
+        "caption": "Panel 5 (Brady Motion): Judge Carter confronts the prosecutor over the withheld USB drive of exculpatory evidence."
+      },
+      {
+        "img": "assets/a16_ballistics.webp",
+        "caption": "Panel 6 (Ballistics Proof): Forensic expert Dr. Miller demonstrates that the bullet came from an elevated catwalk."
+      },
+      {
+        "img": "assets/a16_breakdown.webp",
+        "caption": "Panel 7 (The Collapse): Confronted with Exhibit B on the stand, the key witness breaks down in panic."
+      },
+      {
+        "img": "assets/a16_freedom.webp",
+        "caption": "Panel 8 (Victory at Dawn): Acquitted by the jury, Arthur shakes hands with Elena outside the courthouse."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "Cold rain hammered the harbor pier at midnight when a single gunshot echoed behind Warehouse Nine. Within minutes, police cruisers and an ambulance blocked the wet asphalt under flashing blue lights. The victim was Victor Lane, a city inspector investigating illegal port contracts. Two hours later, Detective Maya knocked loudly on the apartment door of Arthur Hayes, a young architect.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Detective Maya",
+        "text": "Arthur Hayes, you are under arrest for murder. You have the right to remain silent.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Arthur",
+        "text": "Murder? I have never owned a gun in my life! What are you talking about?",
+        "gender": "male"
+      },
+      {
+        "speaker": "Detective Maya",
+        "text": "A witness saw your coat near the pier, and your blueprints were inside Victor's briefcase.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Arthur",
+        "text": "I met him earlier to report safety violations! I want my lawyer before I say another word.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "The next morning, criminal defense attorney Elena Vance met Arthur behind the thick glass of the detention center.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "Stay calm, Arthur. Tell me every minute of your night, from dinner until the police arrived.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Arthur",
+        "text": "I left the pier at ten, took a taxi home, and never went back. Someone is framing me.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "We will pull your taxi receipt, your phone tower records, and every camera along that avenue.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "At the bail hearing, Prosecutor Brooks argued that Arthur posed an extreme flight risk.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Prosecutor Brooks",
+        "text": "Your Honor, this is an execution-style killing of a public official. Bail must be denied.",
+        "gender": "male"
       },
       {
         "speaker": "Judge Carter",
-        "voiceRole": "female",
-        "text": "The bodycam footage is clear. The evidence is inadmissible and the motion is granted."
-      }
-    ],
-    "dictionary": {
-      "trunk": {
-        "pt": "porta-malas",
-        "note": "Compartimento traseiro do veículo."
+        "text": "Given the gravity of the charge, the defendant is remanded without bail pending trial.",
+        "gender": "female"
       },
-      "warrant": {
-        "pt": "mandado judicial",
-        "note": "Ordem escrita assinada por juiz."
-      },
-      "probable": {
-        "pt": "provável",
-        "note": "Em 'probable cause', justa causa / fundadas razões."
-      },
-      "filed": {
-        "pt": "protocolamos",
-        "note": "Ato de apresentar petição nos autos."
-      },
-      "motion": {
-        "pt": "requerimento / petição incidental",
-        "note": "Em 'motion to suppress', pedido de desentranhamento de prova ilícita."
-      },
-      "violated": {
-        "pt": "violou",
-        "note": "Descumpriu garantia legal."
-      },
-      "inadmissible": {
-        "pt": "inadmissível",
-        "note": "Prova que não pode ser usada no julgamento."
-      },
-      "granted": {
-        "pt": "deferido",
-        "note": "Pedido aceito pelo juiz."
-      }
-    },
-    "quiz": [
       {
-        "question": "Why did the judge grant the motion to suppress?",
-        "options": [
-          "The officer had no warrant or probable cause",
-          "The defendant arrived early",
-          "The prosecutor forgot the file"
-        ],
-        "answerIndex": 0
+        "speaker": "Narrator",
+        "text": "For three weeks, Elena and her investigator combed through thousands of pages of police discovery.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "Wait—look at this patrol log. Unit Seven arrived at 11:58 p.m., yet their dashcam file is missing from discovery!",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Elena served an immediate subpoena on the city fleet server and recovered the unedited video at midnight.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "Look at the screen! At 11:59 p.m., a black SUV with tinted windows sped away from Warehouse Nine!",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "The next morning, Elena walked into court carrying the USB drive and an emergency constitutional motion.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "Your Honor, the state committed a grave Brady violation by hiding exculpatory evidence!",
+        "gender": "female"
+      },
+      {
+        "speaker": "Judge Carter",
+        "text": "Prosecutor Brooks, did your office possess this dashcam footage before today?",
+        "gender": "female"
+      },
+      {
+        "speaker": "Prosecutor Brooks",
+        "text": "Your Honor, it was an administrative clerical delay. We never intended to hide anything.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Judge Carter",
+        "text": "That excuse is unacceptable. The video is admitted, and the defense may recall any witness.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "On day four of the jury trial, Elena called forensic ballistics expert Dr. Alan Miller to the stand.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "Dr. Miller, please show the jury your ballistics report on the angle of the fatal shot.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Dr. Miller",
+        "text": "The bullet traveled downward at a forty-degree angle, fired from the upper steel catwalk.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "Could a man standing on the wet pier at street level have fired that shot?",
+        "gender": "female"
+      },
+      {
+        "speaker": "Dr. Miller",
+        "text": "Physically impossible. The shooter was waiting above on the catwalk long before midnight.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "A murmur rippled through the jury box as the prosecution's timeline began to crumble. Next, the state's star eyewitness, Julian Mercer, returned to the witness stand looking pale.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Prosecutor Brooks",
+        "text": "Mr. Mercer, you testified under oath that you saw Arthur near the warehouse at midnight, correct?",
+        "gender": "male"
+      },
+      {
+        "speaker": "Julian Mercer",
+        "text": "Yes... I was walking my dog and saw a man in a gray coat.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "Mr. Mercer, look at Exhibit B on the courtroom monitor. Recognize that black SUV?",
+        "gender": "female"
+      },
+      {
+        "speaker": "Julian Mercer",
+        "text": "I... I don't know whose vehicle that is!",
+        "gender": "male"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "Our records show that SUV is registered to your own construction firm, which Victor was about to shut down!",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Mercer gripped the wooden rail of the witness stand as sweat broke across his forehead.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "And wasn't your badge scanned at the upper catwalk door at 11:45 p.m.?",
+        "gender": "female"
+      },
+      {
+        "speaker": "Julian Mercer",
+        "text": "I didn't mean for it to happen! Victor refused to drop the inspection report!",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Gasps filled the gallery as court marshals stepped immediately toward the witness box.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Prosecutor Brooks",
+        "text": "Objection! Your Honor, the state moves for a brief recess!",
+        "gender": "male"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "No recess, Your Honor! The defense moves for an immediate judgment of acquittal!",
+        "gender": "female"
+      },
+      {
+        "speaker": "Judge Carter",
+        "text": "Counsel, I will let the jury hear closing arguments and render their verdict directly.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Elena Vance",
+        "text": "Ladies and gentlemen, the state built its case on assumptions and hid the truth. Ballistics, dashcam video, and a stunned confession leave zero doubt of Arthur's innocence.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "The twelve jurors retired to the deliberation room and returned in just twenty-two minutes.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Judge Carter",
+        "text": "Madam Foreperson, has the jury reached a unanimous verdict?",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "On all counts of murder and conspiracy, the foreperson read aloud: Not Guilty.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Arthur",
+        "text": "Thank you, Elena. You never stopped fighting when everyone else assumed I was guilty.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Outside in the bright morning sun, Arthur stepped into freedom while justice finally turned toward the real killer.",
+        "gender": "narrator"
       }
     ],
-    "writingPrompt": "Explique em 2 frases em inglês por que uma prova obtida sem mandado pode ser excluída, usando 'warrant' e 'inadmissible'.",
-    "modelAnswer": "The officer searched the car without a warrant or probable cause. Therefore, the evidence is inadmissible in court."
+    "chunks": [
+      "brady violation",
+      "exculpatory evidence",
+      "ballistics report",
+      "under oath",
+      "judgment of acquittal",
+      "reasonable doubt",
+      "flight risk"
+    ],
+    "mcqs": [
+      {
+        "q": "Qual prova ocultada pela acusação configurou uma grave 'Brady violation'?",
+        "options": [
+          "O recibo do táxi de Arthur",
+          "O vídeo da câmera da viatura (dashcam) mostrando um SUV preto fugindo do cais",
+          "O laudo médico da vítima"
+        ],
+        "correct": 1,
+        "explanation": "A defesa recuperou o vídeo de dashcam que havia sido omitido da descoberta probatória."
+      },
+      {
+        "q": "O que o laudo balístico ('ballistics report') do Dr. Miller comprovou ao júri?",
+        "options": [
+          "Que o disparo veio de cima, da passarela de aço, em ângulo de 40 graus",
+          "Que a arma pertencia a Arthur",
+          "Que havia dois atiradores no táxi"
+        ],
+        "correct": 0,
+        "explanation": "'The bullet traveled downward at a forty-degree angle, fired from the upper steel catwalk.'"
+      },
+      {
+        "q": "Por que a testemunha Julian Mercer entrou em colapso no tribunal?",
+        "options": [
+          "Porque o SUV preto fugindo e o acesso à passarela estavam ligados a ele próprio",
+          "Porque esqueceu o próprio nome",
+          "Porque o juiz aplicou multa"
+        ],
+        "correct": 0,
+        "explanation": "Elena revelou que o SUV pertencia à empresa de Mercer e que o crachá dele abriu a passarela às 23h45."
+      }
+    ],
+    "writingPrompt": "Escreva 3 frases em inglês resumindo como Elena venceu 'The Shadow Trial' (use: Brady violation, ballistics report e acquittal).",
+    "targetTerms": [
+      "Brady violation",
+      "ballistics report",
+      "acquittal"
+    ],
+    "modelAnswer": "Elena Vance exposed a Brady violation when she recovered the hidden dashcam footage. Combined with the ballistics report and the witness's collapse on cross-examination, the jury returned a unanimous acquittal."
+  },
+  {
+    "id": "act-17",
+    "badge": "Atividade 17 • Tirinhas com Balões (Trabalho)",
+    "title": "17. Demissão Sem Justa Causa",
+    "lengthLabel": "Tirinhas • 2 Páginas (8 Cenas)",
+    "slides": [
+      {
+        "img": "assets/a17_strip1.webp",
+        "caption": "Comic Strip 1 (Beginning): Fired without notice, the worker brings his employment contract to a lawyer who spots a protective clause."
+      },
+      {
+        "img": "assets/a17_strip2.webp",
+        "caption": "Comic Strip 2 (End): In mediation, the lawyer rejects a 50% offer and wins full severance pay."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "On Monday morning, Leo's manager abruptly fired him without warning, claiming budget cuts. Leo immediately brought his signed contract to employment attorney Sofia Mendes.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Leo",
+        "text": "They broke my contract! My boss told me I was fired today and refused to pay my bonus.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Sofia Mendes",
+        "text": "Look at paragraph four—this clause protects you. Firing you without thirty days' notice is a clear breach of contract. We demand full severance pay.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Two weeks later, both sides met in a glass mediation room with a neutral mediator.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Company Lawyer",
+        "text": "To avoid a lawsuit, we offer fifty percent of the remaining contract value.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Sofia Mendes",
+        "text": "Not enough. Full pay, plus legal fees, or we file in court tomorrow morning.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "After a brief private caucus, the company agreed to pay one hundred percent of Leo's severance pay.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [
+      "breach of contract",
+      "severance pay"
+    ],
+    "mcqs": [
+      {
+        "q": "Qual cláusula contratual protegeu Leo segundo a advogada Sofia Mendes?",
+        "options": [
+          "A obrigação de aviso prévio de 30 dias que tornou a demissão uma quebra de contrato",
+          "Uma cláusula de sigilo",
+          "Um bônus de viagem"
+        ],
+        "correct": 0,
+        "explanation": "'Firing you without thirty days' notice is a clear breach of contract.'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês exigindo verbas rescisórias por quebra de contrato (use: breach of contract e severance pay).",
+    "targetTerms": [
+      "breach of contract",
+      "severance pay"
+    ],
+    "modelAnswer": "Firing the employee without notice was a breach of contract. Therefore, we demand full severance pay."
+  },
+  {
+    "id": "act-18",
+    "badge": "Atividade 18 • Tirinhas com Balões (Cibercrime)",
+    "title": "18. Fraude Cibernética",
+    "lengthLabel": "Tirinhas • 2 Páginas (8 Cenas)",
+    "slides": [
+      {
+        "img": "assets/a18_strip1.webp",
+        "caption": "Comic Strip 1 (Beginning): An accountant spots a $2M wire fraud, alerts cyber detectives, traces the IP, and police raid the office."
+      },
+      {
+        "img": "assets/a18_strip2.webp",
+        "caption": "Comic Strip 2 (End): The suspect demands a lawyer, funds are recovered, the judge rules guilty, and the firm is saved."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "At four in the afternoon, senior accountant David noticed an unauthorized wire transfer leaving the company account.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "David",
+        "text": "Someone wired two million dollars to an overseas bank! Call the cyber unit and freeze the account now!",
+        "gender": "male"
+      },
+      {
+        "speaker": "Cyber Analyst",
+        "text": "I traced the IP address to an apartment three blocks away—an insider used stolen credentials!",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Within an hour, tactical officers raided the room and arrested the former IT contractor.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Prosecutor",
+        "text": "Your Honor, the funds were recovered before clearing, and the server logs prove intentional wire fraud.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Judge",
+        "text": "Guilty as charged! The defendant is sentenced to federal prison and full restitution.",
+        "gender": "male"
+      }
+    ],
+    "chunks": [
+      "wire fraud"
+    ],
+    "mcqs": [
+      {
+        "q": "Como a equipe descobriu que a fraude partiu de um ex-colaborador interno?",
+        "options": [
+          "Rastreando o endereço IP até um apartamento próximo com credenciais roubadas",
+          "Por uma carta anônima",
+          "Pelo telefone"
+        ],
+        "correct": 0,
+        "explanation": "'I traced the IP address to an apartment three blocks away—an insider used stolen credentials!'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês descrevendo a descoberta e recuperação de uma fraude eletrônica (use: wire fraud e traced).",
+    "targetTerms": [
+      "wire fraud",
+      "traced"
+    ],
+    "modelAnswer": "Analysts traced the IP address and stopped the two-million-dollar wire fraud in time. All stolen funds were recovered."
+  },
+  {
+    "id": "act-19",
+    "badge": "Atividade 19 • Erro Médico & Perícia",
+    "title": "19. O Prontuário Adulterado",
+    "lengthLabel": "História Longa • 2 Quadros",
+    "slides": [
+      {
+        "img": "assets/a19_charts.webp",
+        "caption": "Panel 1 (Discovery): A female attorney and a medical expert compare two hospital charts and circle an altered timestamp in red."
+      },
+      {
+        "img": "assets/a19_settlement.webp",
+        "caption": "Panel 2 (End): The judge approves a full settlement as the relieved family thanks their lawyer."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "When a young father suffered severe complications after routine surgery, the hospital claimed his chart showed timely care. Suspecting a cover-up, attorney Carla Dias consulted an independent surgeon, Dr. Ben Ross.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Dr. Ross",
+        "text": "Look at the nurse's original printed sheet versus the electronic file. Someone changed the medication timestamp by four hours—this is clear medical malpractice.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Carla Dias",
+        "text": "We will subpoena the hospital audit trail and present both charts to the court.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Faced with undeniable digital audit logs proving the chart was altered, the hospital's insurers settled the case in full, and the judge approved the compensation to secure the family's future.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [
+      "medical malpractice"
+    ],
+    "mcqs": [
+      {
+        "q": "O que a comparação entre a folha impressa e o arquivo eletrônico revelou?",
+        "options": [
+          "Que o horário da medicação havia sido alterado em quatro horas",
+          "Que o paciente recebeu alta cedo",
+          "Que não houve cirurgia"
+        ],
+        "correct": 0,
+        "explanation": "'Someone changed the medication timestamp by four hours.'"
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês explicando como o erro médico foi provado (use: medical malpractice e audit).",
+    "targetTerms": [
+      "medical malpractice",
+      "audit"
+    ],
+    "modelAnswer": "The digital audit trail proved that the hospital altered the chart after the incident. That evidence established clear medical malpractice."
+  },
+  {
+    "id": "act-20",
+    "badge": "Atividade 20 • Grande Épico Final (Pequeno Livro)",
+    "title": "20. A Conspiração da Ilha",
+    "lengthLabel": "Livro Curto • 4 Quadros Exclusivos",
+    "slides": [
+      {
+        "img": "assets/a20_yacht.webp",
+        "caption": "Panel 1 (The Explosion): On a stormy night, a whistleblower's yacht erupts in flames at the marina moments after he sends an encrypted warning."
+      },
+      {
+        "img": "assets/a20_safe.webp",
+        "caption": "Panel 2 (The Hidden Safe): Inside a dim corporate study, investigators uncover offshore shell-company ledgers and an encrypted USB drive."
+      },
+      {
+        "img": "assets/a20_supreme.webp",
+        "caption": "Panel 3 (Federal Appellate Court): Before three senior federal judges and a packed gallery, defense counsel argues constitutional immunity."
+      },
+      {
+        "img": "assets/a20_dawn.webp",
+        "caption": "Panel 4 (Sunrise Justice): Walking down the marble courthouse steps at sunrise, the whistleblower and his attorneys celebrate a historic victory."
+      }
+    ],
+    "lines": [
+      {
+        "speaker": "Narrator",
+        "text": "Chapter One: The Burning Pier. Rain lashed the coastal marina at two in the morning when a deafening explosion tore through a forty-foot yacht moored at Dock Four. Coast guard boats and fire crews raced through black waves, believing financial auditor Gabriel Costa had perished inside. Yet Gabriel had stepped onto the dock five minutes earlier after receiving an anonymous text warning him to run.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Gabriel",
+        "text": "They tried to silence me because I found two hundred million dollars routed through an offshore shell company.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Three blocks away, federal defense attorney Claire Lin welcomed Gabriel into a secure office and locked the heavy oak shutters.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Claire Lin",
+        "text": "You are alive, and that gives us one chance. As a federal whistleblower, the law protects you if we reach the grand jury before Senator Hale's allies bury the file.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Gabriel",
+        "text": "I copied the encrypted ledgers before leaving the building, and I know where the original paper books are hidden.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Chapter Two: The Wall Safe. Under a sealed federal search warrant executed before dawn, investigators opened a concealed steel safe behind an oil painting in the corporation's executive suite. Inside lay leather-bound ledgers labeled Panama alongside a hardware-encrypted black USB drive.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Agent Mercer",
+        "text": "These wire transfers link the port authority bribes directly to the yacht's fuel-line sabotage.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Claire Lin",
+        "text": "Keep every item logged in an unbroken chain of custody. Tonight, Senator Hale's lawyers will try to quash our subpoena.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Chapter Three: The Federal Counterattack. Within forty-eight hours, powerful defense lawyers for the conglomerate filed an emergency motion accusing Gabriel of corporate espionage and theft of trade secrets, attempting to arrest the whistleblower himself.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Opposing Counsel",
+        "text": "Your Honors, Mr. Costa stole proprietary banking records and fled a crime scene. His testimony is tainted and inadmissible.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "The case escalated rapidly to a three-judge federal appellate panel in a packed marble courtroom. Reporters lined the gallery as Claire Lin stepped up to the central wooden podium.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Claire Lin",
+        "text": "May it please the Court. A citizen who exposes massive fraud and survives an assassination attempt is not a thief—he is a protected whistleblower under federal statute.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Chief Judge",
+        "text": "Counsel, did Mr. Costa obtain the Panama ledgers under a valid judicial warrant or on his own initiative?",
+        "gender": "male"
+      },
+      {
+        "speaker": "Claire Lin",
+        "text": "The physical ledgers were seized by federal agents under a duly signed warrant, Your Honor. Mr. Costa merely preserved digital metadata that the defendants were actively shredding.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Judge Alvarez",
+        "text": "And what of the opposing claim that the yacht explosion was an accidental electrical fire?",
+        "gender": "female"
+      },
+      {
+        "speaker": "Claire Lin",
+        "text": "Our marine forensics report found military-grade accelerant on the starboard hull, matched to the same shell company's security contractor.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "Chapter Four: The Grand Jury & Dawn. After two hours of intense questioning, the three-judge panel issued an immediate ruling affirming Gabriel's whistleblower immunity and ordering the unsealing of all offshore records.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Chief Judge",
+        "text": "The motion to suppress the whistleblower's disclosures is denied. The grand jury may proceed without delay.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "That very evening, the federal grand jury returned sweeping indictments for wire fraud, bribery, and conspiracy against the executives behind the shell company. Every frozen offshore account was traced and placed into court receivership.",
+        "gender": "narrator"
+      },
+      {
+        "speaker": "Agent Mercer",
+        "text": "Gabriel, your courage uncovered the largest maritime corruption ring in the state's history.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Gabriel",
+        "text": "I could never have survived this storm without a lawyer who stood her ground before the highest bench.",
+        "gender": "male"
+      },
+      {
+        "speaker": "Claire Lin",
+        "text": "The law only works when someone refuses to look away. You can finally go home in peace.",
+        "gender": "female"
+      },
+      {
+        "speaker": "Narrator",
+        "text": "At golden sunrise, Gabriel walked down the grand marble steps of the federal courthouse beside Claire Lin and his co-counsel, knowing that truth and the rule of law had prevailed at last.",
+        "gender": "narrator"
+      }
+    ],
+    "chunks": [
+      "shell company",
+      "whistleblower",
+      "grand jury",
+      "chain of custody",
+      "wire fraud",
+      "digital metadata"
+    ],
+    "mcqs": [
+      {
+        "q": "Por que Gabriel Costa sobreviveu à explosão do iate na marina?",
+        "options": [
+          "Porque recebeu uma mensagem anônima de alerta e saiu para o cais cinco minutos antes",
+          "Porque estava viajando de avião",
+          "Porque o iate não tinha combustível"
+        ],
+        "correct": 0,
+        "explanation": "'Gabriel had stepped onto the dock five minutes earlier after receiving an anonymous text warning him to run.'"
+      },
+      {
+        "q": "Como Claire Lin rebateu a acusação de que Gabriel havia cometido espionagem corporativa?",
+        "options": [
+          "Demonstrando que os livros físicos foram apreendidos por mandado judicial e ele apenas preservou metadados protegidos como whistleblower",
+          "Pedindo o arquivamento por prescrição",
+          "Negando que Gabriel trabalhasse na empresa"
+        ],
+        "correct": 0,
+        "explanation": "Claire explicou que os livros foram apreendidos com mandado válido e Gabriel agiu sob proteção federal de whistleblower."
+      },
+      {
+        "q": "Qual foi o resultado final após a decisão do painel de três juízes federais?",
+        "options": [
+          "O grande júri formalizou acusações por fraude eletrônica, suborno e conspiração, e as contas offshore foram bloqueadas",
+          "O caso foi transferido para outro país",
+          "Todas as provas foram anuladas"
+        ],
+        "correct": 0,
+        "explanation": "'The federal grand jury returned sweeping indictments for wire fraud, bribery, and conspiracy.'"
+      }
+    ],
+    "writingPrompt": "Grande Final! Escreva 3 frases em inglês resumindo 'The Island Conspiracy' (use: whistleblower, shell company e grand jury).",
+    "targetTerms": [
+      "whistleblower",
+      "shell company",
+      "grand jury"
+    ],
+    "modelAnswer": "After surviving an attack, the whistleblower exposed a massive offshore shell company. His attorney protected his disclosures in federal court, and the grand jury issued sweeping indictments."
   }
 ]

@@ -1,15 +1,17 @@
 {
-  "name": "LexTale — Legal English Stories",
+  "name": "LexTale — JurisLingQ",
   "short_name": "LexTale",
-  "start_url": "./index.html",
+  "description": "20 Histórias em Quadrinhos Interativas para Inglês Jurídico e Cotidiano",
+  "start_url": "./",
   "display": "standalone",
-  "background_color": "#0b1220",
-  "theme_color": "#0b1220",
+  "background_color": "#0B1324",
+  "theme_color": "#0B1324",
   "icons": [
     {
       "src": "icon.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
 }
