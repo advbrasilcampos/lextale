@@ -235,9 +235,9 @@
     "Pessoa jurídica sem operação real usada para ocultar patrimônio ou lavagem."
   ],
   "grand jury": [
-    "grande júri",
-    "Processo Penal Federal",
-    "Colegiado que decide se há justa causa para oferecer denúncia criminal federal."
+    "Grande Júri (júri de acusação)",
+    "jurídico (EUA × Brasil)",
+    "Nos EUA, decide em sigilo se há justa causa para a denúncia (indictment); no Brasil, não existe — o próprio MP oferece denúncia diretamente."
   ],
   "a": "um / uma",
   "about": "sobre",
@@ -250,7 +250,11 @@
   "all": "todo / tudo",
   "almost": "quase",
   "already": "já",
-  "also": "também",
+  "also": [
+    "além disso / também",
+    "advérbio",
+    "Adição."
+  ],
   "although": "embora",
   "always": "sempre",
   "an": "um / uma",
@@ -259,7 +263,11 @@
   "another": "outro(a)",
   "answered": "respondeu",
   "any": "qualquer",
-  "anyone": "alguém",
+  "anyone": [
+    "alguém / qualquer pessoa",
+    "pronome",
+    "Indefinido."
+  ],
   "apologized": "pediu desculpas",
   "appeared": "compareceu",
   "applicant": "requerente",
@@ -353,7 +361,11 @@
   "exhausted": "exausto",
   "explained": "explicou",
   "eyes": "olhos",
-  "faced": "enfrentou",
+  "faced": [
+    "encararam",
+    "verbo",
+    "Ficaram frente a frente."
+  ],
   "family": "família",
   "fear": "temor",
   "feeling": "sentindo",
@@ -416,7 +428,11 @@
   "immigration": "imigração",
   "impossible": "impossível",
   "impressed": "impressionado",
-  "in": "em",
+  "in": [
+    "em",
+    "preposição",
+    "Preposição de lugar/tempo."
+  ],
   "inadmissible": "inadmissível",
   "informed": "informou",
   "inheritance": "herança",
@@ -443,7 +459,11 @@
   "less": "menos",
   "let's": "vamos",
   "letters": "cartas",
-  "license": "habilitação",
+  "license": [
+    "licença profissional",
+    "jurídico",
+    "Registro de classe."
+  ],
   "light": "luz",
   "lights": "luzes",
   "lived": "morou",
@@ -459,7 +479,11 @@
   "main": "principal",
   "man": "homem",
   "manager": "gerente",
-  "marcus": "Marcus",
+  "marcus": [
+    "Marcus",
+    "nome próprio",
+    "Nome do promotor."
+  ],
   "me": "me / mim",
   "medical": "médico",
   "melted": "derretido",
@@ -485,7 +509,11 @@
   "not": "não",
   "not-guilty": "inocente",
   "noticed": "percebeu",
-  "now": "agora",
+  "now": [
+    "agora",
+    "advérbio",
+    "Neste momento."
+  ],
   "nurse": "enfermeiro(a)",
   "of": "de",
   "off": "fora",
@@ -496,7 +524,11 @@
   "on": "em",
   "opened": "abriu",
   "or": "ou",
-  "order": "ordem",
+  "order": [
+    "ordem / decisão",
+    "jurídico",
+    "Mandamento judicial."
+  ],
   "ordered": "pediram",
   "outside": "do lado de fora",
   "own": "próprio",
@@ -507,13 +539,21 @@
   "passport": "passaporte",
   "persecution": "perseguição",
   "plan": "plano",
-  "plead": "declarar-se",
+  "plead": [
+    "declarar-se",
+    "jurídico",
+    "Responder formalmente à acusação."
+  ],
   "police": "polícia",
   "polite": "educado",
   "politely": "educadamente",
   "political": "política",
   "presented": "apresentou",
-  "printed": "impresso",
+  "printed": [
+    "impresso",
+    "adjetivo",
+    "Em papel."
+  ],
   "prison": "prisão",
   "proof": "prova",
   "prosecution": "acusação",
@@ -540,7 +580,11 @@
   "reservation": "reserva",
   "restored": "restituiu",
   "returned": "retornou",
-  "review": "revisar",
+  "review": [
+    "sindicância / revisão",
+    "jurídico",
+    "Apuração interna."
+  ],
   "reviewing": "revisando",
   "rightful": "legítimo",
   "rival": "rival",
@@ -577,7 +621,11 @@
   "special": "especial",
   "spoke": "falou",
   "spouse": "cônjuge",
-  "stamped": "carimbou",
+  "stamped": [
+    "carimbada",
+    "adjetivo",
+    "Com carimbo oficial."
+  ],
   "stand": "banco das testemunhas",
   "statement": "declaração",
   "station": "estação",
@@ -1392,9 +1440,9 @@
     "Área aberta ou compensação bancária."
   ],
   "clerical": [
-    "administrativo / de cartório",
+    "administrativo / formal",
     "jurídico",
-    "Erro material ou tarefa burocrática (clerical error)."
+    "Relativo a erro ou registro burocrático."
   ],
   "closely": [
     "atentamente / de perto",
@@ -2367,9 +2415,9 @@
     "Passado clínico, criminal ou factual."
   ],
   "holding": [
-    "segurando / tese jurídica",
+    "cela provisória / detenção",
     "jurídico",
-    "Segurando objeto ou entendimento fixado pelo tribunal."
+    "Carceragem do fórum."
   ],
   "hour": [
     "hora",
@@ -2467,9 +2515,9 @@
     "Empresas de seguro."
   ],
   "intended": [
-    "pretendido / intencional",
+    "pretendido",
     "adjetivo",
-    "Planejado."
+    "Intencional."
   ],
   "intense": [
     "intenso",
@@ -2967,9 +3015,9 @@
     "Conseguir."
   ],
   "offer": [
-    "oferta / proposta",
-    "substantivo / verbo",
-    "Proposição de acordo."
+    "oferta",
+    "substantivo",
+    "Proposta de acordo."
   ],
   "official": [
     "oficial",
@@ -3297,9 +3345,9 @@
     "Tornar sem efeito intimação ou ato judicial (motion to quash)."
   ],
   "raced": [
-    "correu rapidamente",
+    "acelerou",
     "verbo",
-    "Disparou em velocidade."
+    "Bateu rápido."
   ],
   "rafael": [
     "Rafael",
@@ -3362,9 +3410,9 @@
     "Acolhendo."
   ],
   "recess": [
-    "recesso / suspensão temporária",
+    "recesso",
     "jurídico",
-    "Pausa curta na audiência decretada pelo juiz."
+    "Suspensão temporária."
   ],
   "recognize": [
     "reconhecer",
@@ -3422,9 +3470,9 @@
     "Reinstaurar procedimento arquivado ou encerrado (motion to reopen)."
   ],
   "reporters": [
-    "repórteres",
+    "repórteres / coletâneas",
     "substantivo",
-    "Jornalistas."
+    "Jornalistas ou livros de jurisprudência."
   ],
   "restaurant": [
     "restaurante",
@@ -3507,9 +3555,9 @@
     "Comum, habitual."
   ],
   "rule": [
-    "regra / decidir",
+    "Regra (Rule 11)",
     "jurídico",
-    "Norma jurídica ou ato do juiz decidir objeção (judge rules)."
+    "Regra Federal de Processo Penal dos EUA que disciplina o Plea Agreement."
   ],
   "ruling": [
     "decisão interlocutória / despacho",
@@ -3562,9 +3610,9 @@
     "Local onde ocorreu o fato (crime scene)."
   ],
   "seal": [
-    "selo / sigilo / lacrar",
+    "sigilo",
     "jurídico",
-    "Lacre de cera ou segredo de justiça (under seal)."
+    "Fechamento de registro criminal."
   ],
   "sealed": [
     "lacrado / sob sigilo",
@@ -3722,7 +3770,7 @@
     "Firmar documento ou indício."
   ],
   "signed": [
-    "assinado / assinou",
+    "assinado",
     "verbo",
     "Firmado."
   ],
@@ -3912,14 +3960,14 @@
     "Transpiração."
   ],
   "sweeping": [
-    "amplo / abrangente",
+    "amplo",
     "adjetivo",
-    "De grande alcance."
+    "Abrangente."
   ],
   "table": [
     "mesa",
     "substantivo",
-    "Móvel (defense table)."
+    "Mesa de negociação."
   ],
   "tactical": [
     "tático",
@@ -4429,11 +4477,1706 @@
   "zero": [
     "zero",
     "numeral",
-    "0."
+    "Nenhum."
   ],
   "corporation": [
     "corporação / sociedade anônima",
     "jurídico / empresarial",
     "Pessoa jurídica societária."
+  ],
+  "mandatory minimum": [
+    "pena mínima obrigatória",
+    "jurídico (EUA × Brasil)",
+    "Pena fixada em lei federal que vincula o juiz americano, impedindo redução abaixo do piso salvo acordo com o promotor (no Brasil, o juiz tem maior margem na dosimetria)."
+  ],
+  "proffer session": [
+    "sessão de proffer ('Rainha por um Dia')",
+    "jurídico (EUA × Brasil)",
+    "Reunião prévia na qual o investigado presta informações ao promotor sob imunidade limitada antes de eventual acordo — semelhante às tratativas preliminares de colaboração premiada."
+  ],
+  "proffer agreement": [
+    "termo de proffer",
+    "jurídico (EUA × Brasil)",
+    "Contrato que regula o que o promotor pode ou não usar das declarações dadas na reunião preliminar."
+  ],
+  "use immunity": [
+    "imunidade de uso",
+    "jurídico",
+    "Garantia de que a fala não será usada diretamente contra o declarante, mas não impede uso para contrapor contradições."
+  ],
+  "plea agreement": [
+    "acordo penal (plea bargain)",
+    "jurídico (EUA × Brasil)",
+    "Acordo entre defesa e promotor em que o réu aceita imputação menor ou pena reduzida, evitando o júri (mais amplo que o ANPP brasileiro)."
+  ],
+  "with prejudice": [
+    "com resolução definitiva / irrepetível",
+    "jurídico",
+    "Arquivamento definitivo que impede a reabertura da acusação pelos mesmos fatos (equivale à coisa julgada material)."
+  ],
+  "personal recognizance": [
+    "liberdade sob compromisso pessoal",
+    "jurídico (EUA × Brasil)",
+    "Soltura sem pagamento de fiança financeira mediante termo de comparecimento (semelhante à liberdade provisória sem fiança no CPP)."
+  ],
+  "sidebar conference": [
+    "conferência reservada na bancada",
+    "jurídico",
+    "Conversa rápida e reservada dos advogados com o juiz fora do alcance do júri."
+  ],
+  "sentencing guidelines": [
+    "diretrizes de dosimetria de pena",
+    "jurídico (EUA × Brasil)",
+    "Tabela federal americana de pontos que calcula a faixa recomendada de prisão (mais rígida que o sistema trifásico do art. 68 do CP brasileiro)."
+  ],
+  "time served": [
+    "pena dada por cumprida",
+    "jurídico",
+    "Detração integral: o tempo já passado em prisão provisória quita a pena final."
+  ],
+  "acknowledging": [
+    "reconhecendo",
+    "verbo",
+    "Admitindo formalmente."
+  ],
+  "advice": [
+    "orientação / aconselhamento",
+    "substantivo",
+    "Recomendação técnica do advogado."
+  ],
+  "alleging": [
+    "alegando",
+    "jurídico",
+    "Sustentando fato ou violação."
+  ],
+  "analyst": [
+    "analista",
+    "profissão",
+    "Especialista em análise financeira."
+  ],
+  "anomaly": [
+    "anomalia",
+    "substantivo",
+    "Irregularidade técnica fora do padrão."
+  ],
+  "argue": [
+    "sustentar / argumentar",
+    "jurídico",
+    "Defender tese perante o juízo."
+  ],
+  "asleep": [
+    "dormindo",
+    "adjetivo",
+    "Em estado de sono."
+  ],
+  "attached": [
+    "anexou",
+    "jurídico",
+    "Juntou aos autos."
+  ],
+  "authentication": [
+    "autenticação",
+    "tecnologia",
+    "Verificação de identidade digital."
+  ],
+  "bargaining": [
+    "negociação / barganha",
+    "jurídico",
+    "Tratativa de acordo."
+  ],
+  "beaded": [
+    "brotou (suor)",
+    "verbo",
+    "Formou gotas."
+  ],
+  "becomes": [
+    "torna-se",
+    "verbo",
+    "Passa a ser."
+  ],
+  "binds": [
+    "vincula",
+    "jurídico",
+    "Obriga legalmente o juiz."
+  ],
+  "biometric": [
+    "biométrico",
+    "tecnologia",
+    "Relativo a impressão digital ou biometria."
+  ],
+  "bold": [
+    "negrito / ousado",
+    "adjetivo",
+    "Texto destacado ou corajoso."
+  ],
+  "booked": [
+    "fichado / recolhido",
+    "jurídico",
+    "Registrado na prisão após captura."
+  ],
+  "boston": [
+    "Boston",
+    "nome próprio",
+    "Cidade de Massachusetts, EUA."
+  ],
+  "broader": [
+    "mais amplo",
+    "adjetivo",
+    "Abrangente."
+  ],
+  "brow": [
+    "testa / sobrancelha",
+    "substantivo",
+    "Parte superior do rosto."
+  ],
+  "cellmates": [
+    "colegas de cela",
+    "substantivo",
+    "Outros detentos."
+  ],
+  "charging": [
+    "de acusação / imputação",
+    "jurídico",
+    "Poder de escolher os crimes da denúncia."
+  ],
+  "clerk": [
+    "assessor / escrevente",
+    "jurídico",
+    "Auxiliar do juiz (law clerk) ou serventuário."
+  ],
+  "clone": [
+    "clone / cópia",
+    "tecnologia",
+    "Credencial duplicada."
+  ],
+  "cloned": [
+    "clonado",
+    "tecnologia",
+    "Duplicado ilicitamente."
+  ],
+  "colloquy": [
+    "interrogatório formal de acordo",
+    "jurídico",
+    "Ato em que o juiz verifica se o réu entende e aceita voluntariamente o plea deal."
+  ],
+  "compliance": [
+    "conformidade (compliance)",
+    "jurídico",
+    "Setor interno de integridade corporativa."
+  ],
+  "confer": [
+    "conversar / deliberar",
+    "verbo",
+    "Reunir-se para tratar de acordo."
+  ],
+  "considering": [
+    "considerando",
+    "verbo",
+    "Avaliando."
+  ],
+  "consultant": [
+    "consultor",
+    "profissão",
+    "Especialista contratado."
+  ],
+  "contradict": [
+    "contradizer",
+    "verbo",
+    "Dizer algo oposto."
+  ],
+  "cooperating": [
+    "colaborador",
+    "jurídico",
+    "Testemunha que coopera com a Justiça."
+  ],
+  "cooperation": [
+    "colaboração / cooperação",
+    "jurídico",
+    "Acordo de colaboração."
+  ],
+  "corridor": [
+    "corredor",
+    "substantivo",
+    "Passagem interna."
+  ],
+  "cpa": [
+    "CPA (contador certificado)",
+    "profissão",
+    "Certified Public Accountant nos EUA."
+  ],
+  "crack": [
+    "estalo",
+    "substantivo",
+    "Som seco do martelo."
+  ],
+  "crossed": [
+    "cruzou",
+    "verbo",
+    "Passou pelo rosto."
+  ],
+  "decrypted": [
+    "descriptografou",
+    "tecnologia",
+    "Decifrou arquivo protegido."
+  ],
+  "deputy": [
+    "adjunto / vice",
+    "cargo",
+    "Promotor adjunto."
+  ],
+  "difference": [
+    "diferença",
+    "substantivo",
+    "Distinção."
+  ],
+  "disappears": [
+    "desaparece",
+    "verbo",
+    "Deixa de existir."
+  ],
+  "disclosed": [
+    "revelou / exibiu",
+    "jurídico",
+    "Entregou na fase de discovery."
+  ],
+  "discretion": [
+    "discricionariedade",
+    "jurídico",
+    "Margem de escolha do promotor."
+  ],
+  "discretionary": [
+    "discricionário",
+    "jurídico",
+    "Não vinculado rigidamente."
+  ],
+  "dismissing": [
+    "rejeitando / arquivando",
+    "jurídico",
+    "Extinguindo a denúncia."
+  ],
+  "disposition": [
+    "desfecho / solução",
+    "jurídico",
+    "Encerramento do caso."
+  ],
+  "district": [
+    "distrital",
+    "jurídico",
+    "Relativo a distrito judicial."
+  ],
+  "draining": [
+    "esvaindo-se (ficando pálido)",
+    "verbo",
+    "Perdendo a cor do rosto."
+  ],
+  "elder": [
+    "mais velho",
+    "adjetivo",
+    "Sênior."
+  ],
+  "eligible": [
+    "elegível",
+    "adjetivo",
+    "Que preenche requisitos."
+  ],
+  "entity": [
+    "entidade",
+    "jurídico",
+    "Órgão ou pessoa jurídica."
+  ],
+  "ethics": [
+    "ética",
+    "jurídico",
+    "Normas de conduta profissional."
+  ],
+  "expires": [
+    "expira",
+    "verbo",
+    "Perde a validade."
+  ],
+  "explain": [
+    "explicar",
+    "verbo",
+    "Esclarecer."
+  ],
+  "expungement": [
+    "cancelamento de registro criminal",
+    "jurídico",
+    "Apagamento oficial de antecedente após cumprimento."
+  ],
+  "fbi": [
+    "FBI",
+    "órgão",
+    "Polícia Federal investigativa dos EUA."
+  ],
+  "felonies": [
+    "crimes graves (felonies)",
+    "jurídico (EUA × Brasil)",
+    "Infrações punidas com mais de 1 ano de prisão nos EUA (equivalentes aos crimes graves no Brasil)."
+  ],
+  "felony": [
+    "crime grave (felony)",
+    "jurídico",
+    "Crime de maior potencial ofensivo."
+  ],
+  "filing": [
+    "peticionamento / protocolo",
+    "jurídico",
+    "Ato de protocolar peça."
+  ],
+  "fine": [
+    "multa",
+    "jurídico",
+    "Sanção pecuniária."
+  ],
+  "flagged": [
+    "sinalizou / marcou",
+    "verbo",
+    "Destacou alerta."
+  ],
+  "foot": [
+    "pé (30 cm)",
+    "medida",
+    "Unidade de medida."
+  ],
+  "forcing": [
+    "forçando",
+    "verbo",
+    "Coagindo juridicamente."
+  ],
+  "freezing": [
+    "congelante",
+    "adjetivo",
+    "Muito frio."
+  ],
+  "freshly": [
+    "recém-",
+    "advérbio",
+    "Acabado de fazer."
+  ],
+  "garage": [
+    "garagem",
+    "substantivo",
+    "Estacionamento coberto."
+  ],
+  "gavel": [
+    "martelo (do juiz)",
+    "jurídico",
+    "Malhete judicial."
+  ],
+  "giglio": [
+    "Giglio (precedente)",
+    "jurídico",
+    "Precedente da Suprema Corte que estende a regra Brady a provas sobre credibilidade de testemunhas."
+  ],
+  "government": [
+    "governo / acusação",
+    "jurídico",
+    "Nos EUA, refere-se ao Ministério Público Federal."
+  ],
+  "granite": [
+    "granito",
+    "substantivo",
+    "Pedra do prédio do tribunal."
+  ],
+  "grant": [
+    "Grant",
+    "nome próprio",
+    "Sobrenome do promotor."
+  ],
+  "guaranteed": [
+    "garantido",
+    "adjetivo",
+    "Assegurado."
+  ],
+  "guideline": [
+    "diretriz",
+    "jurídico",
+    "Parâmetro de pena."
+  ],
+  "guidelines": [
+    "diretrizes",
+    "jurídico",
+    "Tabela de penas."
+  ],
+  "hall": [
+    "salão",
+    "substantivo",
+    "Recinto do tribunal."
+  ],
+  "hallway": [
+    "corredor",
+    "substantivo",
+    "Passagem externa."
+  ],
+  "handed": [
+    "entregou",
+    "verbo",
+    "Passou às mãos."
+  ],
+  "handcuffed": [
+    "algemado",
+    "adjetivo",
+    "Preso com algemas."
+  ],
+  "handcuffs": [
+    "algemas",
+    "substantivo",
+    "Dispositivo de contenção."
+  ],
+  "handshake": [
+    "aperto de mão",
+    "substantivo",
+    "Saudação."
+  ],
+  "hash": [
+    "hash (assinatura digital)",
+    "tecnologia / perícia",
+    "Código criptográfico que garante integridade de prova digital."
+  ],
+  "header": [
+    "cabeçalho",
+    "tecnologia",
+    "Linha inicial de metadados."
+  ],
+  "high-stakes": [
+    "de altíssimo risco",
+    "adjetivo",
+    "Com consequências graves."
+  ],
+  "hurts": [
+    "prejudica",
+    "verbo",
+    "Causa dano."
+  ],
+  "inches": [
+    "polegadas",
+    "medida",
+    "Unidade de comprimento."
+  ],
+  "indictment": [
+    "denúncia formal (pelo Grand Jury)",
+    "jurídico",
+    "Ato formal de acusação."
+  ],
+  "initial": [
+    "inicial",
+    "adjetivo",
+    "Primeiro."
+  ],
+  "initialed": [
+    "rubricou",
+    "verbo",
+    "Assinou com iniciais."
+  ],
+  "internal": [
+    "interno",
+    "adjetivo",
+    "Dentro do órgão."
+  ],
+  "intimidation": [
+    "intimidação",
+    "substantivo",
+    "Pressão psicológica."
+  ],
+  "investigation": [
+    "investigação",
+    "jurídico",
+    "Apuração criminal."
+  ],
+  "jail": [
+    "prisão / cadeia",
+    "jurídico",
+    "Estabelecimento prisional."
+  ],
+  "junior": [
+    "júnior / adjunto",
+    "adjetivo",
+    "De menor senioridade."
+  ],
+  "lamp": [
+    "luminária",
+    "substantivo",
+    "Abajur de mesa."
+  ],
+  "lanyard": [
+    "cordão de crachá",
+    "substantivo",
+    "Fita de identificação."
+  ],
+  "leaned": [
+    "inclinou-se",
+    "verbo",
+    "Debruçou-se."
+  ],
+  "leverage": [
+    "poder de barganha / alavancagem",
+    "jurídico",
+    "Força de pressão na negociação."
+  ],
+  "limited": [
+    "limitado",
+    "adjetivo",
+    "Restrito."
+  ],
+  "lines": [
+    "linhas",
+    "substantivo",
+    "Trechos de texto."
+  ],
+  "listed": [
+    "listou",
+    "verbo",
+    "Incluiu em relação."
+  ],
+  "litigation": [
+    "contencioso / litígio",
+    "jurídico",
+    "Atuação em processos."
+  ],
+  "lower": [
+    "reduzir",
+    "verbo",
+    "Diminuir abaixo do piso."
+  ],
+  "mahogany": [
+    "mogno",
+    "substantivo",
+    "Madeira escura da bancada."
+  ],
+  "mandatory": [
+    "obrigatório",
+    "jurídico",
+    "Vinculante por lei."
+  ],
+  "marked": [
+    "marcado",
+    "verbo",
+    "Rotulado."
+  ],
+  "maryland": [
+    "Maryland",
+    "nome próprio",
+    "Estado dos EUA (caso Brady v. Maryland)."
+  ],
+  "millisecond": [
+    "milissegundo",
+    "medida",
+    "Milésimo de segundo."
+  ],
+  "mirror": [
+    "espelho (cópia)",
+    "tecnologia",
+    "Partição espelhada de servidor."
+  ],
+  "misconduct": [
+    "má conduta",
+    "jurídico",
+    "Conduta antiética ou ilícita."
+  ],
+  "misdemeanor": [
+    "contravenção / crime de menor potencial",
+    "jurídico (EUA × Brasil)",
+    "Infração penal punida com até 1 ano de detenção nos EUA."
+  ],
+  "miss": [
+    "deixar passar",
+    "verbo",
+    "Não perceber."
+  ],
+  "monitors": [
+    "monitores",
+    "tecnologia",
+    "Telas de computador."
+  ],
+  "narrow": [
+    "restringir",
+    "verbo",
+    "Limitar o escopo."
+  ],
+  "negotiation": [
+    "negociação",
+    "jurídico",
+    "Tratativa de acordo."
+  ],
+  "node": [
+    "nó (de rede/servidor)",
+    "tecnologia",
+    "Ponto central de autenticação."
+  ],
+  "non-fraud": [
+    "sem fraude",
+    "adjetivo",
+    "Que não envolve dolo fraudulento."
+  ],
+  "non-jail": [
+    "sem prisão",
+    "adjetivo",
+    "Que não prevê encarceramento."
+  ],
+  "notes": [
+    "registra",
+    "verbo",
+    "Faz constar em ata."
+  ],
+  "october": [
+    "outubro",
+    "substantivo",
+    "Mês do ano."
+  ],
+  "off-site": [
+    "externo",
+    "adjetivo",
+    "Fora da sede."
+  ],
+  "outrageous": [
+    "escandalosa / gravíssima",
+    "jurídico",
+    "Má conduta extrema do Estado."
+  ],
+  "override": [
+    "sobreposição / invasão",
+    "tecnologia",
+    "Acesso forçado."
+  ],
+  "oversight": [
+    "lapso / falha formal",
+    "jurídico",
+    "Erro administrativo sem dolo."
+  ],
+  "packet": [
+    "dossiê / pacote",
+    "substantivo",
+    "Conjunto de documentos."
+  ],
+  "partition": [
+    "partição",
+    "tecnologia",
+    "Divisão lógica de disco."
+  ],
+  "perpetrator's": [
+    "do verdadeiro autor",
+    "jurídico",
+    "Do agente criminoso."
+  ],
+  "pleading": [
+    "declarar-se culpado",
+    "jurídico",
+    "Ato de firmar plea."
+  ],
+  "prejudice": [
+    "prejuízo definitivo",
+    "jurídico",
+    "Parte da expressão 'with prejudice'."
+  ],
+  "preparation": [
+    "preparo",
+    "substantivo",
+    "Estudo e diligência."
+  ],
+  "preserve": [
+    "preservar",
+    "verbo",
+    "Manter intacto."
+  ],
+  "printing": [
+    "imprimindo",
+    "verbo",
+    "Gerando cópia em papel."
+  ],
+  "probation": [
+    "liberdade vigiada (probation)",
+    "jurídico",
+    "Regime de fiscalização judicial fora da prisão."
+  ],
+  "produce": [
+    "exibir / entregar",
+    "jurídico",
+    "Apresentar prova na discovery."
+  ],
+  "proffer": [
+    "proffer (tratativa preliminar)",
+    "jurídico",
+    "Reunião inicial sob imunidade limitada."
+  ],
+  "projected": [
+    "projetou",
+    "verbo",
+    "Exibiu na tela."
+  ],
+  "prosecutors": [
+    "promotores",
+    "jurídico",
+    "Membros do Ministério Público."
+  ],
+  "protection": [
+    "proteção",
+    "substantivo",
+    "Resguardo."
+  ],
+  "quarterly": [
+    "trimestral",
+    "adjetivo",
+    "A cada três meses."
+  ],
+  "queen": [
+    "rainha ('Queen for a Day')",
+    "jurídico",
+    "Apelido da sessão de proffer nos EUA."
+  ],
+  "rack": [
+    "rack (armário de servidores)",
+    "tecnologia",
+    "Estrutura física de TI."
+  ],
+  "recognizance": [
+    "compromisso pessoal",
+    "jurídico",
+    "Promessa formal de comparecer em juízo."
+  ],
+  "reconciled": [
+    "conciliado",
+    "verbo",
+    "Conferido."
+  ],
+  "reconvened": [
+    "reabriu",
+    "verbo",
+    "Retomou a sessão."
+  ],
+  "record": [
+    "autos / registro",
+    "jurídico",
+    "Ata oficial ou folha de antecedentes."
+  ],
+  "reed": [
+    "Reed",
+    "nome próprio",
+    "Sobrenome do réu."
+  ],
+  "referring": [
+    "encaminhando",
+    "verbo",
+    "Remetendo para apuração."
+  ],
+  "regulatory": [
+    "regulatório / administrativo",
+    "jurídico",
+    "Infração normativa."
+  ],
+  "relentless": [
+    "incansável",
+    "adjetivo",
+    "Firme, que não desiste."
+  ],
+  "remedy": [
+    "remédio jurídico",
+    "jurídico",
+    "Solução legal adequada."
+  ],
+  "remote": [
+    "remoto",
+    "adjetivo",
+    "À distância."
+  ],
+  "reporter": [
+    "estenógrafa / repórter",
+    "profissão",
+    "Profissional que registra a audiência."
+  ],
+  "resolution": [
+    "solução",
+    "substantivo",
+    "Desfecho."
+  ],
+  "sanctions": [
+    "sanções",
+    "jurídico",
+    "Punições disciplinares ou processuais."
+  ],
+  "scare": [
+    "assustar",
+    "verbo",
+    "Intimidar."
+  ],
+  "schedule": [
+    "marcar",
+    "verbo",
+    "Agendar."
+  ],
+  "scope": [
+    "escopo",
+    "substantivo",
+    "Limite temático."
+  ],
+  "scrambled": [
+    "correram apressados",
+    "verbo",
+    "Saíram rápido."
+  ],
+  "seated": [
+    "sentado",
+    "adjetivo",
+    "Acomodado."
+  ],
+  "secret": [
+    "sigilo",
+    "substantivo",
+    "Segredo."
+  ],
+  "securities": [
+    "valores mobiliários",
+    "jurídico",
+    "Títulos do mercado financeiro."
+  ],
+  "sensing": [
+    "sentindo",
+    "verbo",
+    "Percebendo."
+  ],
+  "sentencing": [
+    "dosimetria / aplicação da pena",
+    "jurídico",
+    "Fase de fixação da pena."
+  ],
+  "seriously": [
+    "seriamente",
+    "advérbio",
+    "Com gravidade."
+  ],
+  "sharp": [
+    "em ponto",
+    "advérbio",
+    "Horário exato."
+  ],
+  "sidebar": [
+    "conferência reservada na bancada",
+    "jurídico",
+    "Diálogo reservado com o juiz."
+  ],
+  "sitting": [
+    "preso / aguardando",
+    "verbo",
+    "Permanecendo detido."
+  ],
+  "six": [
+    "seis",
+    "numeral",
+    "6."
+  ],
+  "smile": [
+    "sorriso",
+    "substantivo",
+    "Expressão de alívio."
+  ],
+  "smoking": [
+    "prova cabal ('smoking gun')",
+    "jurídico",
+    "Indício irrefutável."
+  ],
+  "spoofed": [
+    "falsificado / clonado",
+    "tecnologia",
+    "Simulado ilicitamente."
+  ],
+  "stacks": [
+    "pilhas",
+    "substantivo",
+    "Montes de livros."
+  ],
+  "stage": [
+    "palco",
+    "substantivo",
+    "Cenário."
+  ],
+  "stands": [
+    "mantém-se",
+    "verbo",
+    "Permanece válida."
+  ],
+  "stared": [
+    "encarou",
+    "verbo",
+    "Olhou fixamente."
+  ],
+  "sterling": [
+    "Sterling",
+    "nome próprio",
+    "Sobrenome do juiz federal."
+  ],
+  "strictly": [
+    "estritamente",
+    "advérbio",
+    "Rigorosamente."
+  ],
+  "struck": [
+    "bateu",
+    "verbo",
+    "Golpeou o bloco."
+  ],
+  "summary": [
+    "resumo",
+    "substantivo",
+    "Síntese."
+  ],
+  "summoned": [
+    "convocou",
+    "verbo",
+    "Chamou."
+  ],
+  "suppressing": [
+    "ocultando / suprimindo",
+    "jurídico",
+    "Escondendo prova."
+  ],
+  "taller": [
+    "mais alto",
+    "adjetivo",
+    "Maior estatura."
+  ],
+  "task": [
+    "força-tarefa (task force)",
+    "jurídico",
+    "Grupo conjunto de investigação."
+  ],
+  "terminal": [
+    "terminal",
+    "tecnologia",
+    "Ponto de acesso."
+  ],
+  "token": [
+    "token",
+    "tecnologia",
+    "Dispositivo de autenticação."
+  ],
+  "towering": [
+    "altíssimas",
+    "adjetivo",
+    "Enormes pilhas."
+  ],
+  "trap": [
+    "armadilha / cerco",
+    "substantivo",
+    "Cilada."
+  ],
+  "typed": [
+    "digitou",
+    "verbo",
+    "Registrou por escrito."
+  ],
+  "unaware": [
+    "sem saber",
+    "adjetivo",
+    "Alheio ao fato."
+  ],
+  "underground": [
+    "subterrâneo",
+    "adjetivo",
+    "Abaixo do solo."
+  ],
+  "understand": [
+    "entender",
+    "verbo",
+    "Compreender."
+  ],
+  "voluntarily": [
+    "voluntariamente",
+    "advérbio",
+    "De livre vontade."
+  ],
+  "vpn": [
+    "VPN",
+    "tecnologia",
+    "Rede privada virtual."
+  ],
+  "waive": [
+    "renunciar",
+    "jurídico",
+    "Abrir mão de direito."
+  ],
+  "walter": [
+    "Walter",
+    "nome próprio",
+    "Nome do juiz."
+  ],
+  "watch": [
+    "observar",
+    "verbo",
+    "Ficar atento."
+  ],
+  "whispered": [
+    "sussurrou",
+    "verbo",
+    "Falou baixo."
+  ],
+  "windowless": [
+    "sem janelas",
+    "adjetivo",
+    "Fechada."
+  ],
+  "withdraw": [
+    "retirar",
+    "jurídico",
+    "Desistir de petição."
+  ],
+  "withheld": [
+    "reteve / ocultou",
+    "jurídico",
+    "Escondeu prova."
+  ],
+  "withholding": [
+    "ocultando",
+    "jurídico",
+    "Retendo."
+  ],
+  "withhold": [
+    "reter",
+    "jurídico",
+    "Ocultar."
+  ],
+  "zurich": [
+    "Zurique",
+    "nome próprio",
+    "Cidade da Suíça."
+  ],
+  "access": [
+    "acesso",
+    "substantivo",
+    "Entrada ou permissão de acesso."
+  ],
+  "affidavit": [
+    "declaração juramentada",
+    "jurídico",
+    "Depoimento escrito formal sob juramento."
+  ],
+  "agent": [
+    "agente",
+    "substantivo",
+    "Agente federal ou policial."
+  ],
+  "air": [
+    "ar",
+    "substantivo",
+    "Atmosfera."
+  ],
+  "american": [
+    "americano",
+    "adjetivo",
+    "Dos Estados Unidos."
+  ],
+  "appearance": [
+    "comparecimento inicial",
+    "jurídico",
+    "Primeira apresentação do preso ao juiz (initial appearance)."
+  ],
+  "armed": [
+    "munido / armado",
+    "adjetivo",
+    "Equipado ou com mandado."
+  ],
+  "beats": [
+    "vence",
+    "verbo",
+    "Supera."
+  ],
+  "better": [
+    "melhor",
+    "adjetivo / advérbio",
+    "Comparativo de good."
+  ],
+  "block": [
+    "bloco / quarteirão",
+    "substantivo",
+    "Base de madeira do martelo ou quadra."
+  ],
+  "bring": [
+    "trazer",
+    "verbo",
+    "Conduzir até aqui."
+  ],
+  "buried": [
+    "enterrou / ocultou",
+    "verbo",
+    "Escondeu prova."
+  ],
+  "chambers": [
+    "gabinete (do juiz)",
+    "jurídico",
+    "Sala reservada do magistrado."
+  ],
+  "chen": [
+    "Chen",
+    "nome próprio",
+    "Sobrenome do perito forense."
+  ],
+  "clean": [
+    "limpo",
+    "adjetivo",
+    "Sem vícios."
+  ],
+  "comes": [
+    "vem / chega",
+    "verbo",
+    "Terceira pessoa de come."
+  ],
+  "constitution": [
+    "Constituição",
+    "jurídico",
+    "Lei fundamental dos EUA."
+  ],
+  "contains": [
+    "contém",
+    "verbo",
+    "Inclui."
+  ],
+  "counselor": [
+    "doutor(a) / advogado(a)",
+    "jurídico",
+    "Forma formal de tratamento ao advogado."
+  ],
+  "count": [
+    "imputação / capítulo",
+    "jurídico",
+    "Cada crime acusado na denúncia."
+  ],
+  "court-ordered": [
+    "determinado judicialmente",
+    "jurídico",
+    "Por ordem do juiz."
+  ],
+  "crisp": [
+    "fresco / nítido",
+    "adjetivo",
+    "Ar fresco da manhã."
+  ],
+  "deal": [
+    "acordo",
+    "jurídico",
+    "Negociação (plea deal)."
+  ],
+  "dismiss": [
+    "rejeitar / arquivar",
+    "jurídico",
+    "Extinguir denúncia ou processo."
+  ],
+  "dismissal": [
+    "rejeição / arquivamento",
+    "jurídico",
+    "Extinção da acusação."
+  ],
+  "doesn't": [
+    "não",
+    "verbo",
+    "Contração de does not."
+  ],
+  "draft": [
+    "rascunho / redigir",
+    "substantivo / verbo",
+    "Minuta ou elaborar peça."
+  ],
+  "drafted": [
+    "redigiu",
+    "verbo",
+    "Elaborou petição."
+  ],
+  "dropping": [
+    "retirando / desistindo",
+    "jurídico",
+    "Arquivando acusação."
+  ],
+  "dual": [
+    "duplo",
+    "adjetivo",
+    "Dois monitores."
+  ],
+  "eight": [
+    "oito",
+    "numeral",
+    "8."
+  ],
+  "eleven": [
+    "onze",
+    "numeral",
+    "11."
+  ],
+  "eleven-thirty": [
+    "onze e meia",
+    "horário",
+    "23h30."
+  ],
+  "empty": [
+    "vazio",
+    "adjetivo",
+    "Desocupado."
+  ],
+  "enter": [
+    "registrar / firmar",
+    "jurídico",
+    "Formalizar declaração em juízo."
+  ],
+  "entered": [
+    "entrou / firmou",
+    "verbo",
+    "Passado de enter."
+  ],
+  "everything": [
+    "tudo",
+    "pronome",
+    "Todas as coisas."
+  ],
+  "expect": [
+    "esperar / exigir",
+    "verbo",
+    "Aguardar."
+  ],
+  "face": [
+    "enfrentar / rosto",
+    "verbo / substantivo",
+    "Encarar acusação ou face."
+  ],
+  "fair": [
+    "justo",
+    "adjetivo",
+    "Equitativo."
+  ],
+  "fast": [
+    "rápido",
+    "advérbio / adjetivo",
+    "Velozmente."
+  ],
+  "finish": [
+    "terminar",
+    "verbo",
+    "Concluir."
+  ],
+  "formal": [
+    "formal",
+    "adjetivo",
+    "Solene, oficial."
+  ],
+  "frame": [
+    "quadro (de vídeo)",
+    "tecnologia",
+    "Imagem congelada de gravação."
+  ],
+  "froze": [
+    "congelou",
+    "verbo",
+    "Ficou imóvel de surpresa."
+  ],
+  "get": [
+    "obter / conseguir",
+    "verbo",
+    "Alcançar."
+  ],
+  "guess": [
+    "chutar / adivinhar",
+    "verbo",
+    "Supor sem certeza."
+  ],
+  "heart": [
+    "coração",
+    "substantivo",
+    "Órgão / emoção."
+  ],
+  "held": [
+    "manteve / realizou",
+    "verbo",
+    "Passado de hold."
+  ],
+  "holds": [
+    "detém / mantém",
+    "verbo",
+    "Possui poder."
+  ],
+  "image": [
+    "imagem",
+    "substantivo",
+    "Cópia forense de disco."
+  ],
+  "issuing": [
+    "emitindo / aprovando",
+    "jurídico",
+    "Expedindo indiciamento."
+  ],
+  "knew": [
+    "sabia",
+    "verbo",
+    "Passado de know."
+  ],
+  "laptop": [
+    "notebook",
+    "substantivo",
+    "Computador portátil."
+  ],
+  "letting": [
+    "deixando",
+    "verbo",
+    "Permitindo."
+  ],
+  "line": [
+    "linha",
+    "substantivo",
+    "Linha de registro ou texto."
+  ],
+  "listen": [
+    "ouvir / escutar",
+    "verbo",
+    "Prestar atenção."
+  ],
+  "makes": [
+    "faz",
+    "verbo",
+    "Terceira pessoa de make."
+  ],
+  "many": [
+    "muitos",
+    "pronome",
+    "Grande quantidade."
+  ],
+  "matches": [
+    "coincide / combina",
+    "verbo",
+    "Confere."
+  ],
+  "meeting": [
+    "reunião",
+    "substantivo",
+    "Encontro."
+  ],
+  "message": [
+    "mensagem",
+    "substantivo",
+    "Comunicação."
+  ],
+  "minimum": [
+    "mínimo",
+    "adjetivo / substantivo",
+    "Piso legal (mandatory minimum)."
+  ],
+  "month": [
+    "mês",
+    "substantivo",
+    "Período mensal."
+  ],
+  "move": [
+    "requerer",
+    "jurídico",
+    "Formular pedido ao juiz."
+  ],
+  "need": [
+    "precisar",
+    "verbo",
+    "Necessitar."
+  ],
+  "often": [
+    "frequentemente",
+    "advérbio",
+    "Muitas vezes."
+  ],
+  "open": [
+    "abrir",
+    "verbo",
+    "Iniciar."
+  ],
+  "opening": [
+    "abrindo",
+    "verbo",
+    "Gerúndio de open."
+  ],
+  "overnight": [
+    "durante a madrugada",
+    "advérbio",
+    "Da noite para o dia."
+  ],
+  "parking": [
+    "estacionamento",
+    "substantivo",
+    "Garagem."
+  ],
+  "partner": [
+    "sócio",
+    "substantivo",
+    "Sócio sênior."
+  ],
+  "pen": [
+    "caneta",
+    "substantivo",
+    "Instrumento de escrita."
+  ],
+  "personal": [
+    "pessoal",
+    "adjetivo",
+    "Individual."
+  ],
+  "photo": [
+    "foto",
+    "substantivo",
+    "Fotografia."
+  ],
+  "played": [
+    "reproduziu / tocou",
+    "verbo",
+    "Passou o vídeo."
+  ],
+  "practice": [
+    "prática",
+    "substantivo",
+    "Atuação forense."
+  ],
+  "pressure": [
+    "pressão",
+    "substantivo",
+    "Coação ou urgência."
+  ],
+  "primary": [
+    "principal",
+    "adjetivo",
+    "Primário."
+  ],
+  "professional": [
+    "profissional",
+    "adjetivo",
+    "De carreira."
+  ],
+  "provided": [
+    "forneceu / fornecido",
+    "verbo",
+    "Entregou."
+  ],
+  "put": [
+    "colocar",
+    "verbo",
+    "Pôr por escrito."
+  ],
+  "released": [
+    "posto em liberdade / solto",
+    "jurídico",
+    "Liberado."
+  ],
+  "remember": [
+    "lembrar",
+    "verbo",
+    "Recordar."
+  ],
+  "remind": [
+    "lembrar (alguém)",
+    "verbo",
+    "Fazer recordar."
+  ],
+  "role": [
+    "papel / participação",
+    "substantivo",
+    "Conduta no fato."
+  ],
+  "routing": [
+    "encaminhamento",
+    "tecnologia",
+    "Roteamento."
+  ],
+  "seat": [
+    "assento",
+    "substantivo",
+    "Lugar na galeria."
+  ],
+  "sentence": [
+    "pena / sentença",
+    "jurídico",
+    "Pena aplicada."
+  ],
+  "session": [
+    "sessão",
+    "substantivo",
+    "Reunião / audiência."
+  ],
+  "side": [
+    "lado",
+    "substantivo",
+    "Polo processual."
+  ],
+  "speak": [
+    "falar",
+    "verbo",
+    "Pronunciar-se."
+  ],
+  "start": [
+    "começar",
+    "verbo",
+    "Iniciar."
+  ],
+  "starts": [
+    "começa",
+    "verbo",
+    "Terceira pessoa de start."
+  ],
+  "still": [
+    "ainda",
+    "advérbio",
+    "Até agora."
+  ],
+  "summaries": [
+    "resumos",
+    "substantivo",
+    "Plural de summary."
+  ],
+  "suppression": [
+    "ocultação / desentranhamento",
+    "jurídico",
+    "Supressão de prova."
+  ],
+  "surrounded": [
+    "cercou / cercado",
+    "verbo",
+    "Rodeou."
+  ],
+  "suspect": [
+    "suspeito",
+    "jurídico",
+    "Investigado."
+  ],
+  "suspended": [
+    "suspenso",
+    "adjetivo",
+    "Interrompido."
+  ],
+  "sworn": [
+    "juramentado",
+    "jurídico",
+    "Sob juramento."
+  ],
+  "tablet": [
+    "tablet",
+    "tecnologia",
+    "Dispositivo portátil."
+  ],
+  "talk": [
+    "conversar",
+    "verbo",
+    "Dialogar."
+  ],
+  "them": [
+    "eles / os",
+    "pronome",
+    "Pronome objeto."
+  ],
+  "thought": [
+    "achou / pensou",
+    "verbo",
+    "Passado de think."
+  ],
+  "touch": [
+    "tocar",
+    "verbo",
+    "Encostar."
+  ],
+  "transcript": [
+    "transcrição",
+    "jurídico",
+    "Registro escrito de áudio/vídeo."
+  ],
+  "twenty-five": [
+    "vinte e cinco",
+    "numeral",
+    "25."
+  ],
+  "twenty-five-year": [
+    "de vinte e cinco anos",
+    "adjetivo",
+    "Duração de 25 anos."
+  ],
+  "unless": [
+    "a menos que",
+    "conjunção",
+    "Salvo se."
+  ],
+  "unlike": [
+    "diferente de",
+    "preposição",
+    "Ao contrário de."
+  ],
+  "use": [
+    "uso / usar",
+    "substantivo / verbo",
+    "Utilização."
+  ],
+  "v": [
+    "versus (contra)",
+    "jurídico",
+    "Indica partes em precedente (ex.: Brady v. Maryland)."
+  ],
+  "verification": [
+    "verificação",
+    "substantivo",
+    "Conferência."
+  ],
+  "walks": [
+    "sai / caminha",
+    "verbo",
+    "Terceira pessoa de walk."
+  ],
+  "warm": [
+    "quente / acolhedor",
+    "adjetivo",
+    "Luz suave."
+  ],
+  "wearing": [
+    "usando / vestindo",
+    "verbo",
+    "Portando."
+  ],
+  "well": [
+    "bem",
+    "advérbio",
+    "Muito bem."
+  ],
+  "weren't": [
+    "não estava / não estavam",
+    "verbo",
+    "Contração de were not."
+  ],
+  "whether": [
+    "se",
+    "conjunção",
+    "Indica alternativa."
+  ],
+  "why": [
+    "por que",
+    "advérbio",
+    "Razão."
+  ],
+  "win": [
+    "vencer",
+    "verbo",
+    "Ganhar."
+  ],
+  "work": [
+    "trabalhar / funcionar",
+    "verbo",
+    "Atuar."
+  ],
+  "write": [
+    "escrever",
+    "verbo",
+    "Redigir."
+  ],
+  "writes": [
+    "escreve",
+    "verbo",
+    "Terceira pessoa de write."
+  ],
+  "writing": [
+    "por escrito / escrevendo",
+    "substantivo / verbo",
+    "Forma escrita."
+  ],
+  "yellow": [
+    "amarelo",
+    "adjetivo",
+    "Cor amarela."
+  ],
+  "yourself": [
+    "você mesmo",
+    "pronome",
+    "Reflexivo."
   ]
 }
