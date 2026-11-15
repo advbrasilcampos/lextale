@@ -1,0 +1,177 @@
+[
+  {
+    "id": "lesson-1",
+    "category": "Imigração",
+    "title": "1. The Notice to Appear",
+    "panels": [
+      {
+        "caption": "Panel 1 — Beginning: The Client Arrives",
+        "sceneDescription": "Escritório de advocacia. Lucas entra apressado segurando uma carta oficial do DHS."
+      },
+      {
+        "caption": "Panel 2 — Middle: Reviewing the Deadline",
+        "sceneDescription": "A advogada analisa o documento e encontra a data da audiência na corte de imigração."
+      },
+      {
+        "caption": "Panel 3 — End: Strategy for the Waiver",
+        "sceneDescription": "Eles definem a linha de defesa reunindo provas médicas e vínculos familiares."
+      }
+    ],
+    "segments": [
+      {
+        "speaker": "Narrator",
+        "voiceRole": "narrator",
+        "text": "Lucas walked into the law office holding an official envelope. His hands were shaking because he had overstayed his visa last year."
+      },
+      {
+        "speaker": "Lucas",
+        "voiceRole": "male",
+        "text": "Counsel, I received this Notice to Appear yesterday. Does this mean I will be deported immediately?"
+      },
+      {
+        "speaker": "Attorney Elena",
+        "voiceRole": "female",
+        "text": "Take a deep breath. A hearing is only the beginning of the process, and you may qualify for a waiver if we build a strong case."
+      }
+    ],
+    "dictionary": {
+      "overstayed": {
+        "pt": "excedeu o prazo",
+        "note": "Passar da data autorizada no visto."
+      },
+      "visa": {
+        "pt": "visto",
+        "note": "Autorização de entrada ou permanência."
+      },
+      "counsel": {
+        "pt": "advogada / patrona",
+        "note": "Forma respeitosa de chamar o advogado."
+      },
+      "notice": {
+        "pt": "notificação / intimação",
+        "note": "Em 'Notice to Appear', é a citação para comparecer à corte."
+      },
+      "deported": {
+        "pt": "deportado",
+        "note": "Removido formalmente do país."
+      },
+      "hearing": {
+        "pt": "audiência",
+        "note": "Sessão perante o juiz de imigração."
+      },
+      "qualify": {
+        "pt": "preencher os requisitos",
+        "note": "Ter direito legal a um benefício."
+      },
+      "waiver": {
+        "pt": "perdão / dispensa legal",
+        "note": "Pedido para afastar uma causa de inadmissibilidade."
+      },
+      "strong": {
+        "pt": "sólida / forte",
+        "note": "Em 'strong case', tese bem embasada em provas."
+      }
+    },
+    "quiz": [
+      {
+        "question": "What does 'Notice to Appear' mean in this story?",
+        "options": [
+          "A fine for parking",
+          "An official summons to immigration court",
+          "A tourist visa approval"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "question": "Why does Attorney Elena mention a 'waiver'?",
+        "options": [
+          "To ask for legal forgiveness of an inadmissibility ground",
+          "To cancel the client's passport",
+          "To postpone payment of fees"
+        ],
+        "answerIndex": 0
+      }
+    ],
+    "writingPrompt": "Escreva 2 frases em inglês tranquilizando um cliente após receber uma Notice to Appear, usando 'hearing' e 'waiver'.",
+    "modelAnswer": "Do not panic about the hearing date. We will gather evidence to prove you qualify for a waiver."
+  },
+  {
+    "id": "lesson-2",
+    "category": "Direito Penal",
+    "title": "2. The Motion to Suppress",
+    "panels": [
+      {
+        "caption": "Panel 1 — The Traffic Stop",
+        "sceneDescription": "Rodovia à noite. A viatura policial aborda o veículo sem mandado nem causa provável."
+      },
+      {
+        "caption": "Panel 2 — Inside the Courtroom",
+        "sceneDescription": "A defesa apresenta o vídeo da câmera corporal apontando a busca ilegal."
+      }
+    ],
+    "segments": [
+      {
+        "speaker": "Narrator",
+        "voiceRole": "narrator",
+        "text": "During the night stop, the officer searched the trunk without a warrant or probable cause."
+      },
+      {
+        "speaker": "Defense Attorney",
+        "voiceRole": "male",
+        "text": "Your Honor, we filed a motion to suppress because the search violated our client's constitutional rights."
+      },
+      {
+        "speaker": "Judge Carter",
+        "voiceRole": "female",
+        "text": "The bodycam footage is clear. The evidence is inadmissible and the motion is granted."
+      }
+    ],
+    "dictionary": {
+      "trunk": {
+        "pt": "porta-malas",
+        "note": "Compartimento traseiro do veículo."
+      },
+      "warrant": {
+        "pt": "mandado judicial",
+        "note": "Ordem escrita assinada por juiz."
+      },
+      "probable": {
+        "pt": "provável",
+        "note": "Em 'probable cause', justa causa / fundadas razões."
+      },
+      "filed": {
+        "pt": "protocolamos",
+        "note": "Ato de apresentar petição nos autos."
+      },
+      "motion": {
+        "pt": "requerimento / petição incidental",
+        "note": "Em 'motion to suppress', pedido de desentranhamento de prova ilícita."
+      },
+      "violated": {
+        "pt": "violou",
+        "note": "Descumpriu garantia legal."
+      },
+      "inadmissible": {
+        "pt": "inadmissível",
+        "note": "Prova que não pode ser usada no julgamento."
+      },
+      "granted": {
+        "pt": "deferido",
+        "note": "Pedido aceito pelo juiz."
+      }
+    },
+    "quiz": [
+      {
+        "question": "Why did the judge grant the motion to suppress?",
+        "options": [
+          "The officer had no warrant or probable cause",
+          "The defendant arrived early",
+          "The prosecutor forgot the file"
+        ],
+        "answerIndex": 0
+      }
+    ],
+    "writingPrompt": "Explique em 2 frases em inglês por que uma prova obtida sem mandado pode ser excluída, usando 'warrant' e 'inadmissible'.",
+    "modelAnswer": "The officer searched the car without a warrant or probable cause. Therefore, the evidence is inadmissible in court."
+  }
+]

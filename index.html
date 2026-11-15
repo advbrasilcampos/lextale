@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>LexTale — Inglês Jurídico em Histórias</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-badge">⚖️</span>
+      <div>
+        <h1>LexTale</h1>
+        <p class="subtitle">Legal English Stories</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button id="btn-vocab" class="btn-secondary" type="button">📚 Vocabulário (<span id="vocab-count">0</span>)</button>
+      <button id="btn-import" class="btn-primary" type="button">+ Importar</button>
+    </div>
+  </header>
+
+  <nav class="lesson-strip" id="lesson-strip" aria-label="Lista de lições"></nav>
+
+  <main class="container">
+    <section class="lesson-header">
+      <span id="lesson-category" class="tag">Imigração</span>
+      <h2 id="lesson-title">Carregando...</h2>
+    </section>
+
+    <!-- Área Visual: Carrossel de Quadrinhos ou Vídeo -->
+    <section class="media-card" id="media-section">
+      <div id="carousel-wrapper" class="carousel-wrapper hidden">
+        <div class="panel-stage">
+          <div id="panel-visual" class="panel-visual"></div>
+          <p id="panel-caption" class="panel-caption"></p>
+        </div>
+        <div class="carousel-controls">
+          <button id="btn-prev-panel" class="btn-secondary" type="button">← Previous Panel</button>
+          <span id="panel-indicator" class="panel-indicator">Panel 1 of 1</span>
+          <button id="btn-next-panel" class="btn-secondary" type="button">Next Panel →</button>
+        </div>
+      </div>
+      <div id="video-wrapper" class="video-wrapper hidden">
+        <iframe id="youtube-frame" src="" title="Video scene" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- Barra de Reprodução Segmentada -->
+    <section class="audio-card">
+      <div class="audio-top">
+        <button id="btn-play" class="btn-play" type="button">▶ Ouvir</button>
+        <div class="speed-group" role="group" aria-label="Velocidade da leitura">
+          <button class="speed-btn active" data-speed="0.25" type="button">0.25x</button>
+          <button class="speed-btn" data-speed="0.5" type="button">0.5x</button>
+          <button class="speed-btn" data-speed="0.75" type="button">0.75x</button>
+          <button class="speed-btn" data-speed="1" type="button">1x</button>
+          <button class="speed-btn" data-speed="1.25" type="button">1.25x</button>
+        </div>
+      </div>
+      <div class="segments-bar" id="segments-bar" aria-label="Momentos da história"></div>
+    </section>
+
+    <!-- Card Sincronizado da Palavra Selecionada -->
+    <section id="quick-card" class="quick-card hidden">
+      <div class="quick-card-main">
+        <strong id="qc-word">word</strong>
+        <span id="qc-translation">tradução</span>
+      </div>
+      <div class="quick-card-actions">
+        <button id="qc-speak" class="btn-mini" type="button">🔊</button>
+        <button id="qc-status-blue" class="status-dot blue" title="Nova" type="button"></button>
+        <button id="qc-status-yellow" class="status-dot yellow" title="Aprendendo" type="button"></button>
+        <button id="qc-status-white" class="status-dot white" title="Conhecida" type="button"></button>
+      </div>
+    </section>
+
+    <!-- Texto Interativo -->
+    <section class="reader-card" id="reader-card"></section>
+
+    <div class="footer-cta">
+      <button id="btn-open-quiz" class="btn-primary btn-large" type="button">📝 Fazer Exercícios & Concluir</button>
+    </div>
+  </main>
+
+  <!-- Balão Flutuante Instantâneo (abre logo abaixo da palavra clicada) -->
+  <div id="word-tooltip" class="word-tooltip hidden" role="dialog" aria-live="polite">
+    <div class="tt-header">
+      <strong id="tt-word"></strong>
+      <button id="tt-speak" class="btn-mini" type="button">🔊</button>
+    </div>
+    <p id="tt-translation" class="tt-translation"></p>
+    <p id="tt-note" class="tt-note"></p>
+    <div class="tt-status-row">
+      <button class="tt-status-btn" data-status="blue" type="button">Nova</button>
+      <button class="tt-status-btn" data-status="yellow" type="button">Aprendendo</button>
+      <button class="tt-status-btn" data-status="white" type="button">Conhecida</button>
+    </div>
+  </div>
+
+  <!-- Modal de Exercícios -->
+  <div id="modal-quiz" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Exercícios da Lição</h3>
+        <button class="btn-close" data-close="modal-quiz" type="button">✕</button>
+      </div>
+      <div id="quiz-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Modal de Vocabulário -->
+  <div id="modal-vocab" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Minha Caixa de Vocabulário</h3>
+        <button class="btn-close" data-close="modal-vocab" type="button">✕</button>
+      </div>
+      <div id="vocab-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Modal de Importação de Lição (JSON) -->
+  <div id="modal-import" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>+ Importar Nova Lição (JSON)</h3>
+        <button class="btn-close" data-close="modal-import" type="button">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="hint">Cole abaixo o JSON de uma nova lição gerada no chat ou selecione um arquivo <code>.json</code>.</p>
+        <input type="file" id="import-file" accept=".json,application/json" class="file-input" />
+        <textarea id="import-json" rows="8" placeholder='{"id": "custom-1", "title": "...", ...}'></textarea>
+        <p id="import-error" class="error-text hidden"></p>
+        <button id="btn-confirm-import" class="btn-primary btn-large" type="button">Salvar Lição no App</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
