@@ -1,13 +1,11 @@
-const CACHE_NAME = "lextale-pwa-v4";
+const CACHE_NAME = "lextale-pwa-v4-1";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./style.css",
   "./app.js",
   "./manifest.json",
-  "./icon.svg",
-  "./lessons/starter-lessons.json",
-  "./lessons/dictionary.json"
+  "./icon.svg"
 ];
 
 self.addEventListener("install", (event) => {
@@ -26,13 +24,32 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+// Network-first for HTML/JS/CSS/JSON so updates appear immediately; Cache-first for images
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  const url = event.request.url;
+  const isDynamic = /\.(html|js|css|json)(\?|$)/i.test(url) || url.endsWith("/");
+
+  if (isDynamic) {
+    event.respondWith(
+      fetch(event.request)
+        .then((resp) => {
+          if (resp && resp.status === 200 && url.startsWith(self.location.origin)) {
+            const copy = resp.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          }
+          return resp;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
       return fetch(event.request).then((resp) => {
-        if (resp && resp.status === 200 && event.request.url.startsWith(self.location.origin)) {
+        if (resp && resp.status === 200 && url.startsWith(self.location.origin)) {
           const copy = resp.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
         }

@@ -1265,8 +1265,8 @@ function bindEvents() {
 async function initApp() {
   try {
     const [dictResp, lessonsResp] = await Promise.all([
-      fetch("lessons/dictionary.json"),
-      fetch("lessons/starter-lessons.json")
+      fetch("lessons/dictionary.json?v=4.1", { cache: "no-store" }),
+      fetch("lessons/starter-lessons.json?v=4.1", { cache: "no-store" })
     ]);
     DICTIONARY_DB = await dictResp.json();
     BASE_LESSONS = await lessonsResp.json();
