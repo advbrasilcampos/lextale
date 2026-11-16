@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5D061"/>
+      <stop offset="50%" stop-color="#C9A227"/>
+      <stop offset="100%" stop-color="#8F6F10"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#0B1324"/>
+  <rect x="6" y="6" width="116" height="116" rx="23" fill="none" stroke="url(#goldGrad)" stroke-width="3.5"/>
+  <!-- Open Book Base -->
+  <path d="M26 88 C42 82, 56 85, 64 92 C72 85, 86 82, 102 88 L102 98 C86 92, 72 95, 64 102 C56 95, 42 92, 26 98 Z" fill="url(#goldGrad)"/>
+  <!-- Scales of Justice Pillar & Beam -->
+  <rect x="61.5" y="26" width="5" height="62" rx="2" fill="url(#goldGrad)"/>
+  <circle cx="64" cy="24" r="5" fill="#F5D061"/>
+  <path d="M32 38 L96 38" stroke="url(#goldGrad)" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Left Scale Pan -->
+  <path d="M34 38 L25 60 L43 60 Z" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M22 60 Q34 70 46 60 Z" fill="url(#goldGrad)"/>
+  <!-- Right Scale Pan -->
+  <path d="M94 38 L85 60 L103 60 Z" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M82 60 Q94 70 106 60 Z" fill="url(#goldGrad)"/>
+</svg>
